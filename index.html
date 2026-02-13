@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SINGULARITY UNION | Applied AI Engineering for Business Workflows</title>
+
+    <!-- SEO & Metadata -->
+    <meta name="description"
+        content="Singularity Union builds production-safe AI systems for real business workflows. We turn stochastic outputs into deterministic tools.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Singularity Union">
+    <meta name="theme-color" content="#030303">
+
+    <!-- Open Graph / Social Preview -->
+    <meta property="og:site_name" content="Singularity Union">
+    <meta property="og:title" content="Singularity Union | Applied AI Engineering">
+    <meta property="og:description" content="Production-safe AI systems and LLM infrastructure.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://singularityunion.tech">
+    <meta property="og:image" content="https://singularityunion.tech/preview.png">
+
+    <!-- Twitter Preview -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Singularity Union | Applied AI Engineering">
+    <meta name="twitter:description" content="Production-safe AI systems and LLM infrastructure">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236366f1'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-family='sans-serif' font-size='60' font-weight='bold' fill='white'>S</text></svg>">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800;900&family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #030303;
+            --primary: #6366f1;
+            --secondary: #06b6d4;
+            --accent: #f43f5e;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+            perspective: 1500px;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* --- BUTTER ENGINE STYLES --- */
+        .interactive-card,
+        .interactive-text {
+            transition: transform 0.15s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .interactive-card:hover {
+            border-color: var(--secondary);
+            background: rgba(99, 102, 241, 0.06);
+            box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.7);
+            z-index: 10;
+        }
+
+        .glow-point {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        .elite-headline {
+            letter-spacing: -0.05em;
+            line-height: 1.1;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .tech-accent {
+            background: linear-gradient(90deg, #fff 0%, var(--primary) 50%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-style: italic;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
+            background: #4f46e5;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        .arch-node {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            padding: 0.8rem;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 9px;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            min-width: 100px;
+        }
+
+        .arch-line {
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            flex-grow: 1;
+            min-width: 10px;
+            opacity: 0.5;
+        }
+
+        .engagement-step {
+            position: relative;
+        }
+
+        .engagement-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-weight: bold;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .engagement-step:not(:last-child)::after {
+                content: '↓';
+                right: 50%;
+                top: auto;
+                bottom: -2rem;
+                transform: translateX(50%);
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav
+        class="fixed top-0 w-full z-[100] px-6 md:px-12 py-5 flex justify-between items-center backdrop-blur-2xl border-b border-white/5">
+        <div class="flex items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-9 h-9 bg-indigo-600 rounded-lg flex items-center justify-center font-black text-white shadow-lg shadow-indigo-500/20 text-lg">
+                    S</div>
+                <div class="flex flex-col md:flex-row md:items-center gap-0 md:gap-3">
+                    <span class="text-lg font-black tracking-tighter uppercase leading-none">SINGULARITY UNION</span>
+                    <span
+                        class="text-indigo-400 font-black mono text-[10px] tracking-[0.3em] uppercase opacity-90 hidden sm:block">EVOLVING
+                        INTELLIGENCE</span>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="hidden lg:flex items-center gap-10 text-[9px] mono font-bold uppercase tracking-widest text-zinc-400">
+            <a href="#what-we-do" class="hover:text-white transition-colors">Operations</a>
+            <a href="#architecture" class="hover:text-white transition-colors">Architecture</a>
+            <a href="#stack" class="hover:text-white transition-colors">Stack</a>
+            <a href="#engagement" class="hover:text-white transition-colors">Process</a>
+            <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+        </div>
+
+        <a href="#contact"
+            class="btn-primary text-[10px] py-2.5 px-6 uppercase tracking-widest font-black hidden sm:block">Start
+            Review</a>
+    </nav>
+
+    <!-- Main View -->
+    <main id="main-view">
+        <!-- HERO -->
+        <section class="relative min-h-[85vh] flex flex-col justify-center px-6 pt-24 overflow-visible">
+            <div class="max-w-6xl mx-auto w-full">
+                <div class="max-w-5xl interactive-text">
+                    <div class="mb-10">
+                        <span
+                            class="mono text-[10px] text-indigo-400 uppercase tracking-[0.6em] font-black border-l-2 border-indigo-600 pl-4">Reliability
+                            Protocol v2.6 // Operational focus</span>
+                    </div>
+                    <h1 class="elite-headline text-5xl md:text-8xl mb-8">
+                        WE BUILD RELIABLE AI SYSTEMS<br />
+                        <span class="tech-accent">FOR REAL BUSINESS</span><br />
+                        WORKFLOWS.
+                    </h1>
+                    <p class="text-xl text-zinc-400 mb-10 leading-relaxed max-w-2xl font-light">
+                        We transform stochastic LLM outputs into
+                        <span class="text-white font-medium">hardened operational systems</span> that perform
+                        consistently in production.
+                    </p>
+                    <div class="flex flex-wrap gap-6">
+                        <a href="#contact" class="btn-primary uppercase tracking-[0.2em] text-[11px] font-black">Request
+                            Architecture Review</a>
+                        <a href="#what-we-do"
+                            class="px-8 py-3 border border-white/10 rounded-xl hover:bg-white/5 transition-all text-[11px] font-bold uppercase tracking-widest flex items-center gap-3">
+                            <span>See if AI fits your workflow</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHAT WE ACTUALLY DO (Problem -> Solution -> Outcome) -->
+        <section id="what-we-do" class="py-24 px-6 border-t border-white/5 bg-zinc-950/20">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-16">
+                    <span class="mono text-indigo-500 font-bold text-xs tracking-widest uppercase">01 // Problem
+                        Resolution</span>
+                    <h2 class="text-4xl font-black uppercase tracking-tighter mt-4">Operational Clarity</h2>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-12">
+                    <div class="space-y-6">
+                        <h4 class="mono text-xs text-zinc-500 uppercase font-bold border-b border-white/10 pb-4">The
+                            Friction (Cost)</h4>
+                        <ul class="space-y-4 text-sm text-zinc-400">
+                            <li class="flex items-start gap-3">
+                                <span class="text-red-500 font-bold opacity-70">✕</span>
+                                <span>Manual data checking across dashboards leading to high labor overhead.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-red-500 font-bold opacity-70">✕</span>
+                                <span>Documentation search silos causing delays in decision making.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-red-500 font-bold opacity-70">✕</span>
+                                <span>Inconsistent LLM answers creating operational risk and liability.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-6">
+                        <h4 class="mono text-xs text-indigo-400 uppercase font-bold border-b border-white/10 pb-4">The
+                            Engineering</h4>
+                        <ul class="space-y-4 text-sm text-zinc-400">
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 font-bold">→</span>
+                                <span>Retrieval pipelines (RAG) with precise source citation.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 font-bold">→</span>
+                                <span>Custom decision automation agents with tool-integration.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 font-bold">→</span>
+                                <span>Monitoring, schema validation, and fallback systems.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-6">
+                        <h4 class="mono text-xs text-green-400 uppercase font-bold border-b border-white/10 pb-4">The
+                            Outcome</h4>
+                        <ul class="space-y-4 text-sm text-zinc-400">
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 font-bold">✓</span>
+                                <span>Reduced operational costs via automated document parsing.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 font-bold">✓</span>
+                                <span>Faster internal ops through instant knowledge access.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 font-bold">✓</span>
+                                <span>Predictable outputs verified against business logic.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ARCHITECTURE DIAGRAM -->
+        <section id="architecture" class="py-24 px-6 relative overflow-hidden">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-16 text-center">
+                    <span class="mono text-indigo-500 font-bold text-xs tracking-widest uppercase">System Design</span>
+                    <h2 class="text-4xl font-black uppercase tracking-tighter mt-4">Technical Workflow</h2>
+                </div>
+
+                <div
+                    class="glass-card p-10 bg-white/[0.01] flex flex-col md:flex-row items-center justify-between gap-4 overflow-x-auto">
+                    <div class="arch-node border-indigo-500/50">User API</div>
+                    <div class="arch-line"></div>
+                    <div class="arch-node">Embedding Service</div>
+                    <div class="arch-line"></div>
+                    <div class="arch-node">Retriever & Re-ranker</div>
+                    <div class="arch-line"></div>
+                    <div class="arch-node bg-indigo-600/10 border-indigo-500">LLM Engine</div>
+                    <div class="arch-line"></div>
+                    <div class="arch-node border-green-500/50">Schema Validator</div>
+                    <div class="arch-line"></div>
+                    <div class="arch-node border-white/20 text-zinc-500">Observability</div>
+                </div>
+                <p class="text-[10px] mono text-center text-zinc-600 mt-8 uppercase tracking-widest">A realistic look at
+                    our production retrieval and validation stacks.</p>
+            </div>
+        </section>
+
+        <!-- PILOT EXAMPLE (Case Study) -->
+        <section id="pilot" class="py-24 px-6 bg-zinc-950/50">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span class="mono text-indigo-500 font-bold text-xs tracking-widest uppercase">Prototype System
+                            Simulation</span>
+                        <h2 class="text-4xl font-black uppercase tracking-tighter mt-4 mb-6">Internal Operations
+                            Knowledge Agent</h2>
+                        <div class="space-y-6 text-sm text-zinc-400">
+                            <p><strong class="text-white uppercase mono text-[10px]">Context:</strong> A logistics
+                                framework prototype designed to parse 400+ compliance documents manually searched by
+                                employees.</p>
+                            <p><strong class="text-white uppercase mono text-[10px]">The Build:</strong> Retrieval +
+                                Citation + Fallback validation. If a document cannot be verified with 100% citation
+                                grounding, the system triggers a manual human-in-the-loop fallback.</p>
+                            <div class="grid grid-cols-2 gap-4 pt-6">
+                                <div class="bg-white/5 p-4 rounded-xl border border-white/5">
+                                    <span class="block text-md font-black text-white">Verified Output Consistency</span>
+                                    <span class="text-[9px] mono uppercase text-zinc-500">Test Metric</span>
+                                </div>
+                                <div class="bg-white/5 p-4 rounded-xl border border-white/5">
+                                    <span class="block text-md font-black text-white">Zero-Hallucination
+                                        Guardrail</span>
+                                    <span class="text-[9px] mono uppercase text-zinc-500">System Priority</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div
+                            class="aspect-video glass-card bg-indigo-600/5 flex items-center justify-center border-indigo-500/20 p-8">
+                            <div class="text-left w-full mono text-[10px] space-y-2 text-zinc-500">
+                                <div class="text-indigo-400"># PROTOTYPE LOG VIEW</div>
+                                <div>[0.12s] Embedding generated for query</div>
+                                <div>[0.34s] Top 5 document chunks retrieved</div>
+                                <div>[0.45s] Re-ranking complete (Score: 0.94)</div>
+                                <div>[1.20s] LLM Synthesis complete</div>
+                                <div class="text-green-400">[1.25s] SCHEMA VALIDATION: SUCCESS</div>
+                                <div class="text-green-400">[1.30s] CITATION VERIFIED: (doc_id: 421)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ENGINEERING STACK -->
+        <section id="stack" class="py-24 px-6 border-t border-white/5">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-16">
+                    <span class="mono text-indigo-500 font-bold text-xs tracking-widest uppercase">The Tech</span>
+                    <h2 class="text-4xl font-black uppercase tracking-tighter mt-4">Engineering Stack</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="space-y-4">
+                        <h5 class="text-xs font-black uppercase text-white border-l-2 border-indigo-500 pl-3">Inference
+                        </h5>
+                        <div class="text-[11px] mono text-zinc-500 space-y-1">
+                            <div>Open-weight LLMs (Local)</div>
+                            <div>API-hosted LLMs (High-Scale)</div>
+                            <div>Quantized local inference</div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <h5 class="text-xs font-black uppercase text-white border-l-2 border-indigo-500 pl-3">Data</h5>
+                        <div class="text-[11px] mono text-zinc-500 space-y-1">
+                            <div>Postgres + pgvector</div>
+                            <div>Hybrid Vector Search</div>
+                            <div>Embedding pipelines</div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <h5 class="text-xs font-black uppercase text-white border-l-2 border-indigo-500 pl-3">
+                            Orchestration</h5>
+                        <div class="text-[11px] mono text-zinc-500 space-y-1">
+                            <div>Python Services</div>
+                            <div>Async Job Workers</div>
+                            <div>Retry Logic / Exponential Backoff</div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <h5 class="text-xs font-black uppercase text-white border-l-2 border-indigo-500 pl-3">Safety
+                        </h5>
+                        <div class="text-[11px] mono text-zinc-500 space-y-1">
+                            <div>Structured Output Parser</div>
+                            <div>Deterministic Fallback Rules</div>
+                            <div>Observability (Logging)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ENGAGEMENT MODEL -->
+        <section id="engagement" class="py-24 px-6 bg-zinc-950/30 border-t border-white/5">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-16 text-center">
+                    <span class="mono text-indigo-500 font-bold text-xs tracking-widest uppercase">How We Work</span>
+                    <h2 class="text-4xl font-black uppercase tracking-tighter mt-4">Engagement Model</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-12">
+                    <div class="engagement-step glass-card p-8 border-white/5 bg-white/[0.01]">
+                        <span class="text-indigo-500 font-bold mono text-xs">Step 01</span>
+                        <h4 class="text-lg font-bold uppercase mt-4">System Review</h4>
+                        <p class="text-xs text-zinc-500 mt-2">Free initial review of your current data silos and
+                            operational bottlenecks.</p>
+                    </div>
+                    <div class="engagement-step glass-card p-8 border-white/5 bg-white/[0.01]">
+                        <span class="text-indigo-500 font-bold mono text-xs">Step 02</span>
+                        <h4 class="text-lg font-bold uppercase mt-4">Pilot Build</h4>
+                        <p class="text-xs text-zinc-500 mt-2">A 2–4 week deployment of a prototype system to verify
+                            logic and success rate.</p>
+                    </div>
+                    <div class="engagement-step glass-card p-8 border-white/5 bg-white/[0.01]">
+                        <span class="text-indigo-500 font-bold mono text-xs">Step 03</span>
+                        <h4 class="text-lg font-bold uppercase mt-4">Integration</h4>
+                        <p class="text-xs text-zinc-500 mt-2">Full production scaling within your VPC and integration
+                            into existing tools.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPANY INFO -->
+        <section id="company" class="py-24 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="glass-card p-10 bg-white/[0.01] border-white/5 grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="mono text-indigo-500 font-bold text-xs tracking-widest uppercase">Identity</span>
+                        <h3 class="text-3xl font-black uppercase tracking-tighter mt-4 mb-6">Applied AI Group</h3>
+                        <p class="text-zinc-400 text-sm mb-6 leading-relaxed">
+                            Singularity Union is a small engineering team focused exclusively on applied LLM systems. We
+                            prioritize verifiable system performance over marketing hype.
+                        </p>
+                        <div class="grid grid-cols-2 gap-6 text-[10px] mono text-zinc-500 uppercase">
+                            <div><span class="text-white block font-bold mb-1">HQ Location</span>India // Remote-Global
+                            </div>
+                            <div><span class="text-white block font-bold mb-1">Response SLA</span>24 Hours</div>
+                        </div>
+                    </div>
+                    <div class="bg-indigo-600/5 p-8 rounded-2xl border border-indigo-500/10">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-1.5 h-1.5 bg-indigo-500 rounded-full"></div>
+                            <span class="text-[9px] mono uppercase text-zinc-500">Operational Focus</span>
+                        </div>
+                        <p class="text-xs text-zinc-400 italic">"We avoid the 'marketing chatbot' trap. We build systems
+                            that perform business logic with verifiable precision."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="py-32 px-6 bg-white text-black rounded-t-[50px] md:rounded-t-[80px]">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-24">
+                    <span class="text-indigo-600 font-black mono text-[10px] uppercase tracking-[0.4em]">Initialize
+                        Connection</span>
+                    <h2 class="text-7xl font-black uppercase tracking-tighter mt-4">Start Review</h2>
+                    <p class="text-zinc-500 mt-6 text-sm max-w-lg mx-auto leading-relaxed">
+                        Submit your technical friction points for an architecture review.
+                        Response time: Within 24 hours.
+                    </p>
+                </div>
+
+                <!-- REAL CONTACT FORM (FormSubmit) -->
+                <form action="https://formsubmit.co/hello@singularityunion.tech" method="POST" class="space-y-10">
+                    <!-- Form Protection & Redirect -->
+                    <input type="hidden" name="_subject" value="New Engineering Inquiry - Singularity Union">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://singularityunion.tech/thankyou.html">
+
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div class="group">
+                            <label class="block mono text-[9px] text-zinc-400 uppercase font-black mb-2">Point of
+                                Contact</label>
+                            <input type="text" name="name" required
+                                class="w-full bg-transparent border-b-2 border-zinc-200 py-4 outline-none focus:border-indigo-600 transition-all font-bold text-lg"
+                                placeholder="Full Name">
+                        </div>
+                        <div class="group">
+                            <label class="block mono text-[9px] text-zinc-400 uppercase font-black mb-2">Work
+                                Email</label>
+                            <input type="email" name="email" required
+                                class="w-full bg-transparent border-b-2 border-zinc-200 py-4 outline-none focus:border-indigo-600 transition-all font-bold text-lg"
+                                placeholder="name@company.com">
+                        </div>
+                    </div>
+                    <div class="group">
+                        <label class="block mono text-[9px] text-zinc-400 uppercase font-black mb-2">Operational
+                            Friction Points</label>
+                        <textarea name="message" required rows="3"
+                            class="w-full bg-transparent border-b-2 border-zinc-200 py-4 outline-none focus:border-indigo-600 transition-all font-medium text-lg resize-none"
+                            placeholder="Describe data silos or automation gaps..."></textarea>
+                    </div>
+                    <button type="submit"
+                        class="btn-primary w-full py-6 text-xs uppercase tracking-[0.4em] font-black">Submit
+                        Architecture Request</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-24 px-6 md:px-12 border-t border-white/5 bg-zinc-950">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between gap-16 mb-20">
+                <div class="max-w-sm">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div
+                            class="w-8 h-8 bg-zinc-800 rounded flex items-center justify-center font-black text-white text-xs">
+                            S</div>
+                        <span class="font-black text-xl tracking-tighter uppercase">SINGULARITY UNION</span>
+                    </div>
+                    <p class="text-zinc-500 text-xs mb-10 leading-relaxed font-medium">
+                        Engineering deterministic reliability for autonomous enterprise workflows.
+                    </p>
+                    <div class="flex flex-col gap-2">
+                        <span
+                            class="text-[9px] mono text-zinc-600 uppercase font-black tracking-widest">Inquiries</span>
+                        <a href="mailto:hello@singularityunion.tech"
+                            class="text-sm font-black text-indigo-400 hover:text-white transition-colors mono">hello@singularityunion.tech</a>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <h5 class="text-[9px] mono uppercase text-zinc-600 font-black tracking-[0.2em]">Contact Channels
+                        </h5>
+                        <nav class="flex flex-col gap-3 text-xs font-black uppercase tracking-wider text-zinc-400">
+                            <a href="https://www.linkedin.com/company/singularity-union/" target="_blank"
+                                class="hover:text-white transition-colors">LinkedIn</a>
+                            <a href="https://x.com/SINGULARIT95067" target="_blank"
+                                class="hover:text-white transition-colors">X.com</a>
+                            <a href="https://www.youtube.com/@SINGULARITYUNION" target="_blank"
+                                class="hover:text-white transition-colors">YouTube</a>
+                            <a href="https://www.instagram.com/singularity_union/" target="_blank"
+                                class="hover:text-white transition-colors">Instagram</a>
+                        </nav>
+                    </div>
+                    <div class="space-y-6">
+                        <h5 class="text-[9px] mono uppercase text-zinc-600 font-black tracking-[0.2em]">Legal &
+                            Governance</h5>
+                        <nav class="flex flex-col gap-3 text-xs font-black uppercase tracking-wider text-zinc-400">
+                            <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                            <a href="#"over:text-white transition-colors">Terms</a>
+                            <a href="#" class="hover:text-white transition-colors">Security</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <span class="text-[9px] mono text-zinc-600 uppercase font-black tracking-[0.3em]">© 2026 Singularity
+                    Union // All Rights Reserved</span>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                        <span id="footer-status" class="text-[9px] mono text-zinc-600 uppercase font-black">Link:
+                            Established // 21ms</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const isMobile = window.innerWidth < 768;
+
+        // --- 1. THE BUTTER ENGINE (3D INTERACTIVITY) ---
+        const initButterEngine = () => {
+            if (prefersReducedMotion || isMobile) return;
+
+            document.querySelectorAll('.interactive-card').forEach(card => {
+                const glow = document.createElement('div');
+                glow.className = 'glow-point';
+                card.appendChild(glow);
+
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const rotateX = (y - (rect.height / 2)) / 15;
+                    const rotateY = ((rect.width / 2) - x) / 15;
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                    glow.style.left = `${x}px`; glow.style.top = `${y}px`; glow.style.opacity = '1';
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                    glow.style.opacity = '0';
+                });
+            });
+
+            const heroText = document.querySelector('.interactive-text');
+            if (heroText) {
+                document.addEventListener('mousemove', (e) => {
+                    const x = (window.innerWidth / 2 - e.pageX) / 80;
+                    const y = (window.innerHeight / 2 - e.pageY) / 80;
+                    heroText.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+                });
+            }
+        };
+
+        // --- 2. BACKGROUND ENGINE ---
+        const initBackground = () => {
+            const canvas = document.getElementById('bg-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let pts = [];
+            const resize = () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                pts = Array.from({ length: 40 }, () => ({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    s: Math.random() * 2 + 1
+                }));
+            };
+            const draw = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = 'rgba(99, 102, 241, 0.3)';
+                pts.forEach(p => {
+                    p.x += p.vx; p.y += p.vy;
+                    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.s, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                requestAnimationFrame(draw);
+            };
+            window.addEventListener('resize', resize);
+            resize();
+            draw();
+        };
+
+        window.onload = () => {
+            initButterEngine();
+            initBackground();
+        };
+
+        setInterval(() => {
+            const r = Math.floor(Math.random() * 10) + 15;
+            const fs = document.getElementById('footer-status');
+            if (fs) fs.innerText = `Link: Established // ${r}ms`;
+        }, 4000);
+    </script>
+</body>
+
+</html>
