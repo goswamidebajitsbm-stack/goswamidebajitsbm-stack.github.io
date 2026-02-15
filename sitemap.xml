@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+<url>
+<loc>https://singularityunion.tech/</loc>
+<priority>1.00</priority>
+</url>
+
+<url>
+<loc>https://singularityunion.tech/about.html</loc>
+</url>
+
+<url>
+<loc>https://singularityunion.tech/contact.html</loc>
+</url>
+
+<url>
+<loc>https://singularityunion.tech/privacy.html</loc>
+</url>
+
+<url>
+<loc>https://singularityunion.tech/terms.html</loc>
+</url>
+
+<url>
+<loc>https://singularityunion.tech/security.html</loc>
+</url>
+
+</urlset>
