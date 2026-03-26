@@ -4,848 +4,858 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SINGULARITY UNION | Applied AI Engineering for Business Workflows</title>
+    <title>SINGULARITY UNION | Applied AI Engineering</title>
 
-    <!-- SEO & Metadata -->
+    <!-- Primary Meta Tags -->
     <meta name="description"
-        content="AI Agents that handle customer conversations automatically. Reduce response time, capture leads, and operate 24/7 without human workload. We design custom AI assistants for businesses — WhatsApp, website, and internal operations.">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Singularity Union">
-    <meta name="theme-color" content="#030303">
+        content="Production-safe AI systems and LLM infrastructure. We design custom AI assistants and cognitive architectures for enterprise workflows.">
+    <meta name="theme-color" content="#000000">
+    <link rel="icon" type="image/png" href="su-logo.png">
 
-    <!-- Open Graph / Social Preview -->
-    <meta property="og:site_name" content="Singularity Union">
-    <meta property="og:title" content="Singularity Union | Applied AI Engineering">
-    <meta property="og:description" content="Production-safe AI systems and LLM infrastructure.">
+    <!-- Open Graph / Social Media Preview Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://singularityunion.tech">
-    <meta property="og:image" content="https://singularityunion.tech/preview.png">
-
-    <!-- Twitter Preview -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Singularity Union | Applied AI Engineering">
-    <meta name="twitter:description" content="Production-safe AI systems and LLM infrastructure">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236366f1'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-family='sans-serif' font-size='60' font-weight='bold' fill='white'>S</text></svg>">
+    <meta property="og:url" content="https://singularityunion.tech/">
+    <meta property="og:title" content="SINGULARITY UNION | Applied AI Engineering">
+    <meta property="og:description"
+        content="Production-safe AI systems and LLM infrastructure. We design custom AI assistants and cognitive architectures for enterprise workflows.">
+    <meta property="og:image" content="su-logo.png">
+    <!-- Replace with a wide banner image link later if you want a big preview -->
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800;900&family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Lenis Smooth Scroll Engine -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        black: '#000000',
+                        surface: '#0a0a0c',
+                        surface2: '#121216',
+                        brand: {
+                            500: '#ffffff',
+                            glow: 'rgba(255, 255, 255, 0.15)',
+                        }
+                    },
+                    letterSpacing: {
+                        tighter: '-0.04em',
+                        tightest: '-0.06em',
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
-        /* =======================================================================
-           1. HYPER-ADVANCED CSS VARIABLES & GLOBAL RESETS
-           ======================================================================= */
         :root {
-            --bg: #010103;
-            --primary: #6366f1;
-            --primary-glow: rgba(99, 102, 241, 0.6);
-            --secondary: #06b6d4;
-            --secondary-glow: rgba(6, 182, 212, 0.6);
-            --accent: #f43f5e;
-            --border: rgba(255, 255, 255, 0.05);
-            --glass-bg: rgba(10, 10, 15, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(10, 10, 12, 0.4);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
+        /* Lenis required CSS */
+        html.lenis {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
         }
 
         body {
-            background-color: var(--bg);
-            color: #fff;
-            font-family: 'Space Grotesk', sans-serif;
+            background-color: #000000;
+            color: #ececec;
             overflow-x: hidden;
-            line-height: 1.6;
-            /* Subtly animated deep space background */
-            background-image: radial-gradient(circle at 50% 0%, #111122 0%, var(--bg) 70%);
-            background-attachment: fixed;
+        }
+
+        /* Hide cursor only on desktop to prevent mobile issues (Fixed CSS nesting syntax) */
+        @media (min-width: 768px) {
+            body {
+                cursor: none;
+            }
+        }
+
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            pointer-events: none;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 10px;
         }
 
         ::selection {
-            background: var(--primary);
-            color: #fff;
-            text-shadow: 0 0 10px #fff;
+            background: #fff;
+            color: #000;
         }
 
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, var(--primary), var(--secondary)); border-radius: 10px; }
+        /* Custom Cursor */
+        #cursor-dot,
+        #cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
 
-        .mono { font-family: 'JetBrains Mono', monospace; }
+        #cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: white;
+            transition: width 0.2s, height 0.2s;
+        }
 
-        /* =======================================================================
-           2. HOLOGRAPHIC GLASSMORPHISM (Cards & Elements)
-           ======================================================================= */
-        .glass-card {
+        #cursor-ring {
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: width 0.3s, height 0.3s, background 0.3s, border-color 0.3s;
+        }
+
+        body:hover #cursor-ring {
+            opacity: 1;
+        }
+
+        .hover-target:hover~#cursor-ring,
+        a:hover~#cursor-ring,
+        button:hover~#cursor-ring {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Glass & Buttons */
+        .glass-panel {
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            border-radius: 24px;
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1);
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* The rotating holographic border effect */
-        .glass-card::before {
+        /* Spotlight Hover Effect */
+        .glass-panel::after {
             content: '';
             position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: conic-gradient(from 0deg, transparent 70%, var(--primary) 80%, var(--secondary) 90%, transparent 100%);
-            animation: rotate-holo 8s linear infinite;
+            inset: 0;
+            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.06), transparent 40%);
             opacity: 0;
             transition: opacity 0.5s ease;
-            z-index: -1;
-        }
-        .glass-card::after {
-            content: '';
-            position: absolute;
-            inset: 1px;
-            background: var(--glass-bg);
-            border-radius: 23px;
-            backdrop-filter: blur(20px);
-            z-index: -1;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 30px 60px -15px rgba(99, 102, 241, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
-            border-color: rgba(255, 255, 255, 0.15);
-        }
-        .glass-card:hover::before { opacity: 0.5; }
-
-        @keyframes rotate-holo {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* =======================================================================
-           3. PLASMA BUTTONS & MAGNETIC PHYSICS PREP
-           ======================================================================= */
-        .btn-primary {
-            position: relative;
-            background: linear-gradient(120deg, var(--primary), #8b5cf6, var(--secondary), var(--primary));
-            background-size: 300% 300%;
-            color: white;
-            padding: 1rem 2.2rem;
-            border-radius: 14px;
-            font-weight: 800;
-            display: inline-block;
-            border: none;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            overflow: hidden;
+            pointer-events: none;
             z-index: 1;
-            animation: plasma-flow 6s ease infinite;
-            box-shadow: 0 0 20px var(--primary-glow), inset 0 2px 0 rgba(255,255,255,0.4);
-            /* Magnetic smooth transitions */
-            transition: box-shadow 0.3s ease, background-position 0.3s ease;
         }
 
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.8) 0%, transparent 60%);
-            opacity: 0;
-            mix-blend-mode: overlay;
-            transition: opacity 0.3s ease;
-            z-index: -1;
+        .glass-panel:hover::after {
+            opacity: 1;
         }
 
-        .btn-primary:hover {
-            box-shadow: 0 0 40px var(--secondary-glow), inset 0 2px 0 rgba(255,255,255,0.6);
-            animation: plasma-flow 3s ease infinite;
-        }
-        .btn-primary:hover::before { opacity: 1; }
-
-        @keyframes plasma-flow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(20, 20, 24, 0.6);
+            transform: translateY(-2px);
         }
 
-        /* =======================================================================
-           4. UNEARTHLY TYPOGRAPHY & GLITCH EFFECTS
-           ======================================================================= */
-        .elite-headline {
-            letter-spacing: -0.05em;
-            line-height: 1.05;
-            font-weight: 900;
-            text-transform: uppercase;
-            position: relative;
-            text-shadow: 0 0 80px rgba(255, 255, 255, 0.2);
-        }
-
-        .tech-accent {
-            background: linear-gradient(to right, #ffffff 0%, var(--primary) 40%, var(--secondary) 60%, #ffffff 100%);
-            background-size: 200% auto;
+        .text-gradient {
+            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.4) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-style: italic;
-            animation: text-shine 4s linear infinite;
         }
 
-        @keyframes text-shine {
-            to { background-position: 200% center; }
-        }
-
-        /* =======================================================================
-           5. CINEMATIC REVEAL SYSTEM (GLITCH-FREE)
-           ======================================================================= */
-        /* By using scale & blur instead of translateY, we completely prevent the 
-           "empty bottom space" glitch because elements never extend past their bounds. */
-        .cinematic-reveal {
-            opacity: 0;
-            transform: scale(0.92);
-            filter: blur(15px);
-            transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1), 
-                        transform 1.2s cubic-bezier(0.19, 1, 0.22, 1),
-                        filter 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-            will-change: opacity, transform, filter;
-        }
-        .cinematic-reveal.is-visible {
-            opacity: 1;
-            transform: scale(1);
-            filter: blur(0px);
-        }
-
-        /* =======================================================================
-           7. ORION HELIX AI MODAL & ANIMATIONS
-           ======================================================================= */
-        #orion-modal {
-            background: radial-gradient(circle at center, #050510 0%, #000000 100%);
-            backdrop-filter: blur(50px);
-            -webkit-backdrop-filter: blur(50px);
-        }
-        
-        .orion-text-glow {
-            text-shadow: 0 0 40px rgba(99, 102, 241, 0.8), 0 0 80px rgba(6, 182, 212, 0.4);
-            animation: pulse-glow 3s infinite alternate;
-        }
-
-        @keyframes pulse-glow {
-            0% { text-shadow: 0 0 30px rgba(99, 102, 241, 0.6), 0 0 60px rgba(6, 182, 212, 0.3); }
-            100% { text-shadow: 0 0 50px rgba(99, 102, 241, 1), 0 0 100px rgba(6, 182, 212, 0.6); }
-        }
-
-        /* =======================================================================
-           8. 3D BUTTER ENGINE & ARCHITECTURE NODES
-           ======================================================================= */
-        .interactive-text {
-            transform-style: preserve-3d;
-            will-change: transform;
-            transition: transform 0.1s linear;
-        }
-
-        .arch-node {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            padding: 1rem;
-            border-radius: 12px;
-            text-align: center;
-            font-size: 10px;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            min-width: 120px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            transition: all 0.3s ease;
+        .btn-elite {
             position: relative;
+            background: #fff;
+            color: #000;
+            border-radius: 8px;
             overflow: hidden;
-        }
-        .arch-node::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transform: skewX(-20deg);
-            transition: 0.5s;
-        }
-        .arch-node:hover {
-            border-color: var(--primary);
-            box-shadow: 0 0 20px var(--primary-glow);
-            transform: translateY(-5px);
-        }
-        .arch-node:hover::before { left: 150%; }
-
-        .arch-line {
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            flex-grow: 1;
-            min-width: 20px;
-            box-shadow: 0 0 10px var(--primary-glow);
-            position: relative;
-        }
-        /* Animated data packet flowing through line */
-        .arch-line::after {
-            content: ''; position: absolute; top: -1px; left: 0; width: 10px; height: 4px;
-            background: #fff; border-radius: 10px;
-            box-shadow: 0 0 10px #fff;
-            animation: data-flow 2s linear infinite;
-        }
-        @keyframes data-flow {
-            0% { left: 0%; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { left: 100%; opacity: 0; }
+            transition: transform 0.3s ease;
         }
 
-        .engagement-step { position: relative; }
-        .engagement-step:not(:last-child)::after {
-            content: '→';
-            position: absolute; right: -2.5rem; top: 50%; transform: translateY(-50%);
-            color: var(--primary); font-size: 1.5rem; text-shadow: 0 0 10px var(--primary);
-            animation: pulse-arrow 2s infinite;
+        .btn-elite::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+            transition: left 0.5s ease;
         }
-        @keyframes pulse-arrow {
-            0%, 100% { opacity: 0.3; transform: translateY(-50%) translateX(0); }
-            50% { opacity: 1; transform: translateY(-50%) translateX(10px); }
+
+        .btn-elite:hover::before {
+            left: 100%;
         }
-        @media (max-width: 768px) {
-            .engagement-step:not(:last-child)::after {
-                content: '↓'; right: 50%; top: auto; bottom: -2.5rem; transform: translateX(50%);
+
+        .btn-elite:hover {
+            transform: scale(1.02);
+        }
+
+        .elite-portrait {
+            filter: grayscale(100%) contrast(1.1) brightness(0.9);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .group:hover .elite-portrait {
+            filter: grayscale(0%) contrast(1) brightness(1);
+            transform: scale(1.05);
+        }
+
+        /* Reveals */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.2, 1, 0.3, 1), transform 1s cubic-bezier(0.2, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        /* Background Canvas */
+        #helix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 1;
+        }
+
+        /* Micro-Interactions */
+        @keyframes scaleX {
+            0% {
+                transform: scaleX(0);
             }
-            @keyframes pulse-arrow {
-                0%, 100% { opacity: 0.3; transform: translateX(50%) translateY(0); }
-                50% { opacity: 1; transform: translateX(50%) translateY(10px); }
+
+            100% {
+                transform: scaleX(1);
             }
         }
 
-        /* Fixed background canvas */
-        #quantum-canvas {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: 0; pointer-events: none;
+        @keyframes marquee {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
-        /* Prevent form outline */
-        input:focus, textarea:focus { border-color: var(--secondary) !important; box-shadow: 0 10px 30px -10px var(--secondary-glow); }
+        .animate-marquee {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+        }
+
+        /* Elite Reverse Spin for Orion Logo */
+        @keyframes spin-reverse {
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+        .scramble-hover {
+            font-variant-numeric: tabular-nums;
+        }
+
+        #scroll-tracker {
+            position: fixed;
+            left: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 40vh;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 40;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #scroll-progress {
+            width: 3px;
+            background: #06b6d4;
+            box-shadow: 0 0 10px #06b6d4;
+            position: absolute;
+            top: 0;
+            left: -1px;
+            transition: height 0.1s ease-out;
+        }
     </style>
 </head>
 
-<body class="antialiased">
+<body class="antialiased selection:bg-white selection:text-black">
 
-    <!-- The Unearthly Quantum Canvas -->
-    <canvas id="quantum-canvas"></canvas>
+    <div id="boot-sequence"
+        class="fixed inset-0 z-[999] bg-black flex flex-col items-center justify-center font-mono text-[10px] sm:text-xs text-zinc-500 uppercase tracking-widest transition-transform duration-[1.2s] ease-[cubic-bezier(0.77,0,0.175,1)]">
+        <div id="boot-terminal"
+            class="text-left w-72 h-32 flex flex-col justify-end mb-8 overflow-hidden text-cyan-500">
+            <!-- Terminal Text Injected via JS -->
+        </div>
+        <div class="w-64 h-[1px] bg-zinc-800 overflow-hidden relative">
+            <div id="boot-progress" class="absolute top-0 left-0 h-full bg-white w-0 transition-all duration-75"></div>
+        </div>
+    </div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-[100] px-6 md:px-12 py-5 flex justify-between items-center backdrop-blur-2xl border-b border-white/5 bg-black/20">
-        <div class="flex items-center gap-6">
-            <div class="flex items-center gap-3">
-                <div class="w-9 h-9 bg-indigo-600 rounded-lg flex items-center justify-center font-black text-white shadow-[0_0_20px_rgba(99,102,241,0.5)] text-lg relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <span class="relative z-10">S</span>
+    <div id="cursor-dot" class="hidden md:block"></div>
+    <div id="cursor-ring" class="hidden md:block"></div>
+    <div class="noise-overlay"></div>
+    <canvas id="helix-canvas"></canvas>
+
+    <div id="system-index-overlay"
+        class="fixed inset-0 z-[90] bg-black/80 backdrop-blur-2xl opacity-0 pointer-events-none transition-all duration-500 flex flex-col justify-center px-6 md:px-24 py-20 font-mono overflow-y-auto">
+        <div
+            class="fixed inset-0 bg-[linear-gradient(rgba(6,182,212,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24 relative z-10 translate-y-10 transition-transform duration-700 my-auto"
+            id="index-content">
+            <div class="space-y-8">
+                <div class="text-[10px] text-cyan-500 uppercase tracking-[0.3em] border-b border-white/10 pb-4 mb-6">01
+                    // Global Directory</div>
+                <nav
+                    class="flex flex-col gap-6 text-2xl md:text-4xl font-bold tracking-tighter uppercase text-zinc-600">
+                    <a href="#" class="hover:text-white transition-colors hover-target index-link">Home_Base</a>
+                    <a href="#orion" class="hover:text-white transition-colors hover-target index-link">The_Paradigm</a>
+                    <a href="#architects"
+                        class="hover:text-white transition-colors hover-target index-link">Architects</a>
+                    <a href="#contact"
+                        class="hover:text-cyan-400 transition-colors hover-target index-link">Deployment_Access</a>
+                </nav>
+            </div>
+
+            <div class="space-y-8">
+                <div class="text-[10px] text-emerald-500 uppercase tracking-[0.3em] border-b border-white/10 pb-4 mb-6">
+                    02 // Active Deployments</div>
+                <div class="flex flex-col gap-8">
+                    <a href="#orion" class="group hover-target index-link">
+                        <h4
+                            class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors tracking-tight">
+                            OrionHelix AI</h4>
+                        <p class="text-xs text-zinc-500 leading-relaxed group-hover:text-zinc-400 transition-colors">
+                            Proprietary cognitive engine. Features autonomous Red Team shadowing and deterministic
+                            multi-node execution.</p>
+                    </a>
                 </div>
-                <div class="flex flex-col md:flex-row md:items-center gap-0 md:gap-3">
-                    <span class="text-lg font-black tracking-tighter uppercase leading-none">SINGULARITY UNION</span>
-                    <span class="text-indigo-400 font-black mono text-[10px] tracking-[0.3em] uppercase opacity-90 hidden sm:block">EVOLVING INTELLIGENCE</span>
+            </div>
+
+            <div class="space-y-8">
+                <div class="text-[10px] text-red-500 uppercase tracking-[0.3em] border-b border-white/10 pb-4 mb-6">03
+                    // R&D (Classified)</div>
+                <div class="flex flex-col gap-6 opacity-40 select-none">
+                    <div>
+                        <div class="flex items-center gap-3 mb-2">
+                            <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z">
+                                </path>
+                            </svg>
+                            <h4 class="text-sm font-bold text-zinc-300 tracking-widest uppercase">Project Chronos</h4>
+                        </div>
+                        <p
+                            class="text-[10px] text-red-500/80 bg-red-900/10 inline-block px-2 py-1 rounded border border-red-500/20">
+                            CLEARANCE REQUIRED</p>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-2">
+                            <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z">
+                                </path>
+                            </svg>
+                            <h4 class="text-sm font-bold text-zinc-300 tracking-widest uppercase">Quantum Cryptography
+                            </h4>
+                        </div>
+                        <p
+                            class="text-[10px] text-red-500/80 bg-red-900/10 inline-block px-2 py-1 rounded border border-red-500/20">
+                            CLEARANCE REQUIRED</p>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="hidden lg:flex items-center gap-10 text-[9px] mono font-bold uppercase tracking-widest text-zinc-400 hover-targets">
-            <a href="#what-we-do" class="hover:text-white hover:text-shadow-[0_0_10px_#fff] transition-all duration-300">Operations</a>
-            <a href="#architecture" class="hover:text-white hover:text-shadow-[0_0_10px_#fff] transition-all duration-300">Architecture</a>
-            <a href="#stack" class="hover:text-white hover:text-shadow-[0_0_10px_#fff] transition-all duration-300">Stack</a>
-            <a href="#founders" class="hover:text-white hover:text-shadow-[0_0_10px_#fff] transition-all duration-300">Architects</a>
-            <a href="#engagement" class="hover:text-white hover:text-shadow-[0_0_10px_#fff] transition-all duration-300">Process</a>
-            <a href="#contact" class="hover:text-white hover:text-shadow-[0_0_10px_#fff] transition-all duration-300">Contact</a>
+    <nav class="fixed top-0 w-full z-[100] px-6 py-6 transition-all duration-300 mix-blend-difference">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4 md:gap-10">
+                <button id="btn-index-toggle"
+                    class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400 hover:text-cyan-400 transition-colors group hover-target bg-white/5 border border-white/10 px-3 py-1.5 rounded-sm">
+                    <svg class="w-3 h-3 group-hover:rotate-90 transition-transform duration-300" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                        </path>
+                    </svg>
+                    <span id="index-btn-text" class="hidden sm:inline-block">INDEX</span>
+                </button>
+                <div class="w-px h-6 bg-white/10 hidden sm:block"></div>
+                <div class="flex items-center gap-3 hover-target cursor-pointer">
+                    <img src="su-logo.png" alt="SU Logo"
+                        class="h-8 w-auto object-contain border border-white/10 rounded p-1 bg-white/5"
+                        onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='flex';">
+                    <div id="fallback-logo" style="display:none;"
+                        class="w-8 h-8 bg-white text-black items-center justify-center font-bold text-sm rounded-sm">SU
+                    </div>
+                    <span class="font-bold tracking-tight uppercase text-sm hidden lg:block">Singularity Union</span>
+                </div>
+                <div class="w-px h-6 bg-white/10 hidden md:block"></div>
+                <div
+                    class="hidden md:flex items-center gap-8 text-[11px] font-mono uppercase tracking-widest text-zinc-400">
+                    <a href="#orion" class="hover:text-white transition-colors hover-target">Orion Helix AI</a>
+                    <a href="#architects" class="hover:text-white transition-colors hover-target">Architects</a>
+                </div>
+            </div>
+            <div class="flex items-center">
+                <a href="#contact"
+                    class="magnetic text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-white border border-white/20 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full hover:bg-white hover:text-black transition-colors hover-target inline-block text-center">
+                    Early Access
+                </a>
+            </div>
         </div>
-
-        <a href="#contact" class="btn-primary text-[10px] py-2.5 px-6 uppercase tracking-widest font-black hidden sm:block magnetic-btn">Start Review</a>
     </nav>
 
-    <!-- Main View -->
-    <main id="main-view" class="relative z-10">
-        <!-- HERO -->
-        <section class="relative min-h-[90vh] flex flex-col justify-center px-6 pt-24 overflow-visible">
-            <div class="max-w-6xl mx-auto w-full">
-                <div class="max-w-5xl interactive-text cinematic-reveal">
-                    <div class="mb-10">
-                        <span class="mono text-[10px] text-indigo-400 uppercase tracking-[0.6em] font-black border-l-2 border-indigo-600 pl-4 shadow-indigo-500/50">Reliability Protocol v2.6 // Operational focus</span>
+    <main class="relative z-10 flex flex-col items-center overflow-hidden">
+
+        <section class="min-h-screen w-full flex flex-col justify-center items-center px-4 sm:px-6 pt-20 relative">
+            <div class="max-w-5xl mx-auto text-center reveal w-full">
+                <div
+                    class="inline-flex items-center gap-2 sm:gap-3 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8">
+                    <div class="w-1.5 h-1.5 bg-zinc-300 rounded-full animate-pulse"></div>
+                    <span class="font-mono text-[9px] sm:text-[10px] uppercase tracking-widest text-zinc-300">OrionHelix
+                        Engine //
+                        Pre-Release</span>
+                </div>
+
+                <h1
+                    class="text-[11.5vw] sm:text-6xl md:text-8xl lg:text-[7rem] font-bold tracking-tightest leading-[0.85] mb-8 text-gradient break-words w-full">
+                    COGNITIVE<br>INFRASTRUCTURE.<br><span class="text-zinc-600">REDEFINED.</span>
+                </h1>
+
+                <p
+                    class="text-sm sm:text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed mb-12 px-2">
+                    Singularity Union is an applied AI research and engineering lab. We are building the foundational
+                    cognitive engines that will power the next generation of autonomous enterprise.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                    <a href="#orion"
+                        class="magnetic btn-elite px-6 py-4 sm:px-8 sm:py-4 font-bold text-xs sm:text-sm uppercase tracking-widest hover-target scramble-hover w-full sm:w-auto"
+                        data-value="VIEW THE PARADIGM">VIEW THE PARADIGM</a>
+                </div>
+            </div>
+            <div
+                class="absolute bottom-6 sm:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-50 reveal delay-3">
+                <span class="font-mono text-[9px] uppercase tracking-[0.3em]">Scroll</span>
+                <div class="w-px h-8 sm:h-12 bg-gradient-to-b from-white to-transparent"></div>
+            </div>
+        </section>
+
+        <section class="w-full py-20 sm:py-32 px-4 sm:px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-12 sm:mb-20 reveal">
+                    <h2 class="text-3xl md:text-5xl font-bold tracking-tighter mb-4 text-gradient">The Paradigm Shift.
+                    </h2>
+                    <p class="text-zinc-400 font-mono text-[10px] sm:text-xs uppercase tracking-widest max-w-xl">Moving
+                        beyond
+                        conversational wrappers into true autonomous orchestration.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass-panel p-6 sm:p-8 reveal delay-1">
+                        <div
+                            class="font-mono text-[9px] sm:text-[10px] text-zinc-500 uppercase tracking-widest mb-6 border-b border-white/10 pb-4">
+                            01 // Deterministic Logic</div>
+                        <h4 class="text-lg sm:text-xl font-bold text-white mb-4">Zero Hallucinations.</h4>
+                        <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Eliminating probabilistic errors.
+                            Our
+                            architecture binds large language models to strict, mathematically verifiable business rules
+                            and schema validators.</p>
                     </div>
-                    <h1 class="elite-headline text-5xl md:text-8xl mb-8">
-                        WE BUILD RELIABLE AI SYSTEMS<br />
-                        <span class="tech-accent">FOR REAL BUSINESS</span><br />
-                        WORKFLOWS.
-                    </h1>
-                    <p class="text-xl text-zinc-300 mb-4 leading-relaxed max-w-2xl font-light">
-                        AI Agents that handle customer conversations automatically.
-                        Reduce response time, capture leads, and operate 24/7 without human workload.
-                    </p>
-                    <p class="text-lg text-zinc-500 mb-10 leading-relaxed max-w-2xl">
-                        We design custom AI assistants for businesses — WhatsApp, website, and internal operations.
-                    </p>
-                    <div class="flex flex-wrap gap-6">
-                        <a href="#contact" class="btn-primary magnetic-btn uppercase tracking-[0.2em] text-[11px] font-black">Request Architecture Review</a>
-                        <a href="#what-we-do" class="px-8 py-3 border border-white/20 rounded-xl hover:bg-white/10 hover:border-cyan-400 transition-all duration-300 text-[11px] font-bold uppercase tracking-widest flex items-center gap-3 backdrop-blur-md magnetic-btn">
-                            <span>See if AI fits your workflow</span>
+                    <div class="glass-panel p-6 sm:p-8 reveal delay-2 border-white/30 bg-white/10">
+                        <div
+                            class="font-mono text-[9px] sm:text-[10px] text-white uppercase tracking-widest mb-6 border-b border-white/20 pb-4">
+                            02 // Agentic Swarms</div>
+                        <h4 class="text-lg sm:text-xl font-bold text-white mb-4">Multi-Node Execution.</h4>
+                        <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">Single-prompt systems are obsolete.
+                            We are
+                            developing asynchronous, multi-agent networks capable of executing multi-step, recursive
+                            operations autonomously.</p>
+                    </div>
+                    <div class="glass-panel p-6 sm:p-8 reveal delay-3">
+                        <div
+                            class="font-mono text-[9px] sm:text-[10px] text-zinc-500 uppercase tracking-widest mb-6 border-b border-white/10 pb-4">
+                            03 // Sovereign Data</div>
+                        <h4 class="text-lg sm:text-xl font-bold text-white mb-4">Absolute Isolation.</h4>
+                        <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">Your intelligence, completely
+                            secured.
+                            Deployments are engineered for zero-trust environments, ensuring absolute proprietary data
+                            security via VPC deployment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="orion"
+            class="w-full py-20 sm:py-32 px-4 sm:px-6 relative overflow-hidden border-y border-white/5 bg-surface">
+            <div class="max-w-7xl mx-auto flex flex-col items-center relative z-10 py-10">
+
+                <div class="text-center reveal flex flex-col items-center mb-16 sm:mb-24 w-full">
+                    <span
+                        class="font-mono text-[9px] sm:text-[11px] text-cyan-400 uppercase tracking-[0.4em] mb-6 border border-cyan-500/30 px-4 py-1.5 rounded-full bg-cyan-900/10 shadow-[0_0_15px_rgba(6,182,212,0.2)]">Flagship
+                        Intelligence</span>
+
+                    <div class="flex flex-col items-center justify-center gap-6 mb-10">
+                        <div
+                            class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border border-blue-500/30 shadow-[0_0_40px_rgba(37,99,235,0.4)] flex items-center justify-center ring-4 ring-black group relative">
+                            <svg class="w-full h-full object-cover" viewBox="0 0 200 200"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <radialGradient id="orion-bg" cx="50%" cy="50%" r="70%">
+                                        <stop offset="0%" stop-color="#2563eb" />
+                                        <stop offset="100%" stop-color="#0a1a5c" />
+                                    </radialGradient>
+                                    <filter id="orion-glow" x="-20%" y="-20%" width="140%" height="140%">
+                                        <feGaussianBlur stdDeviation="1.5" result="blur" />
+                                        <feComponentTransfer in="blur" result="glow">
+                                            <feFuncA type="linear" slope="2" />
+                                        </feComponentTransfer>
+                                        <feMerge>
+                                            <feMergeNode in="glow" />
+                                            <feMergeNode in="SourceGraphic" />
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+                                <rect width="200" height="200" fill="url(#orion-bg)" />
+                                <g
+                                    class="origin-center scale-[0.75] group-hover:scale-[0.85] transition-transform duration-1000">
+                                    <g filter="url(#orion-glow)">
+                                        <g class="origin-center animate-[spin_30s_linear_infinite]">
+                                            <circle cx="100" cy="100" r="12" fill="none" stroke="#ffffff"
+                                                stroke-width="3" />
+                                            <circle cx="100" cy="100" r="18" fill="none" stroke="#ffffff"
+                                                stroke-width="1.5" opacity="0.9" />
+                                            <circle cx="100" cy="100" r="24" fill="none" stroke="#ffffff"
+                                                stroke-width="1.2" opacity="0.8" />
+                                            <circle cx="100" cy="100" r="32" fill="none" stroke="#ffffff"
+                                                stroke-width="1" opacity="0.7" />
+                                            <circle cx="100" cy="100" r="42" fill="none" stroke="#ffffff"
+                                                stroke-width="0.8" opacity="0.6" />
+                                            <circle cx="100" cy="100" r="54" fill="none" stroke="#ffffff"
+                                                stroke-width="0.6" opacity="0.5" />
+                                            <circle cx="100" cy="100" r="68" fill="none" stroke="#ffffff"
+                                                stroke-width="0.5" opacity="0.4" />
+                                        </g>
+                                        <g class="origin-center" style="animation: spin-reverse 20s linear infinite;">
+                                            <ellipse cx="100" cy="100" rx="96" ry="60" fill="none" stroke="#ffffff"
+                                                stroke-width="1.5" opacity="0.9" />
+                                            <ellipse cx="100" cy="100" rx="60" ry="96" fill="none" stroke="#ffffff"
+                                                stroke-width="1.5" opacity="0.9" />
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <h2
+                            class="text-3xl sm:text-4xl md:text-6xl font-black tracking-[0.1em] sm:tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-b from-white via-cyan-50 to-zinc-500 uppercase drop-shadow-[0_0_20px_rgba(255,255,255,0.2)] text-center break-words w-full">
+                            Orion Helix AI
+                        </h2>
+                    </div>
+
+                    <div class="max-w-4xl mx-auto w-full relative">
+                        <div
+                            class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gradient-to-b from-cyan-500/50 to-transparent hidden sm:block">
+                        </div>
+
+                        <p
+                            class="text-base sm:text-xl md:text-2xl text-zinc-300 font-light leading-relaxed text-center mb-12 sm:mt-12 px-4">
+                            A premier immersive intelligence infrastructure, engineered to unify fragmented operations
+                            into a single, high-fidelity <strong
+                                class="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] tracking-wide">Multiverse
+                                Environment.</strong>
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left px-0 sm:px-4">
+                            <div
+                                class="p-6 bg-black/60 border border-white/5 border-l-2 border-l-cyan-500 rounded-r-lg relative overflow-hidden group hover:bg-cyan-950/20 transition-colors">
+                                <div
+                                    class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-cyan-500/50 to-transparent">
+                                </div>
+                                <div
+                                    class="font-mono text-[9px] sm:text-[10px] text-cyan-400 uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
+                                    <div class="w-1.5 h-1.5 bg-cyan-500 rounded-full animate-pulse"></div>
+                                    System Role Identified
+                                </div>
+                                <p class="text-xs text-zinc-400 leading-relaxed font-mono">
+                                    At the heart of this digital fabric is a proactive neural engine that operates as
+                                    your permanent <span class="text-cyan-300 font-bold tracking-wide">3rd
+                                        Co-Founder</span>—an autonomous partner that executes complex logic, masters
+                                    technical synthesis, and scales team memory with bank-grade precision.
+                                </p>
+                            </div>
+
+                            <div
+                                class="p-6 bg-black/60 border border-white/5 border-l-2 border-l-emerald-500 rounded-r-lg relative overflow-hidden group hover:bg-emerald-950/20 transition-colors">
+                                <div
+                                    class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-emerald-500/50 to-transparent">
+                                </div>
+                                <div
+                                    class="font-mono text-[9px] sm:text-[10px] text-emerald-400 uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
+                                    <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
+                                    Security Architecture
+                                </div>
+                                <p class="text-xs text-zinc-400 leading-relaxed font-mono">
+                                    Architected for absolute data sovereignty through <span
+                                        class="text-emerald-400 font-bold tracking-wide">The Vault</span>, OrionHelix
+                                    doesn't just process your vision; it evolves as a core technical stakeholder,
+                                    empowering world-class teams to engineer the future within an unbreakable,
+                                    hyper-connected ecosystem.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 sm:mt-16 mb-16 sm:mb-24 w-full sm:w-auto px-4 sm:px-0">
+                        <a href="#contact"
+                            class="magnetic btn-elite w-full sm:w-auto px-10 py-5 font-bold text-xs sm:text-sm uppercase tracking-widest bg-white text-black hover:scale-105 transition-transform hover-target scramble-hover shadow-[0_0_30px_rgba(255,255,255,0.2)] block text-center"
+                            data-value="REQUEST EARLY ACCESS">
+                            REQUEST EARLY ACCESS
                         </a>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- WHAT WE ACTUALLY DO -->
-        <section id="what-we-do" class="py-20 px-6 relative z-10">
-            <div class="max-w-5xl mx-auto text-center cinematic-reveal">
-                <hr class="my-12 border-white/10">
-                <h2 class="text-4xl font-black mb-8 uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-500">What We Build</h2>
-                <div class="flex flex-wrap justify-center gap-4 text-sm mono text-zinc-300">
-                    <span class="px-4 py-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 shadow-[0_0_15px_rgba(99,102,241,0.2)]">Customer support AI</span>
-                    <span class="px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 shadow-[0_0_15px_rgba(6,182,212,0.2)]">Lead qualification</span>
-                    <span class="px-4 py-2 rounded-full border border-rose-500/30 bg-rose-500/10 shadow-[0_0_15px_rgba(244,63,94,0.2)]">WhatsApp auto-reply</span>
-                    <span class="px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 shadow-[0_0_15px_rgba(168,85,247,0.2)]">Website assistants</span>
-                    <span class="px-4 py-2 rounded-full border border-green-500/30 bg-green-500/10 shadow-[0_0_15px_rgba(34,197,94,0.2)]">Internal workflow agents</span>
-                </div>
-            </div>
-        </section> 
-
-        <section class="py-24 px-6 relative z-10">
-            <div class="max-w-6xl mx-auto cinematic-reveal">
-                <div class="glass-card p-12 bg-white/[0.02]">
-                    <div class="grid md:grid-cols-2 gap-16">
-                        <div>
-                            <h2 class="text-3xl font-black mb-6 uppercase tracking-tight text-indigo-400">How It Works</h2>
-                            <ol class="space-y-6 text-zinc-300 font-medium">
-                                <li class="flex gap-4 items-start"><span class="mono text-indigo-500 font-black text-xl">01</span><p class="pt-1">You describe your business workflow and operational bottlenecks.</p></li>
-                                <li class="flex gap-4 items-start"><span class="mono text-cyan-500 font-black text-xl">02</span><p class="pt-1">We engineer, design, and train your hyper-specific AI agent.</p></li>
-                                <li class="flex gap-4 items-start"><span class="mono text-rose-500 font-black text-xl">03</span><p class="pt-1">The agent deploys and handles complex conversations automatically.</p></li>
-                            </ol>
+                    <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-12 text-left">
+                        <div
+                            class="glass-panel p-6 sm:p-8 reveal delay-1 border-t-2 border-t-red-500 hover:border-red-500/50 transition-all group hover:-translate-y-1 bg-gradient-to-b from-red-900/5 to-transparent">
+                            <div
+                                class="font-mono text-[9px] sm:text-[10px] text-red-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                                <div class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse shrink-0"></div>
+                                Intelligent Code Review & Vulnerability Simulation
+                            </div>
+                            <h4 class="text-xl sm:text-2xl font-bold text-white mb-4 tracking-tight">Adversarial "Red
+                                Team"
+                                Shadowing</h4>
+                            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-mono">
+                                OrionHelix acts as a relentless, automated Red Team. It silently shadows your engineers'
+                                keystrokes, simulating cyberattacks (like SQL injections) in real-time. If a
+                                vulnerability is typed, the AI flags the exact line and deploys a secure patch before
+                                the code is ever committed.
+                            </p>
                         </div>
-                        <div class="border-l border-white/10 pl-0 md:pl-16 mt-10 md:mt-0">
-                            <h2 class="text-3xl font-black mb-6 uppercase tracking-tight text-cyan-400">Who Needs This</h2>
-                            <ul class="space-y-4 text-zinc-300 font-medium">
-                                <li class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-cyan-500 shadow-[0_0_10px_cyan]"></div> Startups receiving massive inquiry volumes</li>
-                                <li class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-cyan-500 shadow-[0_0_10px_cyan]"></div> Local businesses bogged down replying manually</li>
-                                <li class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-cyan-500 shadow-[0_0_10px_cyan]"></div> Online services bleeding leads after work hours</li>
-                                <li class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-cyan-500 shadow-[0_0_10px_cyan]"></div> Teams paralyzed by repetitive data-fetching</li>
-                            </ul>
+
+                        <div
+                            class="glass-panel p-6 sm:p-8 reveal delay-2 border-t-2 border-t-cyan-500 hover:border-cyan-500/50 transition-all group hover:-translate-y-1 bg-gradient-to-b from-cyan-900/5 to-transparent">
+                            <div
+                                class="font-mono text-[9px] sm:text-[10px] text-cyan-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                                <div class="w-1.5 h-1.5 bg-cyan-500 rounded-full shrink-0"></div>
+                                Asymmetrical Workflow Generation
+                            </div>
+                            <h4 class="text-xl sm:text-2xl font-bold text-white mb-4 tracking-tight">Telepathic Context
+                                Sync</h4>
+                            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-mono">
+                                Zero-latency knowledge transfer. When a junior developer encounters a blocker,
+                                OrionHelix synthesizes the exact terminal errors, the last 20 lines of code, and the
+                                architectural intent into a 3-bullet-point summary. Seniors receive instant, perfect
+                                context without wasting 15 minutes on a screen-share.
+                            </p>
+                        </div>
+
+                        <div
+                            class="glass-panel p-6 sm:p-8 reveal delay-1 border-t-2 border-t-emerald-500 hover:border-emerald-500/50 transition-all group hover:-translate-y-1 bg-gradient-to-b from-emerald-900/5 to-transparent">
+                            <div
+                                class="font-mono text-[9px] sm:text-[10px] text-emerald-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                                <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0"></div>
+                                Biometric-Pattern Workflow Optimization
+                            </div>
+                            <h4 class="text-xl sm:text-2xl font-bold text-white mb-4 tracking-tight">Cognitive Telemetry
+                            </h4>
+                            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-mono">
+                                Human capital is an enterprise's most valuable asset. OrionHelix analyzes non-invasive
+                                metadata—keystroke cadence, backspace frequency, and error rates—to detect neural
+                                fatigue. The system actively intervenes with mandatory micro-lockouts to prevent burnout
+                                and maintain 99% code quality.
+                            </p>
+                        </div>
+
+                        <div
+                            class="glass-panel p-6 sm:p-8 reveal delay-2 border-t-2 border-t-purple-500 hover:border-purple-500/50 transition-all group hover:-translate-y-1 bg-gradient-to-b from-purple-900/5 to-transparent">
+                            <div
+                                class="font-mono text-[9px] sm:text-[10px] text-purple-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                                <div class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></div>
+                                NLP Audio-to-Action Extraction
+                            </div>
+                            <h4 class="text-xl sm:text-2xl font-bold text-white mb-4 tracking-tight">Real-Time Protocol
+                                Synthesis
+                            </h4>
+                            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-mono">
+                                Meetings are no longer black holes of lost information. During a HelixConnect session,
+                                OrionHelix parses encrypted audio streams to instantly extract action items, assign
+                                ownership, and generate deployable summaries the second the call ends.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-24 px-6 relative z-10">
-            <div class="max-w-6xl mx-auto cinematic-reveal">
-                <div class="mb-16">
-                    <span class="mono text-indigo-500 font-bold text-xs tracking-widest uppercase shadow-indigo-500">01 // Problem Resolution</span>
-                    <h2 class="text-4xl font-black uppercase tracking-tighter mt-4 text-shadow-sm">Operational Clarity</h2>
+        <section id="architects" class="w-full py-20 sm:py-32 px-4 sm:px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-16 sm:mb-24 text-center reveal">
+                    <h2 class="text-3xl md:text-5xl font-bold tracking-tighter mb-4 text-gradient">The Architects.</h2>
+                    <p class="text-zinc-400 font-mono text-[10px] sm:text-xs uppercase tracking-widest">The engineering
+                        core behind
+                        Singularity Union.</p>
                 </div>
 
-                <div class="grid lg:grid-cols-3 gap-8">
-                    <div class="glass-card p-8 space-y-6 hover:-translate-y-2 transition-transform duration-500">
-                        <h4 class="mono text-xs text-zinc-500 uppercase font-black border-b border-white/10 pb-4">The Friction (Cost)</h4>
-                        <ul class="space-y-4 text-sm text-zinc-400 font-medium">
-                            <li class="flex items-start gap-3"><span class="text-red-500 font-black text-lg drop-shadow-[0_0_8px_red]">✕</span><span>Manual data checking across dashboards leading to high labor overhead.</span></li>
-                            <li class="flex items-start gap-3"><span class="text-red-500 font-black text-lg drop-shadow-[0_0_8px_red]">✕</span><span>Documentation search silos causing delays in decision making.</span></li>
-                            <li class="flex items-start gap-3"><span class="text-red-500 font-black text-lg drop-shadow-[0_0_8px_red]">✕</span><span>Inconsistent LLM answers creating operational risk and liability.</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="glass-card p-8 space-y-6 border-indigo-500/30 hover:-translate-y-2 transition-transform duration-500 shadow-[0_0_30px_rgba(99,102,241,0.1)]">
-                        <h4 class="mono text-xs text-indigo-400 uppercase font-black border-b border-white/10 pb-4">The Engineering</h4>
-                        <ul class="space-y-4 text-sm text-zinc-300 font-medium">
-                            <li class="flex items-start gap-3"><span class="text-indigo-500 font-black text-lg drop-shadow-[0_0_8px_#6366f1]">→</span><span>Retrieval pipelines (RAG) with precise source citation.</span></li>
-                            <li class="flex items-start gap-3"><span class="text-indigo-500 font-black text-lg drop-shadow-[0_0_8px_#6366f1]">→</span><span>Custom decision automation agents with tool-integration.</span></li>
-                            <li class="flex items-start gap-3"><span class="text-indigo-500 font-black text-lg drop-shadow-[0_0_8px_#6366f1]">→</span><span>Monitoring, schema validation, and fallback systems.</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="glass-card p-8 space-y-6 border-cyan-500/30 hover:-translate-y-2 transition-transform duration-500 shadow-[0_0_30px_rgba(6,182,212,0.1)]">
-                        <h4 class="mono text-xs text-cyan-400 uppercase font-black border-b border-white/10 pb-4">The Outcome</h4>
-                        <ul class="space-y-4 text-sm text-zinc-300 font-medium">
-                            <li class="flex items-start gap-3"><span class="text-cyan-500 font-black text-lg drop-shadow-[0_0_8px_#06b6d4]">✓</span><span>Reduced operational costs via automated document parsing.</span></li>
-                            <li class="flex items-start gap-3"><span class="text-cyan-500 font-black text-lg drop-shadow-[0_0_8px_#06b6d4]">✓</span><span>Faster internal ops through instant knowledge access.</span></li>
-                            <li class="flex items-start gap-3"><span class="text-cyan-500 font-black text-lg drop-shadow-[0_0_8px_#06b6d4]">✓</span><span>Predictable outputs verified against strict business logic.</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ARCHITECTURE DIAGRAM -->
-        <section id="architecture" class="py-24 px-6 relative z-10">
-            <div class="max-w-6xl mx-auto cinematic-reveal">
-                <div class="mb-16 text-center">
-                    <span class="mono text-indigo-500 font-bold text-xs tracking-widest uppercase">System Design</span>
-                    <h2 class="text-4xl font-black uppercase tracking-tighter mt-4">Technical Workflow</h2>
-                </div>
-
-                <div class="glass-card p-10 flex flex-col md:flex-row items-center justify-between gap-4 overflow-x-auto border-t-indigo-500/30 border-b-cyan-500/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-                    <div class="arch-node border-indigo-500/80 text-white font-bold">User API</div>
-                    <div class="arch-line"></div>
-                    <div class="arch-node">Embedding Service</div>
-                    <div class="arch-line"></div>
-                    <div class="arch-node">Retriever & Re-ranker</div>
-                    <div class="arch-line"></div>
-                    <div class="arch-node bg-indigo-600/20 border-indigo-400 text-indigo-100 font-black scale-110 shadow-[0_0_30px_rgba(99,102,241,0.4)]">LLM Engine</div>
-                    <div class="arch-line"></div>
-                    <div class="arch-node border-cyan-500/80 text-cyan-100 font-bold">Schema Validator</div>
-                    <div class="arch-line"></div>
-                    <div class="arch-node border-white/20 text-zinc-400">Observability</div>
-                </div>
-                <p class="text-[10px] mono text-center text-zinc-500 mt-8 uppercase tracking-[0.2em]">A transparent view of our production retrieval and validation stacks.</p>
-            </div>
-        </section>
-
-        <!-- PILOT EXAMPLE -->
-        <section id="pilot" class="py-24 px-6 relative z-10">
-            <div class="max-w-6xl mx-auto cinematic-reveal">
-                <div class="glass-card p-12 bg-zinc-950/80 border-white/5">
-                    <div class="grid lg:grid-cols-2 gap-16 items-center">
-                        <div>
-                            <span class="mono text-indigo-500 font-bold text-xs tracking-widest uppercase">Prototype System Simulation</span>
-                            <h2 class="text-4xl font-black uppercase tracking-tighter mt-4 mb-6">Internal Operations Knowledge Agent</h2>
-                            <div class="space-y-6 text-sm text-zinc-300">
-                                <p><strong class="text-white uppercase mono text-[10px] bg-white/10 px-2 py-1 rounded mr-2">Context</strong> A logistics framework prototype designed to parse 400+ compliance documents manually searched by employees.</p>
-                                <p><strong class="text-white uppercase mono text-[10px] bg-white/10 px-2 py-1 rounded mr-2">The Build</strong> Retrieval + Citation + Fallback validation. If a document cannot be verified with 100% citation grounding, the system triggers a manual human-in-the-loop fallback.</p>
-                                <div class="grid grid-cols-2 gap-4 pt-6">
-                                    <div class="bg-indigo-500/10 p-5 rounded-xl border border-indigo-500/20 hover:bg-indigo-500/20 transition-colors">
-                                        <span class="block text-md font-black text-indigo-100 mb-1">Verified Consistency</span>
-                                        <span class="text-[9px] mono uppercase text-indigo-400">Test Metric</span>
-                                    </div>
-                                    <div class="bg-cyan-500/10 p-5 rounded-xl border border-cyan-500/20 hover:bg-cyan-500/20 transition-colors">
-                                        <span class="block text-md font-black text-cyan-100 mb-1">Zero-Hallucination</span>
-                                        <span class="text-[9px] mono uppercase text-cyan-400">System Guardrail</span>
-                                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 perspective-[1000px]">
+                    <div
+                        class="glass-panel p-1 group flex flex-col hover:border-cyan-500/40 transition-colors reveal delay-1 cursor-crosshair tilt-card">
+                        <div
+                            class="bg-black/80 p-5 sm:p-6 rounded-xl flex flex-col sm:flex-row gap-5 sm:gap-6 items-start sm:items-center h-full relative overflow-hidden">
+                            <div
+                                class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 blur-3xl rounded-full group-hover:bg-cyan-500/10 transition-colors pointer-events-none">
+                            </div>
+                            <div
+                                class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 shrink-0 bg-zinc-900 rounded shadow-[0_0_15px_rgba(0,0,0,0.8)] overflow-hidden relative border border-white/10 group-hover:border-cyan-500/50 transition-colors z-10">
+                                <div
+                                    class="absolute inset-0 bg-cyan-900/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity">
+                                </div>
+                                <img src="debajit.png" alt="Debajit Goswami"
+                                    class="elite-portrait w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700"
+                                    onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%25\' height=\'100%25\' viewBox=\'0 0 100 100\'%3E%3Crect fill=\'%23050505\' width=\'100\' height=\'100\'/%3E%3Ctext fill=\'%23333\' font-family=\'monospace\' font-size=\'10\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\'%3E[IMG]%3C/text%3E%3C/svg%3E'">
+                                <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/50 z-20"></div>
+                                <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/50 z-20">
                                 </div>
                             </div>
-                        </div>
-                        <div class="relative group">
-                            <!-- Glowing backdrop for terminal -->
-                            <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                            <div class="relative aspect-video bg-[#05050a] rounded-xl flex items-center justify-center border border-white/10 p-8 shadow-2xl overflow-hidden">
-                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-50"></div>
-                                <div class="text-left w-full mono text-[11px] space-y-3 text-zinc-400">
-                                    <div class="text-indigo-400 font-bold tracking-widest mb-4 border-b border-indigo-500/30 pb-2"># PROTOTYPE_SYS_LOG_VIEW</div>
-                                    <div class="flex gap-4"><span class="text-zinc-600">[0.12s]</span> <span>Embedding generated for query...</span></div>
-                                    <div class="flex gap-4"><span class="text-zinc-600">[0.34s]</span> <span>Top 5 document chunks retrieved.</span></div>
-                                    <div class="flex gap-4"><span class="text-zinc-600">[0.45s]</span> <span class="text-cyan-300">Re-ranking complete (Score: 0.94)</span></div>
-                                    <div class="flex gap-4"><span class="text-zinc-600">[1.20s]</span> <span>LLM Synthesis complete.</span></div>
-                                    <div class="flex gap-4 text-green-400 font-bold"><span class="text-zinc-600 font-normal">[1.25s]</span> <span>> SCHEMA VALIDATION: SUCCESS</span></div>
-                                    <div class="flex gap-4 text-green-400 font-bold"><span class="text-zinc-600 font-normal">[1.30s]</span> <span>> CITATION VERIFIED: (doc_id: 421)</span></div>
+                            <div class="flex-grow w-full z-10">
+                                <div class="flex justify-between items-start mb-3 border-b border-white/5 pb-3">
+                                    <div>
+                                        <h3
+                                            class="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-white group-hover:text-cyan-400 transition-colors">
+                                            Debajit Goswami</h3>
+                                        <span
+                                            class="font-mono text-[9px] sm:text-[10px] text-zinc-500 uppercase tracking-[0.2em] block mt-1">Lead
+                                            Architect // Founder</span>
+                                    </div>
+                                    <span class="font-mono text-xs text-zinc-700 uppercase font-black">01</span>
+                                </div>
+                                <p
+                                    class="text-[10px] sm:text-[11px] md:text-xs text-zinc-400 leading-relaxed font-mono mb-4">
+                                    Architecting distributed AI workflows and intelligent agent swarms. Bridging the gap
+                                    between raw neural compute and deterministic logic.
+                                </p>
+                                <div
+                                    class="flex flex-wrap gap-2 font-mono text-[8px] sm:text-[9px] uppercase tracking-wider">
+                                    <span
+                                        class="px-2 py-1 border border-white/10 rounded-sm text-zinc-300 bg-white/5 group-hover:border-cyan-500/30 transition-colors">Cognitive
+                                        Architecture</span>
+                                    <span
+                                        class="px-2 py-1 border border-white/10 rounded-sm text-zinc-300 bg-white/5 group-hover:border-cyan-500/30 transition-colors">AI
+                                        Models</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- ENGINEERING STACK -->
-        <section id="stack" class="py-24 px-6 relative z-10">
-            <div class="max-w-6xl mx-auto cinematic-reveal">
-                <div class="mb-16">
-                    <span class="mono text-indigo-500 font-bold text-xs tracking-widest uppercase">The Tech</span>
-                    <h2 class="text-4xl font-black uppercase tracking-tighter mt-4">Engineering Stack</h2>
-                </div>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="glass-card p-6 border-l-4 border-l-indigo-500 hover:border-l-indigo-400">
-                        <h5 class="text-sm font-black uppercase text-white mb-4 tracking-widest">Inference</h5>
-                        <div class="text-[11px] mono text-zinc-400 space-y-2">
-                            <div class="flex items-center gap-2"><div class="w-1 h-1 bg-indigo-500 rounded-full"></div>Open-weight LLMs (Local)</div>
-                            <div class="flex items-center gap-2"><div class="w-1 h-1 bg-indigo-500 rounded-full"></div>API-hosted LLMs (High-Scale)</div>
-                            <div class="flex items-center gap-2"><div class="w-1 h-1 bg-indigo-500 rounded-full"></div>Quantized local inference</div>
-                        </div>
-                    </div>
-                    <div class="glass-card p-6 border-l-4 border-l-cyan-500 hover:border-l-cyan-400">
-                        <h5 class="text-sm font-black uppercase text-white mb-4 tracking-widest">Data</h5>
-                        <div class="text-[11px] mono text-zinc-400 space-y-2">
-                            <div class="flex items-center gap-2"><div class="w-1 h-1 bg-cyan-500 rounded-full"></div>Postgres + pgvector</div>
-                            <div class="flex items-center gap-2"><div class="w-1 h-1 bg-cyan-500 rounded-full"></div>Hybrid Vector Search</div>
-                            <div class="flex items-center gap-2"><div class="w-1 h-1 bg-cyan-500 rounded-full"></div>Embedding pipelines</div>
-                        </div>
-                    </div>
-                    <div class="glass-card p-6 border-l-4 border-l-rose-500 hover:border-l-rose-400">
-                        <h5 class="text-sm font-black uppercase text-white mb-4 tracking-widest">Orchestration</h5>
-                        <div class="text-[11px] mono text-zinc-400 space-y-2">
-                            <div class="flex items-center gap-2"><div class="w-1 h-1 bg-rose-500 rounded-full"></div>Python Services</div>
-                            <div class="flex items-center gap-2"><div class="w-1 h-1 bg-rose-500 rounded-full"></div>Async Job Workers</div>
-                            <div class="flex items-center gap-2"><div class="w-1 h-1 bg-rose-500 rounded-full"></div>Retry / Exponential Backoff</div>
-                        </div>
-                    </div>
-                    <div class="glass-card p-6 border-l-4 border-l-green-500 hover:border-l-green-400">
-                        <h5 class="text-sm font-black uppercase text-white mb-4 tracking-widest">Safety</h5>
-                        <div class="text-[11px] mono text-zinc-400 space-y-2">
-                            <div class="flex items-center gap-2"><div class="w-1 h-1 bg-green-500 rounded-full"></div>Structured Output Parser</div>
-                            <div class="flex items-center gap-2"><div class="w-1 h-1 bg-green-500 rounded-full"></div>Deterministic Fallbacks</div>
-                            <div class="flex items-center gap-2"><div class="w-1 h-1 bg-green-500 rounded-full"></div>Observability (Logging)</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- INTEGRATION MATRIX -->
-        <section id="integrations" class="py-24 px-6 relative z-10 border-t border-white/5">
-            <div class="max-w-6xl mx-auto cinematic-reveal">
-                <div class="mb-16 text-center">
-                    <span class="mono text-indigo-500 font-bold text-xs tracking-widest uppercase shadow-indigo-500">Connectivity</span>
-                    <h2 class="text-4xl font-black uppercase tracking-tighter mt-4 text-shadow-sm">Integration Matrix</h2>
-                    <p class="text-zinc-400 mt-4 max-w-2xl mx-auto text-sm font-medium">Our AI agents deploy seamlessly into your existing operational ecosystem, requiring zero disruption to current workflows.</p>
-                </div>
-
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <!-- App 1: WhatsApp -->
-                    <div class="glass-card p-8 flex flex-col items-center justify-center text-center hover:-translate-y-2 transition-transform duration-500 group border-t-green-500/30">
-                        <div class="w-14 h-14 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center mb-6 group-hover:bg-green-500/20 transition-colors shadow-[0_0_15px_rgba(34,197,94,0.2)]">
-                            <svg class="w-7 h-7 text-green-400 drop-shadow-[0_0_8px_rgba(34,197,94,0.8)]" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-                            </svg>
-                        </div>
-                        <span class="font-black text-white uppercase tracking-widest text-xs">WhatsApp</span>
-                        <span class="text-[9px] mono text-zinc-500 uppercase mt-2">Auto-Reply & Routing</span>
-                    </div>
-                    <!-- App 2: Slack -->
-                    <div class="glass-card p-8 flex flex-col items-center justify-center text-center hover:-translate-y-2 transition-transform duration-500 group border-t-purple-500/30">
-                        <div class="w-14 h-14 rounded-full bg-purple-500/10 border border-purple-500/30 flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-colors shadow-[0_0_15px_rgba(168,85,247,0.2)]">
-                            <svg class="w-7 h-7 text-purple-400 drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1 2.521-2.52A2.528 2.528 0 0 1 13.876 5.042a2.527 2.527 0 0 1-2.521 2.52H8.834v-2.52zM8.834 6.313a2.527 2.527 0 0 1 2.521 2.521 2.527 2.527 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.527 2.527 0 0 1-2.522 2.52h-2.522v-2.52zM17.688 8.834a2.527 2.527 0 0 1-2.523 2.52 2.527 2.527 0 0 1-2.52-2.52V2.522A2.528 2.528 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1-2.523 2.522A2.528 2.528 0 0 1 10.12 18.956a2.527 2.527 0 0 1 2.522-2.522h2.523v2.522zM15.165 17.688a2.527 2.527 0 0 1-2.523-2.523 2.526 2.526 0 0 1 2.523-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/>
-                            </svg>
-                        </div>
-                        <span class="font-black text-white uppercase tracking-widest text-xs">Slack</span>
-                        <span class="text-[9px] mono text-zinc-500 uppercase mt-2">Internal Ops Bot</span>
-                    </div>
-                    <!-- App 3: Salesforce -->
-                    <div class="glass-card p-8 flex flex-col items-center justify-center text-center hover:-translate-y-2 transition-transform duration-500 group border-t-blue-500/30">
-                        <div class="w-14 h-14 rounded-full bg-blue-500/10 border border-blue-500/30 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors shadow-[0_0_15px_rgba(59,130,246,0.2)]">
-                            <svg class="w-8 h-8 text-blue-400 drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.416 6.845a6.002 6.002 0 0 0-11.246 1.48A4.248 4.248 0 0 0 4.25 16.75h14.5a5.25 5.25 0 0 0 .193-10.495 5.978 5.978 0 0 0-1.527.59z"/>
-                            </svg>
-                        </div>
-                        <span class="font-black text-white uppercase tracking-widest text-xs">Salesforce</span>
-                        <span class="text-[9px] mono text-zinc-500 uppercase mt-2">CRM Syncing</span>
-                    </div>
-                    <!-- App 4: PostgreSQL -->
-                    <div class="glass-card p-8 flex flex-col items-center justify-center text-center hover:-translate-y-2 transition-transform duration-500 group border-t-cyan-500/30">
-                        <div class="w-14 h-14 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center mb-6 group-hover:bg-cyan-500/20 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.2)]">
-                            <svg class="w-7 h-7 text-cyan-400 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23.955 12.356c-.05-.183-.34-.236-.613-.231a54.385 54.385 0 0 1-5.617.202c-.052-.731-.118-1.464-.206-2.193-.016-.134.025-.262.115-.357a7.662 7.662 0 0 0 1.253-1.895c.108-.236-.086-.473-.306-.411a21.492 21.492 0 0 1-2.91.562 10.45 10.45 0 0 0-.649-1.996c-.059-.133.003-.284.135-.333a8.211 8.211 0 0 0 2.22-.116c.214-.047.288-.315.111-.454a8.04 8.04 0 0 0-1.748-1.044 11.233 11.233 0 0 0-1.12-2.164c-.115-.17-.37-.17-.487-.001a11.396 11.396 0 0 1-.954 1.264 12.247 12.247 0 0 0-4.664-2.583C5.64 0 2.158 2.053.844 5.385.12 7.218.006 9.176.012 11.13c0 .092.052.176.136.216.536.257 1.054.55 1.549.88.163.109.385-.01.373-.205-.054-.925.076-1.854.364-2.738.868-2.662 2.91-4.57 5.613-5.228 3.018-.734 6.208-.094 8.835 1.746.126.088.293.044.363-.095a8.775 8.775 0 0 1 1.045-1.571c.08-.095.22-.112.321-.038a8.204 8.204 0 0 1 1.488 1.427c.058.077.037.189-.044.24-.914.568-1.897 1.01-2.923 1.32-.125.038-.176.19-.092.29a9.782 9.782 0 0 1 1.495 2.502c.04.098.14.156.246.14.935-.145 1.88-.17 2.822-.075.14.014.234.148.196.281-.177.632-.42 1.24-.716 1.822-.058.114-.198.16-.316.103a8.91 8.91 0 0 0-2.428-.795c-.14-.022-.266.082-.262.224.032 1.332-.088 2.664-.356 3.972-.023.111.055.218.168.23a23.12 23.12 0 0 0 5.088-.302c.164-.027.288.134.227.28-.532 1.263-1.229 2.45-2.072 3.535a.257.257 0 0 1-.295.073c-.767-.32-1.558-.58-2.37-.775-.148-.035-.286.082-.267.234.116.927.126 1.868.03 2.793-.01.096.046.184.135.213a17.29 17.29 0 0 0 2.214.502c.162.023.238.22.115.334a11.972 11.972 0 0 1-5.187 2.385c-1.353.284-2.748.406-4.145.362h-.058c-4.471 0-8.625-2.224-11.233-6.02-.08-.116-.254-.108-.323.015a9.664 9.664 0 0 0-.585 1.365c-.043.129.072.247.195.2A13.253 13.253 0 0 0 12.016 24h.063c1.55-.002 3.092-.198 4.591-.58a13.313 13.313 0 0 0 8.017-5.466c.92-1.328 1.589-2.81 1.986-4.389.043-.167-.058-.335-.226-.37-.878-.18-1.776-.307-2.684-.378-.142-.011-.237-.15-.187-.285a11.338 11.338 0 0 0 .524-1.849c.026-.135.158-.218.29-.182 1.343.371 2.656.84 3.931 1.398.156.068.326-.062.29-.23a10.992 10.992 0 0 0-.666-1.92Z"/>
-                            </svg>
-                        </div>
-                        <span class="font-black text-white uppercase tracking-widest text-xs">PostgreSQL</span>
-                        <span class="text-[9px] mono text-zinc-500 uppercase mt-2">Vector Search</span>
-                    </div>
-                    <!-- App 5: AWS -->
-                    <div class="glass-card p-8 flex flex-col items-center justify-center text-center hover:-translate-y-2 transition-transform duration-500 group border-t-orange-500/30">
-                        <div class="w-14 h-14 rounded-full bg-orange-500/10 border border-orange-500/30 flex items-center justify-center mb-6 group-hover:bg-orange-500/20 transition-colors shadow-[0_0_15px_rgba(249,115,22,0.2)]">
-                            <svg class="w-8 h-8 text-orange-400 drop-shadow-[0_0_8px_rgba(249,115,22,0.8)]" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M11.026 12.871c-1.378-1.077-1.93-1.687-1.93-2.657 0-1.112.845-1.93 2.132-1.93 1.25 0 2.224.736 2.628 1.637l-1.322.845c-.276-.643-.809-1.01-1.341-1.01-.588 0-.974.349-.974.809 0 .588.478.937 1.452 1.654 1.488 1.121 2.057 1.838 2.057 2.866 0 1.25-1.03 2.113-2.352 2.113-1.396 0-2.425-.79-2.884-1.874l1.396-.771c.312.716.882 1.157 1.506 1.157.662 0 1.047-.33 1.047-.845 0-.588-.386-1.011-1.415-1.994zM16.924 8.441l1.452 4.152h.036l1.525-4.152h1.617v8.525h-1.341v-3.876l.036-2.5h-.036l-1.506 4.153h-1.213L16 10.59h-.036v2.535v3.839h-1.341V8.441h2.299zM8.179 16.966H6.672l-1.047-3.216H3.344l-1.01 3.216H.79l3.326-8.525h1.727l2.336 8.525zm-2.002-4.502l-.845-2.793h-.036l-.827 2.793h1.708zm14.39 5.347c-2.315 1.764-5.273 2.738-8.581 2.738-3.418 0-6.468-1.029-8.82-2.884l1.304-1.378c2.095 1.543 4.649 2.425 7.423 2.425 2.72 0 5.237-.845 7.313-2.315l1.361 1.414zm-4.336-3.418c2.591-1.121 3.565-3.087 3.693-3.326l-.422-1.139c-.166.423-1.066 1.966-3.069 2.811l-.202 1.654z"/>
-                            </svg>
-                        </div>
-                        <span class="font-black text-white uppercase tracking-widest text-xs">AWS Cloud</span>
-                        <span class="text-[9px] mono text-zinc-500 uppercase mt-2">VPC Deployment</span>
-                    </div>
-                    <!-- App 6: Shopify -->
-                    <div class="glass-card p-8 flex flex-col items-center justify-center text-center hover:-translate-y-2 transition-transform duration-500 group border-t-emerald-500/30">
-                        <div class="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mb-6 group-hover:bg-emerald-500/20 transition-colors shadow-[0_0_15px_rgba(16,185,129,0.2)]">
-                            <svg class="w-7 h-7 text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19.123 5.432c-.062-.259-.286-.445-.552-.457l-4.043-.191-1.465-3.834a.59.59 0 0 0-.55-.382h-1.065a.591.591 0 0 0-.556.398l-.022.062a49.196 49.196 0 0 0-1.742 6.551l-4.148-.053a.59.59 0 0 0-.575.441L2.83 14.124a2.951 2.951 0 0 0 1.258 3.535l7.108 4.298a2.952 2.952 0 0 0 3.067-.021l7.112-4.437a2.953 2.953 0 0 0 1.25-3.52L19.123 5.432zm-6.236 12.396a1.18 1.18 0 0 1-1.226.008l-5.69-3.442a1.182 1.182 0 0 1-.502-1.414l.848-3.41 2.656.034c-.114.654-.2 1.309-.257 1.966a.59.59 0 0 0 1.177.103c.092-1.05.244-2.102.456-3.153l2.871.135a.59.59 0 1 0-.056-1.18l-3.328-.157c.228-.738.487-1.472.775-2.203l1.109 2.9c.108.283.385.467.688.453l3.242.153-1.611 6.55-2.151-1.342a.59.59 0 1 0-.626 1.002l2.302 1.436-1.681 1.049zM9.597 1.761h.305l1.04 2.719-1.32-.063c-.027-.893-.018-1.78.025-2.656h-.05zm.02 3.84c.053 1.055.158 2.104.316 3.149l-3.166-.04.42-1.691c.783-1.428 1.583-2.84 2.43-4.24v2.822zM8.303 1.201C7.303 2.8 6.37 4.417 5.46 6.064l-.534 2.151-1.428-.018.995-3.993a1.77 1.77 0 0 1 1.725-1.323h2.085v-1.68z"/>
-                            </svg>
-                        </div>
-                        <span class="font-black text-white uppercase tracking-widest text-xs">Shopify</span>
-                        <span class="text-[9px] mono text-zinc-500 uppercase mt-2">E-Commerce Agents</span>
-                    </div>
-                    <!-- App 7: Zendesk -->
-                    <div class="glass-card p-8 flex flex-col items-center justify-center text-center hover:-translate-y-2 transition-transform duration-500 group border-t-teal-500/30">
-                        <div class="w-14 h-14 rounded-full bg-teal-500/10 border border-teal-500/30 flex items-center justify-center mb-6 group-hover:bg-teal-500/20 transition-colors shadow-[0_0_15px_rgba(20,184,166,0.2)]">
-                            <svg class="w-7 h-7 text-teal-400 drop-shadow-[0_0_8px_rgba(20,184,166,0.8)]" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M11.517 11.23H2.03V2.42L11.517 11.23zM21.97 12.77H12.483V21.58l9.487-8.81zM11.517 21.58L2.03 12.77h9.487v8.81zM21.97 2.42l-9.487 8.81h9.487V2.42z"/>
-                            </svg>
-                        </div>
-                        <span class="font-black text-white uppercase tracking-widest text-xs">Zendesk</span>
-                        <span class="text-[9px] mono text-zinc-500 uppercase mt-2">Ticket Resolution</span>
-                    </div>
-                    <!-- App 8: Custom REST -->
-                    <div class="glass-card p-8 flex flex-col items-center justify-center text-center hover:-translate-y-2 transition-transform duration-500 group border-t-indigo-500/30">
-                        <div class="w-14 h-14 rounded-full bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center mb-6 group-hover:bg-indigo-500/20 transition-colors shadow-[0_0_15px_rgba(99,102,241,0.2)]">
-                            <svg class="w-7 h-7 text-indigo-400 drop-shadow-[0_0_8px_rgba(99,102,241,0.8)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                            </svg>
-                        </div>
-                        <span class="font-black text-white uppercase tracking-widest text-xs">Custom REST</span>
-                        <span class="text-[9px] mono text-zinc-500 uppercase mt-2">API Webhooks</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECURITY & DATA SOVEREIGNTY -->
-        <section id="security" class="py-24 px-6 relative z-10 border-t border-white/5 bg-[#030308]/50">
-            <div class="max-w-6xl mx-auto cinematic-reveal">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <span class="mono text-rose-500 font-bold text-xs tracking-widest uppercase shadow-rose-500">Security Guardrails</span>
-                        <h2 class="text-4xl font-black uppercase tracking-tighter mt-4 mb-6 text-white drop-shadow-md">Data Sovereignty</h2>
-                        <p class="text-zinc-300 text-lg leading-relaxed font-light mb-8">
-                            In the era of autonomous agents, data leakage is the ultimate operational risk. We architect every system with <span class="text-rose-400 font-bold">military-grade isolation</span>, ensuring your proprietary business intelligence remains strictly within your control.
-                        </p>
-                        <div class="inline-flex items-center gap-3 bg-rose-500/10 border border-rose-500/20 px-5 py-3 rounded-xl shadow-[0_0_20px_rgba(244,63,94,0.1)]">
-                            <div class="w-2 h-2 bg-rose-500 rounded-full animate-pulse shadow-[0_0_10px_#f43f5e]"></div>
-                            <span class="mono text-rose-400 text-xs uppercase font-black tracking-widest">Zero-Trust Protocol Active</span>
-                        </div>
-                    </div>
-                    <div class="relative group">
-                        <!-- Red Glowing Backdrop -->
-                        <div class="absolute inset-0 bg-rose-500/10 blur-3xl group-hover:bg-rose-500/20 transition duration-700 rounded-full"></div>
-                        <div class="glass-card p-10 relative border-t-rose-500/50 shadow-[0_0_40px_rgba(244,63,94,0.1)] group-hover:shadow-[0_0_60px_rgba(244,63,94,0.15)]">
-                            <h4 class="text-2xl font-black uppercase text-white mb-8 border-b border-white/10 pb-4">Security Architecture</h4>
-                            <ul class="space-y-8">
-                                <li class="flex items-start gap-5">
-                                    <div class="w-10 h-10 rounded-lg bg-rose-500/20 flex items-center justify-center border border-rose-500/30 text-rose-400 font-black shadow-[0_0_15px_rgba(244,63,94,0.3)] shrink-0">01</div>
+                    <div
+                        class="glass-panel p-1 group flex flex-col hover:border-emerald-500/40 transition-colors reveal delay-2 cursor-crosshair tilt-card">
+                        <div
+                            class="bg-black/80 p-5 sm:p-6 rounded-xl flex flex-col sm:flex-row gap-5 sm:gap-6 items-start sm:items-center h-full relative overflow-hidden">
+                            <div
+                                class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-3xl rounded-full group-hover:bg-emerald-500/10 transition-colors pointer-events-none">
+                            </div>
+                            <div
+                                class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 shrink-0 bg-zinc-900 rounded shadow-[0_0_15px_rgba(0,0,0,0.8)] overflow-hidden relative border border-white/10 group-hover:border-emerald-500/50 transition-colors z-10">
+                                <div
+                                    class="absolute inset-0 bg-emerald-900/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity">
+                                </div>
+                                <img src="divyanshu.png" alt="Divyanshu Sisodiya"
+                                    class="elite-portrait w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700"
+                                    onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%25\' height=\'100%25\' viewBox=\'0 0 100 100\'%3E%3Crect fill=\'%23050505\' width=\'100\' height=\'100\'/%3E%3Ctext fill=\'%23333\' font-family=\'monospace\' font-size=\'10\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\'%3E[IMG]%3C/text%3E%3C/svg%3E'">
+                                <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/50 z-20"></div>
+                                <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/50 z-20">
+                                </div>
+                            </div>
+                            <div class="flex-grow w-full z-10">
+                                <div class="flex justify-between items-start mb-3 border-b border-white/5 pb-3">
                                     <div>
-                                        <h5 class="text-white font-bold uppercase text-sm mb-1 tracking-wide">Local LLM Deployment</h5>
-                                        <p class="text-xs text-zinc-400 leading-relaxed font-medium">Models can be deployed directly within your secured VPC. Eliminating unauthorized API calls to public AI endpoints.</p>
+                                        <h3
+                                            class="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-white group-hover:text-emerald-400 transition-colors">
+                                            Divyanshu Sisodiya</h3>
+                                        <span
+                                            class="font-mono text-[9px] sm:text-[10px] text-zinc-500 uppercase tracking-[0.2em] block mt-1">Systems
+                                            Engineer // Co-Founder</span>
                                     </div>
-                                </li>
-                                <li class="flex items-start gap-5">
-                                    <div class="w-10 h-10 rounded-lg bg-rose-500/20 flex items-center justify-center border border-rose-500/30 text-rose-400 font-black shadow-[0_0_15px_rgba(244,63,94,0.3)] shrink-0">02</div>
-                                    <div>
-                                        <h5 class="text-white font-bold uppercase text-sm mb-1 tracking-wide">No Client Data Training</h5>
-                                        <p class="text-xs text-zinc-400 leading-relaxed font-medium">Zero data retention for model training. Your proprietary workflows and customer data never become part of a global model.</p>
-                                    </div>
-                                </li>
-                                <li class="flex items-start gap-5">
-                                    <div class="w-10 h-10 rounded-lg bg-rose-500/20 flex items-center justify-center border border-rose-500/30 text-rose-400 font-black shadow-[0_0_15px_rgba(244,63,94,0.3)] shrink-0">03</div>
-                                    <div>
-                                        <h5 class="text-white font-bold uppercase text-sm mb-1 tracking-wide">End-to-End Encryption</h5>
-                                        <p class="text-xs text-zinc-400 leading-relaxed font-medium">All vector databases and retrieval pipelines are secured with AES-256 encryption at rest and TLS 1.3 in transit.</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ENGAGEMENT MODEL -->
-        <section id="engagement" class="py-24 px-6 relative z-10">
-            <div class="max-w-6xl mx-auto cinematic-reveal">
-                <div class="mb-16 text-center">
-                    <span class="mono text-indigo-500 font-bold text-xs tracking-widest uppercase">How We Work</span>
-                    <h2 class="text-4xl font-black uppercase tracking-tighter mt-4">Engagement Model</h2>
-                </div>
-                <div class="grid md:grid-cols-3 gap-12 relative">
-                    <!-- Connector line behind cards for desktop -->
-                    <div class="hidden md:block absolute top-1/2 left-10 right-10 h-0.5 bg-gradient-to-r from-indigo-500/20 via-cyan-500/20 to-transparent -translate-y-1/2 z-0"></div>
-                    
-                    <div class="engagement-step glass-card p-10 z-10 bg-[#05050a]/90">
-                        <span class="inline-block px-3 py-1 bg-indigo-500/20 text-indigo-400 font-bold mono text-xs rounded border border-indigo-500/30 mb-4">Step 01</span>
-                        <h4 class="text-xl font-black uppercase text-white">System Review</h4>
-                        <p class="text-sm text-zinc-400 mt-3">Free initial architecture review of your current data silos and operational bottlenecks.</p>
-                    </div>
-                    <div class="engagement-step glass-card p-10 z-10 bg-[#05050a]/90">
-                        <span class="inline-block px-3 py-1 bg-cyan-500/20 text-cyan-400 font-bold mono text-xs rounded border border-cyan-500/30 mb-4">Step 02</span>
-                        <h4 class="text-xl font-black uppercase text-white">Pilot Build</h4>
-                        <p class="text-sm text-zinc-400 mt-3">A rapid 2–4 week deployment of a prototype system to verify strict logic and success rates.</p>
-                    </div>
-                    <div class="glass-card p-10 z-10 bg-[#05050a]/90 border-r-cyan-500/50">
-                        <span class="inline-block px-3 py-1 bg-rose-500/20 text-rose-400 font-bold mono text-xs rounded border border-rose-500/30 mb-4">Step 03</span>
-                        <h4 class="text-xl font-black uppercase text-white">Integration</h4>
-                        <p class="text-sm text-zinc-400 mt-3">Full production scaling within your secured VPC and seamless integration into existing tools.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- COMPANY INFO -->
-        <section id="company" class="py-24 px-6 relative z-10">
-            <div class="max-w-6xl mx-auto cinematic-reveal">
-                <div class="glass-card p-12 bg-gradient-to-br from-white/[0.03] to-transparent border-t-white/10 border-l-white/10 grid md:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <span class="mono text-indigo-500 font-bold text-xs tracking-widest uppercase">Identity</span>
-                        <h3 class="text-4xl font-black uppercase tracking-tighter mt-4 mb-6">Applied AI Group</h3>
-                        <p class="text-zinc-300 text-md mb-8 leading-relaxed font-light">
-                            Singularity Union is an elite engineering collective focused exclusively on applied LLM architecture. We prioritize verifiable system performance and hard math over marketing hype.
-                        </p>
-                        <div class="grid grid-cols-2 gap-6 text-[10px] mono text-zinc-400 uppercase bg-black/30 p-6 rounded-xl border border-white/5">
-                            <div><span class="text-indigo-400 block font-black mb-1">HQ Location</span>India // Remote-Global</div>
-                            <div><span class="text-cyan-400 block font-black mb-1">Response SLA</span>T-Minus 24 Hours</div>
-                        </div>
-                    </div>
-                    <div class="relative group">
-                        <div class="absolute inset-0 bg-indigo-500/10 blur-2xl group-hover:bg-cyan-500/20 transition duration-700 rounded-full"></div>
-                        <div class="relative bg-[#08080f] p-10 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-xl">
-                            <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
-                                <div class="w-2 h-2 bg-rose-500 rounded-full shadow-[0_0_10px_#f43f5e] animate-pulse"></div>
-                                <span class="text-[10px] mono uppercase text-zinc-300 font-bold tracking-widest">Operational Dogma</span>
-                            </div>
-                            <p class="text-lg text-white font-medium leading-relaxed italic">"We strictly avoid the 'marketing chatbot' trap. We build autonomous systems that execute business logic with verifiable precision and zero hallucinations."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- COMMAND PROTOCOL / FOUNDERS -->
-        <section id="founders" class="py-24 px-6 relative z-10">
-            <div class="max-w-6xl mx-auto cinematic-reveal">
-                <div class="mb-16 text-center">
-                    <span class="mono text-indigo-500 font-bold text-xs tracking-widest uppercase shadow-indigo-500">The Architects</span>
-                    <h2 class="text-4xl font-black uppercase tracking-tighter mt-4 text-shadow-sm">Command Protocol</h2>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-12">
-                    <!-- Founder: Debajit Goswami -->
-                    <div class="glass-card p-10 border-t-indigo-500/50 hover:-translate-y-2 transition-transform duration-500 group shadow-[0_0_40px_rgba(99,102,241,0.1)] hover:shadow-[0_0_60px_rgba(99,102,241,0.2)]">
-                        <div class="flex items-center gap-6 mb-8">
-                            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-indigo-500/20 to-cyan-500/20 border-2 border-indigo-500/50 flex items-center justify-center relative overflow-hidden shadow-[0_0_20px_rgba(99,102,241,0.3)] group-hover:border-indigo-400 transition-colors duration-300">
-                                <div class="absolute inset-0 bg-indigo-500/10 blur-md group-hover:bg-cyan-500/30 transition duration-500"></div>
-                                <div class="absolute inset-0 border-t-2 border-indigo-300 rounded-full animate-[spin_4s_linear_infinite]"></div>
-                                <span class="mono text-3xl font-black text-indigo-300 relative z-10 drop-shadow-[0_0_10px_rgba(99,102,241,0.8)]">DG</span>
-                            </div>
-                            <div>
-                                <h3 class="text-3xl font-black uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-indigo-300 tracking-tight drop-shadow-md">Debajit Goswami</h3>
-                                <span class="text-[10px] mono uppercase text-indigo-400 font-black tracking-[0.2em] block mb-2 mt-1">Founder // Lead Architect</span>
-                                <span class="text-[9px] mono uppercase text-zinc-300 font-bold tracking-widest bg-white/5 px-2.5 py-1 rounded border border-white/10 shadow-sm">CSE (AI & ML) Engineering</span>
-                            </div>
-                        </div>
-                        <div class="space-y-5 text-sm text-zinc-300 font-medium">
-                            <p>Architecting distributed AI workflows and intelligent agent swarms. Bridging the gap between raw neural compute, complex databases, and deterministic business logic.</p>
-                            <div class="pt-5 border-t border-white/10 flex flex-wrap gap-2.5">
-                                <span class="text-[10px] mono text-indigo-100 bg-indigo-500/10 px-3 py-1.5 rounded border border-indigo-500/30 shadow-[0_0_10px_rgba(99,102,241,0.2)]">Python</span>
-                                <span class="text-[10px] mono text-indigo-100 bg-indigo-500/10 px-3 py-1.5 rounded border border-indigo-500/30 shadow-[0_0_10px_rgba(99,102,241,0.2)]">Artificial Intelligence</span>
-                                <span class="text-[10px] mono text-indigo-100 bg-indigo-500/10 px-3 py-1.5 rounded border border-indigo-500/30 shadow-[0_0_10px_rgba(99,102,241,0.2)]">Prompt Engineering</span>
-                                <span class="text-[10px] mono text-indigo-100 bg-indigo-500/10 px-3 py-1.5 rounded border border-indigo-500/30 shadow-[0_0_10px_rgba(99,102,241,0.2)]">DBMS</span>
-                                <span class="text-[10px] mono text-indigo-100 bg-indigo-500/10 px-3 py-1.5 rounded border border-indigo-500/30 shadow-[0_0_10px_rgba(99,102,241,0.2)]">Web Development</span>
-                                <span class="text-[10px] mono text-indigo-100 bg-indigo-500/10 px-3 py-1.5 rounded border border-indigo-500/30 shadow-[0_0_10px_rgba(99,102,241,0.2)]">JavaScript</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Co-Founder: Divyanshu Sisodiya -->
-                    <div class="glass-card p-10 border-t-cyan-500/50 hover:-translate-y-2 transition-transform duration-500 group shadow-[0_0_40px_rgba(6,182,212,0.1)] hover:shadow-[0_0_60px_rgba(6,182,212,0.2)]">
-                        <div class="flex items-center gap-6 mb-8">
-                            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-cyan-500/20 to-rose-500/20 border-2 border-cyan-500/50 flex items-center justify-center relative overflow-hidden shadow-[0_0_20px_rgba(6,182,212,0.3)] group-hover:border-cyan-400 transition-colors duration-300">
-                                <div class="absolute inset-0 bg-cyan-500/10 blur-md group-hover:bg-rose-500/30 transition duration-500"></div>
-                                <div class="absolute inset-0 border-t-2 border-cyan-300 rounded-full animate-[spin_4s_linear_infinite_reverse]"></div>
-                                <span class="mono text-3xl font-black text-cyan-300 relative z-10 drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]">DS</span>
-                            </div>
-                            <div>
-                                <h3 class="text-3xl font-black uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-cyan-300 tracking-tight drop-shadow-md">Divyanshu Sisodiya</h3>
-                                <span class="text-[10px] mono uppercase text-cyan-400 font-black tracking-[0.2em] block mb-2 mt-1">Co-Founder // Systems Engineer</span>
-                                <span class="text-[9px] mono uppercase text-zinc-300 font-bold tracking-widest bg-white/5 px-2.5 py-1 rounded border border-white/10 shadow-sm">CSE (AI & ML) Engineering</span>
-                            </div>
-                        </div>
-                        <div class="space-y-5 text-sm text-zinc-300 font-medium">
-                            <p>Infrastructure and frontend specialist. Engineering highly responsive web interfaces, robust databases, and zero-downtime integration of AI into user-facing applications.</p>
-                            <div class="pt-5 border-t border-white/10 flex flex-wrap gap-2.5">
-                                <span class="text-[10px] mono text-cyan-100 bg-cyan-500/10 px-3 py-1.5 rounded border border-cyan-500/30 shadow-[0_0_10px_rgba(6,182,212,0.2)]">HTML & CSS</span>
-                                <span class="text-[10px] mono text-cyan-100 bg-cyan-500/10 px-3 py-1.5 rounded border border-cyan-500/30 shadow-[0_0_10px_rgba(6,182,212,0.2)]">JavaScript</span>
-                                <span class="text-[10px] mono text-cyan-100 bg-cyan-500/10 px-3 py-1.5 rounded border border-cyan-500/30 shadow-[0_0_10px_rgba(6,182,212,0.2)]">DBMS</span>
-                                <span class="text-[10px] mono text-cyan-100 bg-cyan-500/10 px-3 py-1.5 rounded border border-cyan-500/30 shadow-[0_0_10px_rgba(6,182,212,0.2)]">Python</span>
-                                <span class="text-[10px] mono text-cyan-100 bg-cyan-500/10 px-3 py-1.5 rounded border border-cyan-500/30 shadow-[0_0_10px_rgba(6,182,212,0.2)]">Web Development</span>
-                                <span class="text-[10px] mono text-cyan-100 bg-cyan-500/10 px-3 py-1.5 rounded border border-cyan-500/30 shadow-[0_0_10px_rgba(6,182,212,0.2)]">Prompt Engineering</span>
+                                    <span class="font-mono text-xs text-zinc-700 uppercase font-black">02</span>
+                                </div>
+                                <p
+                                    class="text-[10px] sm:text-[11px] md:text-xs text-zinc-400 leading-relaxed font-mono mb-4">
+                                    Infrastructure and integration specialist. Engineering highly responsive interfaces,
+                                    robust databases, and zero-downtime environments.
+                                </p>
+                                <div
+                                    class="flex flex-wrap gap-2 font-mono text-[8px] sm:text-[9px] uppercase tracking-wider">
+                                    <span
+                                        class="px-2 py-1 border border-white/10 rounded-sm text-zinc-300 bg-white/5 group-hover:border-emerald-500/30 transition-colors">Data
+                                        Infrastructure</span>
+                                    <span
+                                        class="px-2 py-1 border border-white/10 rounded-sm text-zinc-300 bg-white/5 group-hover:border-emerald-500/30 transition-colors">Systems
+                                        Scaling</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -853,473 +863,667 @@
             </div>
         </section>
 
-        <!-- APEX PROJECT TEASER (ORION HELIX AI) -->
-        <section id="apex-project" class="py-24 px-6 relative z-10 border-y border-white/5 bg-[#020205]/50">
-            <div class="max-w-5xl mx-auto cinematic-reveal text-center">
-                <div class="glass-card p-12 md:p-20 border-indigo-500/30 relative overflow-hidden group shadow-[0_0_50px_rgba(99,102,241,0.1)] hover:shadow-[0_0_80px_rgba(99,102,241,0.2)] transition-all duration-700">
-                    <!-- Core Glow Background -->
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-indigo-600 rounded-full blur-[120px] group-hover:bg-cyan-500 group-hover:blur-[150px] transition-all duration-1000 opacity-30"></div>
-                    
-                    <span class="mono text-cyan-400 font-black text-[10px] tracking-[0.5em] uppercase relative z-10 block mb-6 animate-pulse">Classified // Next-Gen Architecture</span>
-                    <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white relative z-10 mb-8 drop-shadow-2xl">
-                        Unveiling the <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-300">Earth-Breaking</span> Epoch
-                    </h2>
-                    <p class="text-zinc-300 text-lg md:text-xl mb-12 max-w-3xl mx-auto relative z-10 font-light leading-relaxed">
-                        Beyond basic automation lies true cognitive orchestration. We are forging an unprecedented architecture designed to transcend linear limits and redefine spatial intelligence. Prepare to witness the apex of our engineering capabilities.
-                    </p>
-                    
-                    <button id="btn-orion" class="btn-primary relative z-10 uppercase tracking-[0.3em] font-black shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:shadow-[0_0_50px_rgba(6,182,212,0.8)] px-12 py-6 transition-all duration-500 overflow-hidden text-xs md:text-sm border border-indigo-400/50 hover:border-cyan-300/80 rounded-xl">
-                        <span class="relative z-10 flex items-center justify-center gap-3">
-                            <span class="w-2 h-2 bg-rose-500 rounded-full animate-pulse shadow-[0_0_10px_#f43f5e]"></span>
-                            Decrypt Project Genesis
-                        </span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
-                    </button>
-                </div>
-            </div>
-        </section>
+        <section id="contact"
+            class="w-full pt-20 sm:pt-32 pb-32 sm:pb-48 px-4 sm:px-6 border-t border-white/5 relative bg-surface2">
+            <div class="max-w-4xl mx-auto reveal text-center">
+                <span
+                    class="font-mono text-[9px] sm:text-[10px] text-white uppercase tracking-[0.4em] mb-6 block border border-white/20 inline-block px-4 py-1.5 rounded-full">Deployment
+                    Access</span>
+                <h2 class="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-8 text-white">Request Early
+                    Access.</h2>
+                <p class="text-base sm:text-lg text-zinc-400 mb-12 max-w-xl mx-auto">
+                    OrionHelix AI is currently in closed alpha. Join the waitlist to secure priority deployment and
+                    architectural review for your organization.
+                </p>
 
-        <!-- CONTACT -->
-        <section id="contact" class="py-32 px-6 bg-white text-black rounded-t-[50px] md:rounded-t-[80px] relative z-20 shadow-[0_-20px_50px_rgba(255,255,255,0.05)]">
-            <div class="max-w-4xl mx-auto cinematic-reveal">
-                <div class="text-center mb-24">
-                    <span class="text-indigo-600 font-black mono text-[10px] uppercase tracking-[0.4em]">Initialize Connection</span>
-                    <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mt-4 text-black drop-shadow-md">Request an AI Agent</h2>
-                    <p class="text-zinc-600 mt-8 text-lg max-w-lg mx-auto leading-relaxed font-medium">
-                        Describe your business operational flow and we will architect a custom autonomous assistant for you.
-                    </p>
-                    <div class="mt-6 inline-flex flex-col items-center gap-2 bg-zinc-100 p-4 rounded-xl border border-zinc-200">
-                        <span class="text-sm font-bold text-black">hello@singularityunion.tech</span>
-                        <span class="text-[10px] mono uppercase text-zinc-500">SLA: Under 24 hours</span>
-                    </div>
-                </div>
-
-                <!-- REAL CONTACT FORM -->
-                <form action="https://formsubmit.co/hello@singularityunion.tech" method="POST" class="space-y-12 bg-zinc-50 p-8 md:p-12 rounded-3xl shadow-xl border border-zinc-100 relative overflow-hidden group">
-                    <!-- Subtle inner glow on form -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-cyan-500/5 pointer-events-none transition-opacity duration-500 opacity-0 group-hover:opacity-100"></div>
-                    
-                    <input type="hidden" name="_subject" value="New Engineering Inquiry - Singularity Union">
+                <!-- Updated Form Action to actually work using Formsubmit -->
+                <form action="https://formsubmit.co/your-email@singularityunion.tech" method="POST"
+                    class="glass-panel p-6 sm:p-8 md:p-12 text-left space-y-6 sm:space-y-8">
+                    <!-- Hidden fields for formsubmit functionality -->
+                    <input type="hidden" name="_subject" value="New Waitlist Request - OrionHelix AI">
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="https://singularityunion.tech/thankyou.html">
 
-                    <div class="grid md:grid-cols-2 gap-12 relative z-10">
-                        <div class="group/input">
-                            <label class="block mono text-[10px] text-zinc-500 uppercase font-black mb-2 transition-colors group-focus-within/input:text-indigo-600">Point of Contact</label>
-                            <input type="text" name="name" required class="w-full bg-transparent border-b-2 border-zinc-300 py-4 outline-none focus:border-indigo-600 transition-all font-bold text-xl text-black placeholder-zinc-300" placeholder="Full Name">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                        <div>
+                            <label
+                                class="block font-mono text-[9px] sm:text-[10px] text-zinc-400 uppercase tracking-widest mb-2">Organization</label>
+                            <input type="text" name="organization" required
+                                class="w-full bg-transparent border-b border-white/20 py-2 sm:py-3 text-sm sm:text-base text-white focus:outline-none focus:border-white transition-colors"
+                                placeholder="Company Name">
                         </div>
-                        <div class="group/input">
-                            <label class="block mono text-[10px] text-zinc-500 uppercase font-black mb-2 transition-colors group-focus-within/input:text-indigo-600">Work Email</label>
-                            <input type="email" name="email" required class="w-full bg-transparent border-b-2 border-zinc-300 py-4 outline-none focus:border-indigo-600 transition-all font-bold text-xl text-black placeholder-zinc-300" placeholder="name@company.com">
+                        <div>
+                            <label
+                                class="block font-mono text-[9px] sm:text-[10px] text-zinc-400 uppercase tracking-widest mb-2">Comms
+                                Link</label>
+                            <input type="email" name="email" required
+                                class="w-full bg-transparent border-b border-white/20 py-2 sm:py-3 text-sm sm:text-base text-white focus:outline-none focus:border-white transition-colors"
+                                placeholder="Work Email">
                         </div>
                     </div>
-                    <div class="group/input relative z-10">
-                        <label class="block mono text-[10px] text-zinc-500 uppercase font-black mb-2 transition-colors group-focus-within/input:text-indigo-600">Operational Friction Points</label>
-                        <textarea name="message" required rows="4" class="w-full bg-transparent border-b-2 border-zinc-300 py-4 outline-none focus:border-indigo-600 transition-all font-medium text-lg text-black resize-none placeholder-zinc-300" placeholder="Describe your data silos, repetitive tasks, or automation gaps..."></textarea>
+                    <div>
+                        <label
+                            class="block font-mono text-[9px] sm:text-[10px] text-zinc-400 uppercase tracking-widest mb-2">Intended
+                            Use Case</label>
+                        <textarea rows="3" name="use_case" required
+                            class="w-full bg-transparent border-b border-white/20 py-2 sm:py-3 text-sm sm:text-base text-white focus:outline-none focus:border-white transition-colors resize-none"
+                            placeholder="Briefly describe the systems you aim to automate..."></textarea>
                     </div>
-                    <button type="submit" class="btn-primary w-full py-6 text-sm uppercase tracking-[0.3em] font-black magnetic-btn shadow-[0_15px_30px_rgba(99,102,241,0.3)] relative z-10">Deploy Architecture Request</button>
+                    <button type="submit" id="btn-submit-waitlist"
+                        class="magnetic btn-elite w-full py-4 sm:py-5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-center hover-target transition-all duration-300">
+                        <span id="waitlist-text">Request Deployment</span>
+                    </button>
                 </form>
             </div>
         </section>
+
     </main>
 
-    <!-- FOOTER (Integrated smoothly) -->
-    <footer class="py-24 px-6 md:px-12 bg-white text-black relative z-20 pb-12">
-        <div class="max-w-6xl mx-auto cinematic-reveal">
-            <div class="flex flex-col md:flex-row justify-between gap-16 mb-20">
+    <footer
+        class="pt-16 sm:pt-24 pb-8 sm:pb-12 px-6 md:px-12 bg-white text-black relative z-20 rounded-t-[30px] sm:rounded-t-[40px] md:rounded-t-[80px] -mt-10 shadow-[0_-20px_50px_rgba(255,255,255,0.03)]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col lg:flex-row justify-between gap-12 lg:gap-16 mb-16 sm:mb-20">
                 <div class="max-w-sm">
-                    <div class="flex items-center gap-3 mb-8">
-                        <div class="w-8 h-8 bg-black rounded flex items-center justify-center font-black text-white text-xs shadow-lg">S</div>
-                        <span class="font-black text-xl tracking-tighter uppercase">SINGULARITY UNION</span>
+                    <div class="flex items-center gap-3 mb-6 sm:mb-8">
+                        <img src="su-logo.png" alt="SU Logo"
+                            class="h-6 sm:h-8 w-auto object-contain border border-zinc-200 rounded p-1 bg-zinc-50"
+                            onerror="this.style.display='none'; document.getElementById('footer-fallback-logo').style.display='flex';">
+                        <div id="footer-fallback-logo" style="display:none;"
+                            class="w-6 h-6 sm:w-8 sm:h-8 bg-black text-white flex items-center justify-center font-bold text-[10px] sm:text-xs rounded-sm">
+                            SU</div>
+                        <span class="font-bold text-lg sm:text-xl tracking-tighter uppercase">Singularity Union</span>
                     </div>
-                    <p class="text-zinc-600 text-sm mb-10 leading-relaxed font-bold">
-                        Engineering deterministic reliability for autonomous enterprise workflows.
-                    </p>
+                    <p class="text-zinc-600 text-xs sm:text-sm mb-8 sm:mb-10 leading-relaxed font-medium">Engineering
+                        deterministic
+                        reliability for autonomous enterprise workflows.</p>
                     <div class="flex flex-col gap-2">
-                        <span class="text-[10px] mono text-zinc-400 uppercase font-black tracking-widest">Inquiries</span>
-                        <a href="mailto:hello@singularityunion.tech" class="text-md font-black text-indigo-600 hover:text-indigo-800 transition-colors mono">hello@singularityunion.tech</a>
+                        <span
+                            class="text-[9px] sm:text-[10px] font-mono text-zinc-400 uppercase font-black tracking-widest">Inquiries</span>
+                        <a href="mailto:hello@singularityunion.tech"
+                            class="text-sm sm:text-md font-bold text-black hover:text-zinc-500 transition-colors font-mono hover-target break-all">hello@singularityunion.tech</a>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-12">
-                    <div class="space-y-6">
-                        <h5 class="text-[10px] mono uppercase text-zinc-400 font-black tracking-[0.2em]">Contact Channels</h5>
-                        <nav class="flex flex-col gap-4 text-sm font-bold uppercase tracking-wider text-zinc-800 hover-targets">
-                            <a href="https://www.linkedin.com/company/singularity-union/" target="_blank" class="hover:text-indigo-600 transition-colors">LinkedIn</a>
-                            <a href="https://x.com/SINGULARIT95067" target="_blank" class="hover:text-indigo-600 transition-colors">X.com</a>
-                            <a href="https://www.youtube.com/@SINGULARITYUNION" target="_blank" class="hover:text-indigo-600 transition-colors">YouTube</a>
-                            <a href="https://www.instagram.com/singularity_union/" target="_blank" class="hover:text-indigo-600 transition-colors">Instagram</a>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-12 w-full lg:w-auto">
+                    <div class="space-y-4 sm:space-y-6">
+                        <h5
+                            class="text-[9px] sm:text-[10px] font-mono uppercase text-zinc-400 font-black tracking-[0.2em]">
+                            Contact
+                            Channels</h5>
+                        <nav class="flex flex-row flex-wrap gap-4">
+                            <!-- LinkedIn -->
+                            <a href="https://www.linkedin.com/company/singularity-union/" target="_blank"
+                                class="magnetic group flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-zinc-100 text-zinc-900 hover:bg-[#0077b5] hover:text-white hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(0,119,181,0.3)] transition-all duration-500 hover-target">
+                                <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-500"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                            </a>
+
+                            <!-- X (Twitter) -->
+                            <a href="https://x.com/SINGULARIT95067" target="_blank"
+                                class="magnetic group flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-zinc-100 text-zinc-900 hover:bg-black hover:text-white hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(0,0,0,0.15)] transition-all duration-500 hover-target">
+                                <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-500"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+                                </svg>
+                            </a>
+
+                            <!-- YouTube -->
+                            <a href="https://www.youtube.com/@SINGULARITYUNION" target="_blank"
+                                class="magnetic group flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-zinc-100 text-zinc-900 hover:bg-red-600 hover:text-white hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(220,38,38,0.25)] transition-all duration-500 hover-target">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform duration-500"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                </svg>
+                            </a>
+
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/singularity_union/" target="_blank"
+                                class="magnetic group flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-zinc-100 text-zinc-900 hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-pink-500 hover:to-purple-600 hover:text-white hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(236,72,153,0.3)] transition-all duration-500 hover-target">
+                                <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-500"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.053 3.252.145 4.771 1.691 4.92 4.919.041 1.265.051 1.645.051 4.865s-.01 3.608-.051 4.865c-.149 3.228-1.668 4.774-4.92 4.919-1.266.04-1.646.053-4.85.053-3.204 0-3.584-.013-4.85-.053-3.252-.145-4.771-1.691-4.92-4.919-.04-.1265-.051-1.645-.051-4.865s.011-3.608.051-4.865c.149-3.228 1.668-4.774 4.92-4.919 1.266-.04 1.646-.053 4.85-.053zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.947.072s3.668-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.947s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.44-.645 1.44-1.44-.645-1.44-1.44-1.44z" />
+                                </svg>
+                            </a>
                         </nav>
                     </div>
-                    <div class="space-y-6">
-                        <h5 class="text-[10px] mono uppercase text-zinc-400 font-black tracking-[0.2em]">Legal</h5>
-                        <nav class="flex flex-col gap-4 text-sm font-bold uppercase tracking-wider text-zinc-800 hover-targets">
-                            <a href="privacy.html" class="hover:text-indigo-600 transition-colors">Privacy</a>
-                            <a href="terms.html" class="hover:text-indigo-600 transition-colors">Terms</a>
-                            <a href="security.html" class="hover:text-indigo-600 transition-colors">Security</a>
+                    <div class="space-y-4 sm:space-y-6">
+                        <h5
+                            class="text-[9px] sm:text-[10px] font-mono uppercase text-zinc-400 font-black tracking-[0.2em]">
+                            Legal</h5>
+                        <nav
+                            class="flex flex-col gap-3 sm:gap-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-black">
+                            <a href="privacy.html"
+                                class="group flex items-center gap-3 hover:text-zinc-500 transition-colors hover-target">
+                                <div
+                                    class="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-zinc-100 text-zinc-900 group-hover:bg-black group-hover:text-white transition-all duration-500 shrink-0">
+                                    <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg>
+                                </div>
+                                Privacy Policy
+                            </a>
+                            <a href="terms.html"
+                                class="group flex items-center gap-3 hover:text-zinc-500 transition-colors hover-target">
+                                <div
+                                    class="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-zinc-100 text-zinc-900 group-hover:bg-black group-hover:text-white transition-all duration-500 shrink-0">
+                                    <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                Terms of Service
+                            </a>
+                            <a href="security.html"
+                                class="group flex items-center gap-3 hover:text-zinc-500 transition-colors hover-target">
+                                <div
+                                    class="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-zinc-100 text-zinc-900 group-hover:bg-black group-hover:text-white transition-all duration-500 shrink-0">
+                                    <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                Security Framework
+                            </a>
                         </nav>
                     </div>
                 </div>
             </div>
-
-            <div class="pt-10 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-6">
-                <span class="text-[10px] mono text-zinc-500 uppercase font-black tracking-[0.2em]">© 2026 Singularity Union // All Rights Reserved</span>
-                <div class="flex items-center gap-4 bg-zinc-100 px-4 py-2 rounded-full">
-                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_#22c55e]"></div>
-                    <span id="footer-status" class="text-[10px] mono text-zinc-800 uppercase font-black">Link: Established // 21ms</span>
+            <div
+                class="pt-6 sm:pt-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 text-center md:text-left">
+                <span
+                    class="text-[9px] sm:text-[10px] font-mono text-zinc-500 uppercase font-black tracking-[0.2em] leading-relaxed">©
+                    2026
+                    Singularity Union // All Rights Reserved</span>
+                <div
+                    class="flex items-center gap-2 sm:gap-3 bg-zinc-100 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-zinc-200 shrink-0">
+                    <div class="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                    <span
+                        class="text-[9px] sm:text-[10px] font-mono text-zinc-800 uppercase font-black tracking-widest">Link:
+                        Established</span>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- =======================================================================
-         ORION HELIX AI OVERLAY MODAL
-         ======================================================================= -->
-    <div id="orion-modal" class="fixed inset-0 z-[999999] opacity-0 pointer-events-none transition-opacity duration-1000 flex flex-col items-center justify-center overflow-hidden">
-        <!-- 3D Helix Canvas Engine -->
-        <canvas id="orion-canvas" class="absolute inset-0 z-0"></canvas>
+    <div
+        class="fixed bottom-6 right-6 z-50 px-4 py-2 flex gap-4 font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-500 hidden md:flex mix-blend-difference pointer-events-none">
+        <span class="flex items-center gap-2"><span class="w-1 h-1 bg-white rounded-full animate-pulse"></span> CORE:
+            STABLE</span>
+        <span id="ping-hud">LATENCY: 12ms</span>
+    </div>
 
-        <button id="close-orion" class="absolute top-8 right-8 md:top-12 md:right-12 z-20 text-white opacity-50 hover:opacity-100 hover:text-rose-500 transition-all duration-300 mono text-xs tracking-widest uppercase flex items-center gap-3 group">
-            <span class="w-10 h-px bg-current block group-hover:w-16 transition-all duration-300"></span> Terminate Sequence
-        </button>
-
-        <div class="relative z-10 text-center flex flex-col items-center justify-center h-full w-full pointer-events-none px-6">
-            <div id="orion-text-1" class="opacity-0 transform translate-y-12 transition-all duration-1000 ease-out">
-                <span class="mono text-cyan-400 font-black text-xs md:text-sm tracking-[0.6em] uppercase mb-6 block drop-shadow-[0_0_15px_cyan]">System Initialized</span>
-                <h2 class="text-6xl md:text-8xl lg:text-[9rem] font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-indigo-100 to-indigo-800 orion-text-glow leading-none mb-6">
-                    ORION HELIX<br/>AI
-                </h2>
-            </div>
-            <div id="orion-text-2" class="opacity-0 transform translate-y-12 transition-all duration-1000 ease-out">
-                <div class="h-px w-32 bg-gradient-to-r from-transparent via-cyan-500 to-transparent mx-auto mb-8"></div>
-                <p class="text-xl md:text-4xl text-zinc-200 font-light tracking-[0.3em] uppercase drop-shadow-[0_0_20px_white]">
-                    The Multiverse of Artificial Intelligence
-                </p>
-            </div>
+    <div id="scroll-tracker" class="hidden xl:block pointer-events-none">
+        <div id="scroll-progress" style="height: 0%;"></div>
+        <div
+            class="absolute -left-8 top-1/2 -translate-y-1/2 -rotate-90 text-[8px] font-mono text-cyan-500 uppercase tracking-[0.3em] whitespace-nowrap">
+            Depth_Axis <span id="depth-percentage" class="text-white">00%</span>
         </div>
     </div>
 
-    <!-- =======================================================================
-         HYPER-ADVANCED JAVASCRIPT ENGINE
-         ======================================================================= -->
+    <div
+        class="fixed bottom-0 left-0 w-full h-6 bg-black/80 backdrop-blur-md border-t border-white/5 z-[60] overflow-hidden flex items-center hidden md:flex pointer-events-none">
+        <div
+            class="animate-marquee whitespace-nowrap text-[9px] font-mono uppercase tracking-[0.2em] text-zinc-500 flex gap-12">
+            <span>[ SYSTEM: ORION HELIX ACTIVE ]</span>
+            <span class="text-cyan-500">GLOBAL_NODES: 4,092 ONLINE</span>
+            <span>THREAT_DETECTION: 0 VULNERABILITIES</span>
+            <span class="text-emerald-500">QUANTUM_ENCRYPTION: LOCKED</span>
+            <span>NEURAL_SYNC_RATE: 99.98%</span>
+            <span>[ SYSTEM: ORION HELIX ACTIVE ]</span>
+            <span class="text-cyan-500">GLOBAL_NODES: 4,092 ONLINE</span>
+            <span>THREAT_DETECTION: 0 VULNERABILITIES</span>
+            <span class="text-emerald-500">QUANTUM_ENCRYPTION: LOCKED</span>
+            <span>NEURAL_SYNC_RATE: 99.98%</span>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const isMobile = window.innerWidth < 768;
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            let isMobile = window.innerWidth < 768;
+            let isIndexOpen = false;
 
-            /* --- 2. MAGNETIC BUTTON PHYSICS --- */
-            if (!isMobile && !prefersReducedMotion) {
-                const magneticElements = document.querySelectorAll('.magnetic-btn');
-                magneticElements.forEach(btn => {
-                    btn.addEventListener('mousemove', function(e) {
-                        const rect = this.getBoundingClientRect();
-                        const hx = rect.left + rect.width / 2;
-                        const hy = rect.top + rect.height / 2;
-                        const dx = e.clientX - hx;
-                        const dy = e.clientY - hy;
-                        // Pull the element towards the mouse based on distance
-                        this.style.transform = `translate(${dx * 0.25}px, ${dy * 0.25}px)`;
+            // Initialize Lenis Smooth Scroll Engine
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                direction: 'vertical',
+                gestureDirection: 'vertical',
+                smooth: true,
+                mouseMultiplier: 1,
+                smoothTouch: false,
+                touchMultiplier: 2,
+                infinite: false,
+            })
+
+            function raf(time) {
+                lenis.raf(time)
+                requestAnimationFrame(raf)
+            }
+            requestAnimationFrame(raf)
+
+            // Make anchor links work with Lenis
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === "#") return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        lenis.scrollTo(targetElement);
+                        if (isIndexOpen) toggleIndex();
+                    }
+                });
+            });
+
+            // Advanced Terminal Boot Sequence
+            const bootOverlay = document.getElementById('boot-sequence');
+            const bootTerminal = document.getElementById('boot-terminal');
+            const bootBar = document.getElementById('boot-progress');
+
+            if (bootOverlay && bootTerminal && bootBar) {
+                const bootLines = [
+                    "ESTABLISHING SECURE CONNECTION...",
+                    "BYPASSING FIREWALL [NODE 7]...",
+                    "DECRYPTING COGNITIVE WEIGHTS...",
+                    "ORION KERNEL INITIALIZED.",
+                    "ACCESS GRANTED."
+                ];
+
+                let lineIndex = 0;
+                let progress = 0;
+
+                const bootInterval = setInterval(() => {
+                    if (lineIndex < bootLines.length) {
+                        const line = document.createElement('div');
+                        line.innerText = `> ${bootLines[lineIndex]}`;
+                        bootTerminal.appendChild(line);
+                        lineIndex++;
+                        progress += 20;
+                        bootBar.style.width = `${progress}%`;
+                    } else {
+                        clearInterval(bootInterval);
+                        setTimeout(() => {
+                            bootBar.style.width = '100%';
+                            bootOverlay.style.transform = 'translateY(-100%)';
+                            setTimeout(() => bootOverlay.remove(), 1200);
+                        }, 400);
+                    }
+                }, 300);
+            }
+
+            // Fake Telemetry Ping
+            setInterval(() => {
+                const ping = document.getElementById('ping-hud');
+                if (ping) ping.innerText = `LATENCY: ${Math.floor(Math.random() * 8) + 8}ms`;
+            }, 2000);
+
+            // Elite Waitlist Interaction with FormSubmit
+            const form = document.querySelector('form');
+            const btnWaitlist = document.getElementById('btn-submit-waitlist');
+            const waitlistText = document.getElementById('waitlist-text');
+
+            if (form && btnWaitlist) {
+                form.addEventListener('submit', (e) => {
+                    // Let the form submit naturally to formsubmit.co, just update UI
+                    btnWaitlist.style.pointerEvents = 'none';
+                    btnWaitlist.style.background = 'rgba(255,255,255,0.1)';
+                    btnWaitlist.style.color = '#fff';
+                    waitlistText.innerText = 'TRANSMITTING TO CORE...';
+                });
+            }
+
+            // System Index Toggle
+            const btnIndex = document.getElementById('btn-index-toggle');
+            const indexOverlay = document.getElementById('system-index-overlay');
+            const indexContent = document.getElementById('index-content');
+            const indexBtnText = document.getElementById('index-btn-text');
+
+            const toggleIndex = () => {
+                isIndexOpen = !isIndexOpen;
+                if (isIndexOpen) {
+                    indexOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                    indexOverlay.classList.add('opacity-100', 'pointer-events-auto');
+                    indexContent.classList.remove('translate-y-10');
+                    indexContent.classList.add('translate-y-0');
+                    if (window.innerWidth > 640) indexBtnText.innerText = 'CLOSE';
+                    btnIndex.classList.add('text-cyan-400', 'border-cyan-500/50');
+                    lenis.stop();
+                } else {
+                    indexOverlay.classList.remove('opacity-100', 'pointer-events-auto');
+                    indexOverlay.classList.add('opacity-0', 'pointer-events-none');
+                    indexContent.classList.remove('translate-y-0');
+                    indexContent.classList.add('translate-y-10');
+                    if (window.innerWidth > 640) indexBtnText.innerText = 'INDEX';
+                    btnIndex.classList.remove('text-cyan-400', 'border-cyan-500/50');
+                    lenis.start();
+                }
+            };
+
+            btnIndex.addEventListener('click', toggleIndex);
+
+            // Dynamic Mouse Spotlight on Glass Panels
+            document.querySelectorAll('.glass-panel').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+
+            // 3D Tilt Physics for Architect Cards
+            if (!isMobile) {
+                document.querySelectorAll('.tilt-card').forEach(card => {
+                    card.addEventListener('mousemove', e => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+
+                        const rotateX = ((y - centerY) / centerY) * -5;
+                        const rotateY = ((x - centerX) / centerX) * 5;
+
+                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
                     });
-                    btn.addEventListener('mouseleave', function() {
-                        this.style.transform = 'translate(0px, 0px)';
+
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+                        card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+                    });
+
+                    card.addEventListener('mouseenter', () => {
+                        card.style.transition = 'none';
                     });
                 });
             }
 
-            /* --- 3. 3D BUTTER ENGINE (Interactive Text/Cards) --- */
-            if (!isMobile && !prefersReducedMotion) {
-                const interactiveText = document.querySelector('.interactive-text');
-                if (interactiveText) {
-                    document.addEventListener('mousemove', (e) => {
-                        const xAxis = (window.innerWidth / 2 - e.pageX) / 60;
-                        const yAxis = (window.innerHeight / 2 - e.pageY) / 60;
-                        // Apply perspective directly here to avoid breaking canvas fixed positioning
-                        interactiveText.style.transform = `perspective(1500px) rotateY(${xAxis}deg) rotateX(${-yAxis}deg)`;
+            // Magnetic Buttons Logic
+            if (!isMobile) {
+                document.querySelectorAll('.magnetic').forEach(btn => {
+                    btn.addEventListener('mousemove', e => {
+                        const rect = btn.getBoundingClientRect();
+                        const x = e.clientX - rect.left - rect.width / 2;
+                        const y = e.clientY - rect.top - rect.height / 2;
+                        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
                     });
-                }
+                    btn.addEventListener('mouseleave', () => {
+                        btn.style.transform = `translate(0px, 0px)`;
+                    });
+                });
             }
 
-            /* --- 4. CINEMATIC GLITCH-FREE REVEALS --- */
-            const revealTargets = document.querySelectorAll('.cinematic-reveal');
-            const revealOptions = {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px" // Trigger slightly before it comes into full view
+            // Custom Smooth Cursor
+            const cursorDot = document.getElementById('cursor-dot');
+            const cursorRing = document.getElementById('cursor-ring');
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+            let ringX = mouseX;
+            let ringY = mouseY;
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if (cursorDot) {
+                    cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+                }
+            });
+
+            const renderCursor = () => {
+                ringX += (mouseX - ringX) * 0.15;
+                ringY += (mouseY - ringY) * 0.15;
+                if (cursorRing) {
+                    cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+                }
+                requestAnimationFrame(renderCursor);
             };
-            
+            requestAnimationFrame(renderCursor);
+
+            document.addEventListener('mouseleave', () => {
+                if (cursorDot) cursorDot.style.opacity = 0;
+                if (cursorRing) cursorRing.style.opacity = 0;
+            });
+            document.addEventListener('mouseenter', () => {
+                if (cursorDot) cursorDot.style.opacity = 1;
+                if (cursorRing) cursorRing.style.opacity = 1;
+            });
+
+            // Cinematic Scroll Reveals
+            const reveals = document.querySelectorAll('.reveal');
+            const observerOptions = { root: null, rootMargin: '0px 0px -100px 0px', threshold: 0.1 };
+
             const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Reveal only once for cinematic impact
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
                     }
                 });
-            }, revealOptions);
+            }, observerOptions);
 
-            revealTargets.forEach(target => revealObserver.observe(target));
+            reveals.forEach(reveal => revealObserver.observe(reveal));
 
-            /* --- 5. THE QUANTUM NEURAL CANVAS --- */
-            // Highly optimized particle network representing AI/Data logic
-            const canvas = document.getElementById('quantum-canvas');
+            // Elite 3D Universe + Monochrome Helix Canvas Engine
+            const canvas = document.getElementById('helix-canvas');
             const ctx = canvas.getContext('2d');
-            let particles = [];
-            // Dynamically adjust particle count based on screen size for performance
-            const particleCount = isMobile ? 35 : 120;
+            let width, height;
 
             const resizeCanvas = () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+                isMobile = width < 768;
             };
             window.addEventListener('resize', resizeCanvas);
             resizeCanvas();
 
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    // Add Z-depth concept for parallax sizing/speed
-                    this.z = Math.random() * 2 + 0.1; 
-                    this.vx = ((Math.random() - 0.5) * 0.5) / this.z;
-                    this.vy = ((Math.random() - 0.5) * 0.5) / this.z;
-                    this.baseRadius = (Math.random() * 1.5 + 0.5) / this.z;
-                }
-                update(mouseX, mouseY) {
-                    this.x += this.vx;
-                    this.y += this.vy;
+            // Render faint Nebulae textures (Deep space dust)
+            const nebulaTexture = document.createElement('canvas');
+            nebulaTexture.width = 512;
+            nebulaTexture.height = 512;
+            const nCtx = nebulaTexture.getContext('2d');
+            const nGrad = nCtx.createRadialGradient(256, 256, 0, 256, 256, 256);
+            nGrad.addColorStop(0, 'rgba(20, 15, 45, 0.12)');
+            nGrad.addColorStop(0.4, 'rgba(10, 15, 35, 0.05)');
+            nGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            nCtx.fillStyle = nGrad;
+            nCtx.fillRect(0, 0, 512, 512);
 
-                    // Smooth screen wrapping
-                    if (this.x < -50) this.x = canvas.width + 50;
-                    if (this.x > canvas.width + 50) this.x = -50;
-                    if (this.y < -50) this.y = canvas.height + 50;
-                    if (this.y > canvas.height + 50) this.y = -50;
+            const numPoints = isMobile ? 80 : 150;
+            let radiusX = isMobile ? 120 : 200;
+            let radiusZ = isMobile ? 120 : 200;
+            const spacing = isMobile ? 10 : 12;
+            let time = 0;
 
-                    // Mouse Interaction (Quantum repulsion)
-                    if (!isMobile && mouseX && mouseY) {
-                        const dx = mouseX - this.x;
-                        const dy = mouseY - this.y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-                        
-                        // Push particles away, affecting closer ones more
-                        if (dist < 200) {
-                            const force = (200 - dist) / 200;
-                            this.x -= (dx / dist) * force * (2 / this.z);
-                            this.y -= (dy / dist) * force * (2 / this.z);
-                        }
-                    }
-                }
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.baseRadius, 0, Math.PI * 2);
-                    // Deeper particles are dimmer
-                    const alpha = Math.max(0.1, 0.8 - (this.z * 0.2));
-                    ctx.fillStyle = `rgba(99, 102, 241, ${alpha})`;
-                    ctx.fill();
-                }
-            }
+            let stars = [];
+            let nebulae = [];
 
-            for (let i = 0; i < particleCount; i++) particles.push(new Particle());
-
-            let globalMouseX = null, globalMouseY = null;
-            if (!isMobile) {
-                window.addEventListener('mousemove', (e) => {
-                    globalMouseX = e.clientX;
-                    globalMouseY = e.clientY;
-                });
-            }
-
-            const animateNetwork = () => {
-                // Clear canvas cleanly every frame to guarantee perfect visibility in VS Code/Iframes
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                // Determine connection distance dynamically
-                const connectDist = isMobile ? 80 : 130;
-
-                particles.forEach(p => p.update(globalMouseX, globalMouseY));
-                
-                // Draw Neural Web Connections
-                for (let i = 0; i < particles.length; i++) {
-                    for (let j = i + 1; j < particles.length; j++) {
-                        const dx = particles[i].x - particles[j].x;
-                        const dy = particles[i].y - particles[j].y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-                        
-                        if (distance < connectDist) {
-                            ctx.beginPath();
-                            ctx.moveTo(particles[i].x, particles[i].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            // Opacity based on distance and Z-depth
-                            const avgZ = (particles[i].z + particles[j].z) / 2;
-                            const opacity = (1 - (distance / connectDist)) * (1 / avgZ) * 0.8; // Boosted visibility
-                            
-                            // Use cyan for links, primary for dots to create unearthly glow
-                            ctx.strokeStyle = `rgba(6, 182, 212, ${opacity})`;
-                            ctx.lineWidth = 1 / avgZ;
-                            ctx.stroke();
-                        }
-                    }
-                    particles[i].draw();
-                }
-                
-                // Mouse-to-particle lasers
-                if (globalMouseX !== null && !isMobile) {
-                    particles.forEach(p => {
-                        const dx = globalMouseX - p.x;
-                        const dy = globalMouseY - p.y;
-                        const dist = Math.sqrt(dx*dx + dy*dy);
-                        if (dist < 180) {
-                            ctx.beginPath();
-                            ctx.moveTo(p.x, p.y);
-                            ctx.lineTo(globalMouseX, globalMouseY);
-                            // Laser intensity based on proximity
-                            const intensity = (1 - dist/180) * 0.8;
-                            ctx.strokeStyle = `rgba(244, 63, 94, ${intensity})`; // Rose color accent
-                            ctx.lineWidth = 1.2;
-                            ctx.stroke();
-                        }
+            const initUniverse = () => {
+                const numStars = isMobile ? 250 : 700;
+                stars = [];
+                for (let i = 0; i < numStars; i++) {
+                    stars.push({
+                        x: Math.random() * width * 1.5 - width * 0.25,
+                        y: Math.random() * height * 1.5 - height * 0.25,
+                        z: Math.random() * 4 + 1,
+                        size: Math.random() * 1.2 + 0.1,
+                        alpha: Math.random(),
+                        speed: (Math.random() * 0.015) - 0.0075,
+                        color: Math.random() > 0.85 ? 'rgba(220, 240, 255, ' : 'rgba(255, 255, 255, '
                     });
                 }
 
-                requestAnimationFrame(animateNetwork);
-            };
-            
-            // Start the universe
-            requestAnimationFrame(animateNetwork);
-
-            /* --- 6. FOOTER PING SIMULATION --- */
-            setInterval(() => {
-                const ping = Math.floor(Math.random() * 12) + 10; // 10-22ms
-                const statusEl = document.getElementById('footer-status');
-                if (statusEl) statusEl.innerText = `Link: Established // ${ping}ms`;
-            }, 3500);
-
-            /* --- 7. ORION HELIX AI MODAL ENGINE --- */
-            const btnOrion = document.getElementById('btn-orion');
-            const modalOrion = document.getElementById('orion-modal');
-            const closeOrion = document.getElementById('close-orion');
-            const oText1 = document.getElementById('orion-text-1');
-            const oText2 = document.getElementById('orion-text-2');
-            
-            // Orion Canvas Setup
-            const oCanvas = document.getElementById('orion-canvas');
-            const oCtx = oCanvas.getContext('2d');
-            let orionActive = false;
-            let oTime = 0;
-
-            const resizeOrion = () => {
-                oCanvas.width = window.innerWidth;
-                oCanvas.height = window.innerHeight;
-            };
-            window.addEventListener('resize', resizeOrion);
-            resizeOrion();
-
-            // 3D Double Helix Render Engine
-            const drawHelix = () => {
-                if (!orionActive) return;
-                
-                // Motion blur trail
-                oCtx.globalCompositeOperation = 'destination-out';
-                oCtx.fillStyle = 'rgba(0, 0, 0, 0.2)';
-                oCtx.fillRect(0, 0, oCanvas.width, oCanvas.height);
-                oCtx.globalCompositeOperation = 'source-over';
-
-                const centerY = oCanvas.height / 2;
-                const centerX = oCanvas.width / 2;
-                const radius = Math.min(oCanvas.width, oCanvas.height) * 0.25;
-
-                oTime += 0.03;
-
-                // Draw vertical DNA/Helix
-                for (let i = 0; i < 180; i++) {
-                    const phase = i * 0.15;
-                    const yOffset = (i - 90) * (oCanvas.height / 120);
-
-                    // Strand 1 (Indigo)
-                    const x1 = Math.sin(oTime + phase) * radius;
-                    const z1 = Math.cos(oTime + phase);
-                    const scale1 = (z1 + 2) / 3;
-
-                    // Strand 2 (Cyan)
-                    const x2 = Math.sin(oTime + phase + Math.PI) * radius;
-                    const z2 = Math.cos(oTime + phase + Math.PI);
-                    const scale2 = (z2 + 2) / 3;
-
-                    // Depth sorting (Draw back to front)
-                    if (z1 < z2) {
-                        drawNode(centerX + x1, centerY + yOffset, scale1, `rgba(99, 102, 241, ${scale1})`);
-                        drawNode(centerX + x2, centerY + yOffset, scale2, `rgba(6, 182, 212, ${scale2})`);
-                    } else {
-                        drawNode(centerX + x2, centerY + yOffset, scale2, `rgba(6, 182, 212, ${scale2})`);
-                        drawNode(centerX + x1, centerY + yOffset, scale1, `rgba(99, 102, 241, ${scale1})`);
-                    }
-
-                    // DNA connecting rungs
-                    if (i % 6 === 0) {
-                        oCtx.beginPath();
-                        oCtx.moveTo(centerX + x1, centerY + yOffset);
-                        oCtx.lineTo(centerX + x2, centerY + yOffset);
-                        const linkOpacity = Math.min(scale1, scale2) * 0.3;
-                        oCtx.strokeStyle = `rgba(255, 255, 255, ${linkOpacity})`;
-                        oCtx.lineWidth = 1;
-                        oCtx.stroke();
-                    }
-                }
-                requestAnimationFrame(drawHelix);
-            };
-
-            const drawNode = (x, y, scale, color) => {
-                oCtx.beginPath();
-                oCtx.arc(x, y, 4 * scale, 0, Math.PI * 2);
-                oCtx.fillStyle = color;
-                oCtx.fill();
-                // Glow effect for nodes close to camera
-                if (scale > 0.8) {
-                    oCtx.shadowBlur = 15;
-                    oCtx.shadowColor = color;
-                    oCtx.fill();
-                    oCtx.shadowBlur = 0; // reset
+                const numNebulae = isMobile ? 4 : 8;
+                nebulae = [];
+                for (let i = 0; i < numNebulae; i++) {
+                    nebulae.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        size: Math.random() * 800 + (isMobile ? 300 : 600),
+                        angle: Math.random() * Math.PI * 2,
+                        speed: (Math.random() * 0.001) - 0.0005
+                    });
                 }
             };
 
-            // Modal Interactions
-            btnOrion.addEventListener('click', (e) => {
-                e.preventDefault();
-                modalOrion.style.opacity = '1';
-                modalOrion.style.pointerEvents = 'auto';
-                document.body.style.overflow = 'hidden';
-                
-                orionActive = true;
-                drawHelix();
+            initUniverse();
 
-                // Sequence timing
-                setTimeout(() => {
-                    oText1.style.opacity = '1';
-                    oText1.style.transform = 'translateY(0)';
-                }, 600);
-
-                setTimeout(() => {
-                    oText2.style.opacity = '1';
-                    oText2.style.transform = 'translateY(0)';
-                }, 1800);
+            window.addEventListener('resize', () => {
+                radiusX = window.innerWidth > 768 ? 200 : 120;
+                radiusZ = window.innerWidth > 768 ? 200 : 120;
+                initUniverse();
             });
 
-            closeOrion.addEventListener('click', () => {
-                modalOrion.style.opacity = '0';
-                modalOrion.style.pointerEvents = 'none';
-                document.body.style.overflow = 'auto';
+            const drawEngine = () => {
+                ctx.fillStyle = '#000000';
+                ctx.fillRect(0, 0, width, height);
 
-                // Reset animations
-                oText1.style.opacity = '0';
-                oText1.style.transform = 'translateY(48px)';
-                oText2.style.opacity = '0';
-                oText2.style.transform = 'translateY(48px)';
+                const targetXOff = isMobile ? 0 : (mouseX - width / 2) * 0.03;
+                const targetYOff = isMobile ? 0 : (mouseY - height / 2) * 0.03;
 
-                setTimeout(() => {
-                    orionActive = false;
-                    oCtx.clearRect(0, 0, oCanvas.width, oCanvas.height);
-                }, 1000);
+                ctx.globalCompositeOperation = 'screen';
+
+                nebulae.forEach(n => {
+                    n.angle += n.speed;
+                    const nx = n.x + targetXOff * 0.1;
+                    const ny = n.y + targetYOff * 0.1;
+                    ctx.save();
+                    ctx.translate(nx, ny);
+                    ctx.rotate(n.angle);
+                    ctx.drawImage(nebulaTexture, -n.size / 2, -n.size / 2, n.size, n.size);
+                    ctx.restore();
+                });
+
+                ctx.globalCompositeOperation = 'source-over';
+                stars.forEach(s => {
+                    s.alpha += s.speed;
+                    if (s.alpha <= 0.05 || s.alpha >= 0.8) s.speed *= -1;
+
+                    const sx = s.x + (targetXOff / s.z);
+                    const sy = s.y + (targetYOff / s.z);
+
+                    if (sx > -10 && sx < width + 10 && sy > -10 && sy < height + 10) {
+                        ctx.beginPath();
+                        ctx.arc(sx, sy, s.size, 0, Math.PI * 2);
+                        ctx.fillStyle = s.color + s.alpha + ')';
+                        ctx.fill();
+                    }
+                });
+
+                time += 0.004;
+                const centerY = height / 2 - (numPoints * spacing) / 2;
+                const centerX = width / 2 + targetXOff;
+
+                let allPoints = [];
+
+                for (let i = 0; i < numPoints; i++) {
+                    const angle = i * 0.15 + time;
+                    const y = centerY + i * spacing + targetYOff;
+                    const x1 = Math.cos(angle) * radiusX;
+                    const z1 = Math.sin(angle) * radiusZ;
+                    const x2 = Math.cos(angle + Math.PI) * radiusX;
+                    const z2 = Math.sin(angle + Math.PI) * radiusZ;
+                    const scale1 = 400 / (400 - z1);
+                    const scale2 = 400 / (400 - z2);
+
+                    allPoints.push({ type: 'helix', x: centerX + x1 * scale1, y, scale: scale1, z: z1, isStrand1: true });
+                    allPoints.push({ type: 'helix', x: centerX + x2 * scale2, y, scale: scale2, z: z2, isStrand1: false });
+
+                    if (i % 4 === 0) {
+                        const avgZ = (z1 + z2) / 2;
+                        allPoints.push({ type: 'rung', x1: centerX + x1 * scale1, y1: y, x2: centerX + x2 * scale2, y2: y, z: avgZ });
+                    }
+                }
+
+                allPoints.sort((a, b) => a.z - b.z);
+
+                allPoints.forEach(p => {
+                    if (p.type === 'rung') {
+                        const depthFactor = (radiusZ + p.z) / (2 * radiusZ);
+                        const opacity = Math.max(0.02, depthFactor * 0.25);
+                        ctx.beginPath();
+                        ctx.moveTo(p.x1, p.y1);
+                        ctx.lineTo(p.x2, p.y2);
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    } else if (p.type === 'helix') {
+                        const depthFactor = (radiusZ + p.z) / (2 * radiusZ);
+                        const opacity = Math.max(0.1, depthFactor * 0.9);
+                        const color = p.isStrand1 ? `rgba(255, 255, 255, ${opacity})` : `rgba(160, 160, 160, ${opacity * 0.6})`;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, 1.5 * p.scale, 0, Math.PI * 2);
+                        ctx.fillStyle = color;
+                        ctx.fill();
+                        if (depthFactor > 0.85 && !isMobile) {
+                            ctx.shadowBlur = 12;
+                            ctx.shadowColor = 'rgba(255,255,255,0.4)';
+                            ctx.fill();
+                            ctx.shadowBlur = 0;
+                        }
+                    }
+                });
+
+                requestAnimationFrame(drawEngine);
+            };
+
+            drawEngine();
+
+            // Elite Text Scramble Effect
+            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
+            let textInterval = null;
+
+            document.querySelectorAll('.scramble-hover').forEach(el => {
+                el.addEventListener('mouseover', event => {
+                    if (window.innerWidth < 768) return;
+                    let iteration = 0;
+                    clearInterval(textInterval);
+
+                    textInterval = setInterval(() => {
+                        event.target.innerText = event.target.innerText
+                            .split("")
+                            .map((letter, index) => {
+                                if (index < iteration) return event.target.dataset.value[index];
+                                return letters[Math.floor(Math.random() * 26)];
+                            })
+                            .join("");
+
+                        if (iteration >= event.target.dataset.value.length) clearInterval(textInterval);
+                        iteration += 1 / 3;
+                    }, 30);
+                });
             });
 
+            // Tactical Scroll Depth Tracker
+            const scrollProgress = document.getElementById('scroll-progress');
+            const depthPercentage = document.getElementById('depth-percentage');
+
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.scrollY;
+                const docHeight = document.body.offsetHeight;
+                const winHeight = window.innerHeight;
+                const scrollPercent = scrollTop / (docHeight - winHeight);
+                const scrollPercentRounded = Math.round(scrollPercent * 100);
+
+                if (scrollProgress) scrollProgress.style.height = `${scrollPercent * 100}%`;
+                if (depthPercentage) depthPercentage.innerText = scrollPercentRounded.toString().padStart(2, '0') + '%';
+            });
         });
     </script>
 </body>
+
 </html>
