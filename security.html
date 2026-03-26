@@ -1,86 +1,339 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Security Policy — Singularity Union</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SECURITY FRAMEWORK | Singularity Union</title>
 
-<style>
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background:#0b0f14;
-    color:#e6edf3;
-    max-width:900px;
-    margin:auto;
-    padding:40px 20px;
-    line-height:1.6;
-}
+    <meta name="description"
+        content="Security principles, data sovereignty, and infrastructure protocols for Singularity Union.">
+    <meta name="theme-color" content="#000000">
 
-h1,h2{
-    color:#ffffff;
-}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
 
-a{
-    color:#4ea1ff;
-    text-decoration:none;
-}
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        black: '#000000',
+                        surface: '#0a0a0c',
+                        surface2: '#121216',
+                    },
+                    letterSpacing: {
+                        tighter: '-0.04em',
+                        tightest: '-0.06em',
+                    }
+                }
+            }
+        }
+    </script>
 
-a:hover{
-    text-decoration:underline;
-}
+    <style>
+        :root {
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(10, 10, 12, 0.4);
+        }
 
-.card{
-    background:#111821;
-    padding:25px;
-    border-radius:12px;
-    margin-top:20px;
-}
-</style>
+        body {
+            background-color: #000000;
+            color: #ececec;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            pointer-events: none;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 10px;
+        }
+
+        ::selection {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Custom Cursor */
+        #cursor-dot,
+        #cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        #cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: white;
+            transition: width 0.2s, height 0.2s;
+        }
+
+        #cursor-ring {
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: width 0.3s, height 0.3s, background 0.3s, border-color 0.3s;
+        }
+
+        body:hover #cursor-ring {
+            opacity: 1;
+        }
+
+        .hover-target:hover~#cursor-ring,
+        a:hover~#cursor-ring,
+        button:hover~#cursor-ring {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Glass Panels */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(20, 20, 24, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.4) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Reveals */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.2, 1, 0.3, 1), transform 1s cubic-bezier(0.2, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+    </style>
 </head>
 
-<body>
+<body class="antialiased selection:bg-white selection:text-black">
 
-<h1>Security Policy</h1>
-<p>Last updated: 2026</p>
+    <div id="cursor-dot" class="hidden md:block"></div>
+    <div id="cursor-ring" class="hidden md:block"></div>
+    <div class="noise-overlay"></div>
 
-<div class="card">
-<h2>Our Commitment</h2>
-<p>
-Singularity Union prioritizes system integrity, data protection, and secure engineering practices.
-All infrastructure and applications are designed following standard cybersecurity principles.
-</p>
-</div>
+    <!-- Minimal Navigation -->
+    <nav class="fixed top-0 w-full z-[100] px-6 py-6 transition-all duration-300 bg-black/50 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-4 hover-target cursor-pointer group">
+                <img src="su-logo.png" alt="SU Logo"
+                    class="h-8 w-auto object-contain border border-white/10 rounded p-1 bg-white/5 group-hover:bg-white/10 transition-colors"
+                    onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='flex';">
+                <div id="fallback-logo" style="display:none;"
+                    class="w-8 h-8 bg-white text-black items-center justify-center font-bold text-sm rounded-sm">SU
+                </div>
+                <span class="font-bold tracking-tight uppercase text-sm hidden sm:block text-zinc-300 group-hover:text-white transition-colors">Singularity Union</span>
+            </a>
 
-<div class="card">
-<h2>Data Protection</h2>
-<ul>
-<li>HTTPS encryption enforced</li>
-<li>No selling of user personal data</li>
-<li>Minimal data collection principle</li>
-<li>Secure storage practices</li>
-</ul>
-</div>
+            <div class="flex items-center">
+                <a href="index.html"
+                    class="flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-zinc-400 hover:text-white transition-all hover-target">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Return to Core
+                </a>
+            </div>
+        </div>
+    </nav>
 
-<div class="card">
-<h2>Responsible Disclosure</h2>
-<p>
-If you discover a vulnerability, report it to:
-</p>
-<p><strong>security@singularityunion.tech</strong></p>
-<p>
-We will investigate and respond within a reasonable time.
-</p>
-</div>
+    <main class="relative z-10 flex flex-col items-center pt-32 pb-32">
+        <div class="max-w-4xl mx-auto w-full px-6">
+            
+            <!-- Header -->
+            <div class="mb-16 reveal">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_#10b981]"></div>
+                    <span class="font-mono text-[10px] text-emerald-400 uppercase tracking-[0.3em]">Protocol Active // Updated 2026</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tighter mb-6 text-gradient uppercase">
+                    Security Framework
+                </h1>
+                <p class="text-lg text-zinc-400 font-light leading-relaxed max-w-2xl">
+                    Security is not an afterthought—it is the foundational axiom of our cognitive architecture. At Singularity Union, we engineer systems resilient against adversarial environments and catastrophic data leakage.
+                </p>
+            </div>
 
-<div class="card">
-<h2>Third-Party Services</h2>
-<p>
-Some infrastructure may rely on third-party providers. Their security practices also apply when interacting with our services.
-</p>
-</div>
+            <!-- Panels -->
+            <div class="space-y-6">
+                
+                <!-- Section 1 -->
+                <div class="glass-panel p-8 md:p-10 reveal delay-1 border-t-2 border-t-emerald-500/50 bg-gradient-to-b from-emerald-900/5 to-transparent">
+                    <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-6 border-b border-white/10 pb-4 flex items-center gap-2">
+                        <span class="text-emerald-500">01</span> // Infrastructure Commitment
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-4">Zero-Trust by Design.</h2>
+                    <p class="text-sm text-zinc-300 leading-relaxed font-light">
+                        We operate under the assumption that networks are inherently hostile. All infrastructure, AI agents, and routing protocols are designed utilizing strict zero-trust paradigms. Identity verification is required at every neural node, and lateral movement is mathematically restricted.
+                    </p>
+                </div>
 
-<br><br>
-<a href="index.html">← Back to Home</a>
+                <!-- Section 2 -->
+                <div class="glass-panel p-8 md:p-10 reveal delay-2">
+                    <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-6 border-b border-white/10 pb-4 flex items-center gap-2">
+                        <span class="text-zinc-300">02</span> // Cryptographic Sovereignty
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-6">Strict Data Protection.</h2>
+                    <ul class="space-y-4 text-sm text-zinc-300 font-mono">
+                        <li class="flex items-start gap-4">
+                            <svg class="w-5 h-5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span class="pt-0.5"><strong class="text-white">Cryptographic Primitives:</strong> All data in transit is secured via TLS 1.3, while data at rest is isolated and protected using AES-256-GCM encryption standards.</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <svg class="w-5 h-5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span class="pt-0.5"><strong class="text-white">Zero Data Brokering:</strong> Absolute prohibition on the sale, trading, or model-training on unauthorized client data. Your intelligence remains proprietary.</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <svg class="w-5 h-5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span class="pt-0.5"><strong class="text-white">Ephemeral Processing:</strong> High-risk cognitive workloads are executed in ephemeral, air-gapped environments that systematically self-destruct post-computation.</span>
+                        </li>
+                    </ul>
+                </div>
 
+                <!-- Section 3 (NEW) -->
+                <div class="glass-panel p-8 md:p-10 reveal delay-3 border-t-2 border-t-red-500/30 bg-gradient-to-b from-red-900/5 to-transparent">
+                    <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-6 border-b border-white/10 pb-4 flex items-center gap-2">
+                        <span class="text-red-500">03</span> // Continuous Defense
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-4">Adversarial Red Teaming.</h2>
+                    <p class="text-sm text-zinc-300 leading-relaxed font-light">
+                        Our systems, including the OrionHelix AI framework, are subjected to continuous adversarial stress testing. We utilize automated Red Team protocols to simulate prompt-injections, data exfiltration attempts, and logic bypassing to harden our models prior to enterprise deployment.
+                    </p>
+                </div>
+
+                <!-- Section 4 -->
+                <div class="glass-panel p-8 md:p-10 reveal delay-4">
+                    <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-6 border-b border-white/10 pb-4 flex items-center gap-2">
+                        <span class="text-zinc-300">04</span> // Disclosure Protocol
+                    </div>
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-white mb-3">Responsible Disclosure.</h2>
+                            <p class="text-sm text-zinc-400 leading-relaxed font-light max-w-lg">
+                                If you discover a vulnerability in our infrastructure, models, or API endpoints, report it immediately. We commit to investigating, patching, and communicating critical issues within strict SLA timeframes.
+                            </p>
+                        </div>
+                        <a href="mailto:security@singularityunion.tech" class="shrink-0 bg-white/5 hover:bg-white/10 border border-white/20 text-white font-mono text-[10px] sm:text-xs py-4 px-6 rounded-lg transition-colors hover-target flex items-center gap-3 shadow-[0_0_15px_rgba(255,255,255,0.05)]">
+                            <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            security@singularityunion.tech
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Section 5 -->
+                <div class="glass-panel p-8 md:p-10 reveal delay-4">
+                    <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-6 border-b border-white/10 pb-4 flex items-center gap-2">
+                        <span class="text-zinc-300">05</span> // Supply Chain Integrity
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-4">Third-Party Ecosystem.</h2>
+                    <p class="text-sm text-zinc-400 leading-relaxed font-light">
+                        Our deployments interact exclusively with best-in-class third-party infrastructure providers (e.g., AWS, enterprise vector databases). We ruthlessly audit our vendor supply chain to ensure their compliance parameters align with our uncompromising internal standards.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full text-center py-8 border-t border-white/5 relative z-10">
+        <span class="text-[10px] font-mono text-zinc-600 uppercase font-bold tracking-[0.2em]">© 2026 Singularity Union // Confidential Protocol</span>
+    </footer>
+
+    <!-- JavaScript for Cursor and Reveals -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Custom Cursor
+            const cursorDot = document.getElementById('cursor-dot');
+            const cursorRing = document.getElementById('cursor-ring');
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+            let ringX = mouseX;
+            let ringY = mouseY;
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if (cursorDot) {
+                    cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+                }
+            });
+
+            const renderCursor = () => {
+                ringX += (mouseX - ringX) * 0.15;
+                ringY += (mouseY - ringY) * 0.15;
+                if (cursorRing) {
+                    cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+                }
+                requestAnimationFrame(renderCursor);
+            };
+            requestAnimationFrame(renderCursor);
+
+            // Reveals
+            const reveals = document.querySelectorAll('.reveal');
+            const observerOptions = { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.1 };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            reveals.forEach(reveal => revealObserver.observe(reveal));
+        });
+    </script>
 </body>
-</html
+
+</html>
