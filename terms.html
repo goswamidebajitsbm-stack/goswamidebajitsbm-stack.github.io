@@ -1,20 +1,315 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="scroll-smooth">
+
 <head>
-<title>Terms - Singularity Union</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERMS OF SERVICE | Singularity Union</title>
+
+    <meta name="description"
+        content="Legal parameters, platform licensing, and terms of service for Singularity Union infrastructure.">
+    <meta name="theme-color" content="#000000">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        black: '#000000',
+                        surface: '#0a0a0c',
+                        surface2: '#121216',
+                    },
+                    letterSpacing: {
+                        tighter: '-0.04em',
+                        tightest: '-0.06em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(10, 10, 12, 0.4);
+        }
+
+        body {
+            background-color: #000000;
+            color: #ececec;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            pointer-events: none;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 10px;
+        }
+
+        ::selection {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Custom Cursor */
+        #cursor-dot,
+        #cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        #cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: white;
+            transition: width 0.2s, height 0.2s;
+        }
+
+        #cursor-ring {
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: width 0.3s, height 0.3s, background 0.3s, border-color 0.3s;
+        }
+
+        body:hover #cursor-ring {
+            opacity: 1;
+        }
+
+        .hover-target:hover~#cursor-ring,
+        a:hover~#cursor-ring,
+        button:hover~#cursor-ring {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Glass Panels */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(20, 20, 24, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.4) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Reveals */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.2, 1, 0.3, 1), transform 1s cubic-bezier(0.2, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+    </style>
 </head>
-<body>
 
-<h1>Terms of Use</h1>
+<body class="antialiased selection:bg-white selection:text-black">
 
-<p>
-All content provided on this website is informational.
-No guarantees or warranties are provided.
-</p>
+    <div id="cursor-dot" class="hidden md:block"></div>
+    <div id="cursor-ring" class="hidden md:block"></div>
+    <div class="noise-overlay"></div>
 
-<p>
-Users must not misuse, copy, or redistribute material without permission.
-</p>
+    <!-- Minimal Navigation -->
+    <nav class="fixed top-0 w-full z-[100] px-6 py-6 transition-all duration-300 bg-black/50 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-4 hover-target cursor-pointer group">
+                <img src="su-logo.png" alt="SU Logo"
+                    class="h-8 w-auto object-contain border border-white/10 rounded p-1 bg-white/5 group-hover:bg-white/10 transition-colors"
+                    onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='flex';">
+                <div id="fallback-logo" style="display:none;"
+                    class="w-8 h-8 bg-white text-black items-center justify-center font-bold text-sm rounded-sm">SU
+                </div>
+                <span class="font-bold tracking-tight uppercase text-sm hidden sm:block text-zinc-300 group-hover:text-white transition-colors">Singularity Union</span>
+            </a>
 
+            <div class="flex items-center">
+                <a href="index.html"
+                    class="flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-zinc-400 hover:text-white transition-all hover-target">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Return to Core
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 flex flex-col items-center pt-32 pb-32">
+        <div class="max-w-4xl mx-auto w-full px-6">
+            
+            <!-- Header -->
+            <div class="mb-16 reveal">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse shadow-[0_0_10px_#6366f1]"></div>
+                    <span class="font-mono text-[10px] text-indigo-400 uppercase tracking-[0.3em]">Legal Parameters // Updated 2026</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tighter mb-6 text-gradient uppercase">
+                    Terms of Service
+                </h1>
+                <p class="text-lg text-zinc-400 font-light leading-relaxed max-w-2xl">
+                    By accessing Singularity Union infrastructure, cognitive engines, or digital interfaces, you agree to be bound by the following strict operational and legal parameters.
+                </p>
+            </div>
+
+            <!-- Panels -->
+            <div class="space-y-6">
+                
+                <!-- Section 1 -->
+                <div class="glass-panel p-8 md:p-10 reveal delay-1 border-t-2 border-t-indigo-500/50 bg-gradient-to-b from-indigo-900/5 to-transparent">
+                    <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-6 border-b border-white/10 pb-4 flex items-center gap-2">
+                        <span class="text-indigo-500">01</span> // Platform Licensing
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-4">Strict Usage Parameters.</h2>
+                    <p class="text-sm text-zinc-300 leading-relaxed font-light mb-4">
+                        Access to Singularity Union systems—including the OrionHelix AI framework—is strictly licensed on a deployment basis, not sold. 
+                    </p>
+                    <p class="text-sm text-zinc-400 leading-relaxed font-light">
+                        Users and organizations are explicitly prohibited from reverse-engineering, decompiling, or attempting to extract the underlying neural weights, operational algorithms, or source code of any deployed autonomous agent.
+                    </p>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="glass-panel p-8 md:p-10 reveal delay-2">
+                    <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-6 border-b border-white/10 pb-4 flex items-center gap-2">
+                        <span class="text-zinc-300">02</span> // Intellectual Property
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-4">Proprietary Assets.</h2>
+                    <p class="text-sm text-zinc-300 leading-relaxed font-light">
+                        All algorithms, cognitive architectures, UI/UX designs, trademarks, and synthesized datasets generated by our native systems remain the exclusive intellectual property of Singularity Union. 
+                    </p>
+                    <p class="text-sm text-zinc-400 leading-relaxed font-light mt-4">
+                        Unauthorized reproduction, redistribution, or framing of our digital material without explicit, cryptographically signed authorization constitutes a direct violation of this protocol.
+                    </p>
+                </div>
+
+                <!-- Section 3 -->
+                <div class="glass-panel p-8 md:p-10 reveal delay-3">
+                    <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-6 border-b border-white/10 pb-4 flex items-center gap-2">
+                        <span class="text-zinc-300">03</span> // R&D Disclaimers
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-4">Service Availability.</h2>
+                    <p class="text-sm text-zinc-400 leading-relaxed font-light">
+                        Certain technologies, including the OrionHelix AI Alpha, are provided in an active Research & Development (R&D) phase. While we engineer for deterministic reliability, these specific non-production environments are provided "as-is." We do not warrant uninterrupted operational uptime during pre-release staging.
+                    </p>
+                </div>
+
+                <!-- Section 4 -->
+                <div class="glass-panel p-8 md:p-10 reveal delay-4">
+                    <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-6 border-b border-white/10 pb-4 flex items-center gap-2">
+                        <span class="text-zinc-300">04</span> // Liability Scope
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-4">Limitation of Liability.</h2>
+                    <p class="text-sm text-zinc-400 leading-relaxed font-light">
+                        Under no circumstances shall Singularity Union, its founders, engineers, or affiliates be held liable for any indirect, incidental, or consequential damages arising from the deployment or utilization of our cognitive infrastructure. The organization assumes full responsibility for the governance of workflows executed by autonomous systems within their specific enterprise environments.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full text-center py-8 border-t border-white/5 relative z-10">
+        <span class="text-[10px] font-mono text-zinc-600 uppercase font-bold tracking-[0.2em]">© 2026 Singularity Union // Legal Protocol</span>
+    </footer>
+
+    <!-- JavaScript for Cursor and Reveals -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Custom Cursor
+            const cursorDot = document.getElementById('cursor-dot');
+            const cursorRing = document.getElementById('cursor-ring');
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+            let ringX = mouseX;
+            let ringY = mouseY;
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if (cursorDot) {
+                    cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+                }
+            });
+
+            const renderCursor = () => {
+                ringX += (mouseX - ringX) * 0.15;
+                ringY += (mouseY - ringY) * 0.15;
+                if (cursorRing) {
+                    cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+                }
+                requestAnimationFrame(renderCursor);
+            };
+            requestAnimationFrame(renderCursor);
+
+            // Reveals
+            const reveals = document.querySelectorAll('.reveal');
+            const observerOptions = { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.1 };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            reveals.forEach(reveal => revealObserver.observe(reveal));
+        });
+    </script>
 </body>
+
 </html>
