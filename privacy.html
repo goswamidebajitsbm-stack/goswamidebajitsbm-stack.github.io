@@ -1,24 +1,315 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="scroll-smooth">
+
 <head>
-<title>Privacy Policy - Singularity Union</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRIVACY POLICY | Singularity Union</title>
+
+    <meta name="description"
+        content="Privacy protocols, data sovereignty, and telemetry policies for Singularity Union.">
+    <meta name="theme-color" content="#000000">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        black: '#000000',
+                        surface: '#0a0a0c',
+                        surface2: '#121216',
+                    },
+                    letterSpacing: {
+                        tighter: '-0.04em',
+                        tightest: '-0.06em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(10, 10, 12, 0.4);
+        }
+
+        body {
+            background-color: #000000;
+            color: #ececec;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            pointer-events: none;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 10px;
+        }
+
+        ::selection {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Custom Cursor */
+        #cursor-dot,
+        #cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        #cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: white;
+            transition: width 0.2s, height 0.2s;
+        }
+
+        #cursor-ring {
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: width 0.3s, height 0.3s, background 0.3s, border-color 0.3s;
+        }
+
+        body:hover #cursor-ring {
+            opacity: 1;
+        }
+
+        .hover-target:hover~#cursor-ring,
+        a:hover~#cursor-ring,
+        button:hover~#cursor-ring {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Glass Panels */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(20, 20, 24, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.4) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Reveals */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.2, 1, 0.3, 1), transform 1s cubic-bezier(0.2, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+    </style>
 </head>
-<body>
 
-<h1>Privacy Policy</h1>
+<body class="antialiased selection:bg-white selection:text-black">
 
-<p>
-We do not collect personal data without user consent.
-Any communication initiated by users is voluntary.
-</p>
+    <div id="cursor-dot" class="hidden md:block"></div>
+    <div id="cursor-ring" class="hidden md:block"></div>
+    <div class="noise-overlay"></div>
 
-<p>
-We do not sell, trade, or distribute user information to third parties.
-</p>
+    <!-- Minimal Navigation -->
+    <nav class="fixed top-0 w-full z-[100] px-6 py-6 transition-all duration-300 bg-black/50 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-4 hover-target cursor-pointer group">
+                <img src="su-logo.png" alt="SU Logo"
+                    class="h-8 w-auto object-contain border border-white/10 rounded p-1 bg-white/5 group-hover:bg-white/10 transition-colors"
+                    onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='flex';">
+                <div id="fallback-logo" style="display:none;"
+                    class="w-8 h-8 bg-white text-black items-center justify-center font-bold text-sm rounded-sm">SU
+                </div>
+                <span class="font-bold tracking-tight uppercase text-sm hidden sm:block text-zinc-300 group-hover:text-white transition-colors">Singularity Union</span>
+            </a>
 
-<p>
-This website may store basic technical logs for security and functionality purposes.
-</p>
+            <div class="flex items-center">
+                <a href="index.html"
+                    class="flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-zinc-400 hover:text-white transition-all hover-target">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Return to Core
+                </a>
+            </div>
+        </div>
+    </nav>
 
+    <main class="relative z-10 flex flex-col items-center pt-32 pb-32">
+        <div class="max-w-4xl mx-auto w-full px-6">
+            
+            <!-- Header -->
+            <div class="mb-16 reveal">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-1.5 h-1.5 bg-cyan-500 rounded-full animate-pulse shadow-[0_0_10px_#06b6d4]"></div>
+                    <span class="font-mono text-[10px] text-cyan-400 uppercase tracking-[0.3em]">Privacy Protocol // Updated 2026</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tighter mb-6 text-gradient uppercase">
+                    Privacy Policy
+                </h1>
+                <p class="text-lg text-zinc-400 font-light leading-relaxed max-w-2xl">
+                    We engineer systems that respect human and corporate intelligence. At Singularity Union, data sovereignty is absolute. Read our strict parameters regarding data collection, logging, and your autonomy.
+                </p>
+            </div>
+
+            <!-- Panels -->
+            <div class="space-y-6">
+                
+                <!-- Section 1 -->
+                <div class="glass-panel p-8 md:p-10 reveal delay-1 border-t-2 border-t-cyan-500/50 bg-gradient-to-b from-cyan-900/5 to-transparent">
+                    <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-6 border-b border-white/10 pb-4 flex items-center gap-2">
+                        <span class="text-cyan-500">01</span> // Collection Parameters
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-4">Consent-Driven Architecture.</h2>
+                    <p class="text-sm text-zinc-300 leading-relaxed font-light mb-4">
+                        Singularity Union operates on absolute data minimization protocols. We do not autonomously harvest, scrape, or extract personal identifiers from our users.
+                    </p>
+                    <p class="text-sm text-zinc-400 leading-relaxed font-light">
+                        Any intelligence, communication, or data transfer initiated by you—whether for deployment requests or general inquiries—is strictly voluntary and processed solely for the execution of its intended operational parameter.
+                    </p>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="glass-panel p-8 md:p-10 reveal delay-2">
+                    <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-6 border-b border-white/10 pb-4 flex items-center gap-2">
+                        <span class="text-zinc-300">02</span> // Data Transmission
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-4">Zero Data Brokering.</h2>
+                    <p class="text-sm text-zinc-300 leading-relaxed font-light">
+                        Your proprietary intelligence remains yours. We categorically prohibit the sale, trading, or unauthorized distribution of user profiles or corporate datasets to any third-party entities.
+                    </p>
+                    <p class="text-sm text-zinc-400 leading-relaxed font-light mt-4">
+                        Client data is never utilized to train generalized global models without explicit, cryptographically verifiable consent.
+                    </p>
+                </div>
+
+                <!-- Section 3 -->
+                <div class="glass-panel p-8 md:p-10 reveal delay-3">
+                    <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-6 border-b border-white/10 pb-4 flex items-center gap-2">
+                        <span class="text-zinc-300">03</span> // Security Logging
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-4">Diagnostic Telemetry.</h2>
+                    <p class="text-sm text-zinc-400 leading-relaxed font-light">
+                        To guarantee the deterministic reliability and security of our infrastructure, our systems may temporarily cache basic network telemetry (e.g., routing protocols, latency metrics, and error logs). These logs are ephemeral, heavily encrypted, and utilized exclusively for active threat detection and core system optimization.
+                    </p>
+                </div>
+
+                <!-- Section 4 -->
+                <div class="glass-panel p-8 md:p-10 reveal delay-4">
+                    <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-6 border-b border-white/10 pb-4 flex items-center gap-2">
+                        <span class="text-zinc-300">04</span> // User Control
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-4">Data Autonomy.</h2>
+                    <p class="text-sm text-zinc-400 leading-relaxed font-light">
+                        You retain complete control over your digital footprint within our ecosystem. Users and organizations hold the absolute right to request full cryptographic deletion of their communication logs and associated telemetry from our active servers at any time.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full text-center py-8 border-t border-white/5 relative z-10">
+        <span class="text-[10px] font-mono text-zinc-600 uppercase font-bold tracking-[0.2em]">© 2026 Singularity Union // Privacy Protocol</span>
+    </footer>
+
+    <!-- JavaScript for Cursor and Reveals -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Custom Cursor
+            const cursorDot = document.getElementById('cursor-dot');
+            const cursorRing = document.getElementById('cursor-ring');
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+            let ringX = mouseX;
+            let ringY = mouseY;
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if (cursorDot) {
+                    cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+                }
+            });
+
+            const renderCursor = () => {
+                ringX += (mouseX - ringX) * 0.15;
+                ringY += (mouseY - ringY) * 0.15;
+                if (cursorRing) {
+                    cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+                }
+                requestAnimationFrame(renderCursor);
+            };
+            requestAnimationFrame(renderCursor);
+
+            // Reveals
+            const reveals = document.querySelectorAll('.reveal');
+            const observerOptions = { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.1 };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            reveals.forEach(reveal => revealObserver.observe(reveal));
+        });
+    </script>
 </body>
+
 </html>
