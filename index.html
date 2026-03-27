@@ -42,12 +42,12 @@
 
     <style>
         /* =========================================
-           ELITE THEME ENGINE VARIABLES 
+           ELITE ACCESSIBILITY THEME ENGINE 
            ========================================= */
         :root, [data-theme="dark"] {
             --bg-main: #000000;
             --text-main: #ffffff;
-            --text-muted: #a1a1aa; /* zinc-400 */
+            --text-muted: #a1a1aa; 
             --glass-bg: rgba(20, 20, 24, 0.5);
             --glass-border: rgba(255, 255, 255, 0.1);
             --glass-hover: rgba(30, 30, 35, 0.7);
@@ -59,8 +59,8 @@
             --btn-text: #000000;
             --canvas-bg: #000000;
             --helix-rung: 255, 255, 255;
-            --helix-strand1: 6, 182, 212; /* Cyan */
-            --helix-strand2: 139, 92, 246; /* Purple */
+            --helix-strand1: 6, 182, 212; 
+            --helix-strand2: 139, 92, 246; 
         }
 
         [data-theme="light"] {
@@ -70,7 +70,7 @@
             --glass-bg: rgba(255, 255, 255, 0.6);
             --glass-border: rgba(0, 0, 0, 0.1);
             --glass-hover: rgba(255, 255, 255, 0.9);
-            --footer-bg: #0f172a; /* Powerful Inverted Footer */
+            --footer-bg: #0f172a; 
             --footer-text: #ffffff;
             --footer-elem-bg: #1e293b;
             --footer-elem-text: #f8fafc;
@@ -78,49 +78,67 @@
             --btn-text: #ffffff;
             --canvas-bg: #f8fafc;
             --helix-rung: 0, 0, 0;
-            --helix-strand1: 8, 145, 178; /* Dark Cyan */
-            --helix-strand2: 109, 40, 217; /* Dark Purple */
+            --helix-strand1: 8, 145, 178; 
+            --helix-strand2: 109, 40, 217; 
         }
 
-        [data-theme="navy"] {
-            --bg-main: #020617;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --glass-bg: rgba(15, 23, 42, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --glass-hover: rgba(30, 41, 59, 0.8);
-            --footer-bg: #ffffff;
-            --footer-text: #020617;
-            --footer-elem-bg: #f1f5f9;
-            --footer-elem-text: #0f172a;
-            --btn-bg: #38bdf8;
-            --btn-text: #020617;
-            --canvas-bg: #020617;
+        [data-theme="amber"] {
+            --bg-main: #0a0800;
+            --text-main: #ffcc00;
+            --text-muted: #cc9900;
+            --glass-bg: rgba(20, 15, 0, 0.6);
+            --glass-border: rgba(255, 204, 0, 0.2);
+            --glass-hover: rgba(40, 30, 0, 0.8);
+            --footer-bg: #ffcc00;
+            --footer-text: #0a0800;
+            --footer-elem-bg: #cc9900;
+            --footer-elem-text: #000000;
+            --btn-bg: #ffcc00;
+            --btn-text: #0a0800;
+            --canvas-bg: #0a0800;
+            --helix-rung: 255, 204, 0;
+            --helix-strand1: 255, 153, 0;
+            --helix-strand2: 255, 204, 0;
+        }
+
+        [data-theme="protanopia"] {
+            --bg-main: #0f172a;
+            --text-main: #ffffff;
+            --text-muted: #cbd5e1;
+            --glass-bg: rgba(15, 23, 42, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-hover: rgba(30, 41, 59, 0.9);
+            --footer-bg: #ffb000; 
+            --footer-text: #0f172a;
+            --footer-elem-bg: #005ab5; 
+            --footer-elem-text: #ffffff;
+            --btn-bg: #ffb000;
+            --btn-text: #0f172a;
+            --canvas-bg: #0f172a;
             --helix-rung: 255, 255, 255;
-            --helix-strand1: 56, 189, 248; /* Light Blue */
-            --helix-strand2: 167, 139, 250; /* Light Purple */
+            --helix-strand1: 255, 176, 0; 
+            --helix-strand2: 0, 90, 181; 
         }
 
-        [data-theme="crimson"] {
-            --bg-main: #2a0808;
-            --text-main: #fef2f2;
-            --text-muted: #fca5a5;
-            --glass-bg: rgba(69, 10, 10, 0.6);
-            --glass-border: rgba(248, 113, 113, 0.2);
-            --glass-hover: rgba(127, 29, 29, 0.8);
+        [data-theme="high-contrast"] {
+            --bg-main: #000000;
+            --text-main: #ffffff;
+            --text-muted: #ffffff;
+            --glass-bg: #000000;
+            --glass-border: #ffffff;
+            --glass-hover: #111111;
             --footer-bg: #ffffff;
-            --footer-text: #2a0808;
-            --footer-elem-bg: #fef2f2;
-            --footer-elem-text: #450a0a;
-            --btn-bg: #f87171;
-            --btn-text: #450a0a;
-            --canvas-bg: #2a0808;
+            --footer-text: #000000;
+            --footer-elem-bg: #000000;
+            --footer-elem-text: #ffffff;
+            --btn-bg: #ffffff;
+            --btn-text: #000000;
+            --canvas-bg: #000000;
             --helix-rung: 255, 255, 255;
-            --helix-strand1: 248, 113, 113; /* Red */
-            --helix-strand2: 251, 146, 60; /* Orange */
+            --helix-strand1: 255, 255, 255;
+            --helix-strand2: 255, 255, 255;
         }
 
-        /* Lenis required CSS */
         html.lenis { height: auto; }
         .lenis.lenis-smooth { scroll-behavior: auto !important; }
         .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
@@ -139,11 +157,7 @@
         }
 
         .noise-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 50;
-            pointer-events: none;
-            opacity: 0.035;
+            position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.035;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
@@ -152,7 +166,6 @@
         ::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 10px; }
         ::selection { background: var(--text-main); color: var(--bg-main); }
 
-        /* Custom Cursor */
         #cursor-dot, #cursor-ring {
             position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
             border-radius: 50%; z-index: 9999; pointer-events: none;
@@ -164,15 +177,9 @@
             width: 48px; height: 48px; background: var(--glass-bg); border-color: var(--text-main);
         }
 
-        /* Glass & Buttons */
         .glass-panel {
-            background: var(--glass-bg);
-            backdrop-filter: blur(24px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
+            background: var(--glass-bg); backdrop-filter: blur(24px); border: 1px solid var(--glass-border);
+            border-radius: 16px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden;
         }
 
         .glass-panel::after {
@@ -185,9 +192,7 @@
         }
 
         .glass-panel:hover::after { opacity: 1; }
-        .glass-panel:hover {
-            border-color: var(--text-muted); background: var(--glass-hover); transform: translateY(-2px);
-        }
+        .glass-panel:hover { border-color: var(--text-muted); background: var(--glass-hover); transform: translateY(-2px); }
 
         .btn-elite {
             position: relative; background: var(--btn-bg); color: var(--btn-text);
@@ -200,26 +205,23 @@
         .btn-elite:hover::before { left: 100%; }
         .btn-elite:hover { transform: scale(1.02); }
 
-        .elite-portrait {
-            filter: grayscale(100%) contrast(1.1) brightness(0.9); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+        .elite-portrait { filter: grayscale(100%) contrast(1.1) brightness(0.9); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
         .group:hover .elite-portrait { filter: grayscale(0%) contrast(1) brightness(1); transform: scale(1.05); }
 
-        /* Reveals */
         .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1s cubic-bezier(0.2, 1, 0.3, 1), transform 1s cubic-bezier(0.2, 1, 0.3, 1); will-change: opacity, transform; }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
 
-        /* Background Canvas */
         #helix-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; opacity: 1; }
 
-        /* Animations */
         @keyframes scaleX { 0% { transform: scaleX(0); } 100% { transform: scaleX(1); } }
         @keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
         .animate-marquee { display: inline-block; animation: marquee 30s linear infinite; }
         @keyframes spin-reverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+        @keyframes dataFlowY { 0% { transform: translateY(-100%); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(1000%); opacity: 0; } }
+        
         .scramble-hover { font-variant-numeric: tabular-nums; }
 
         #scroll-tracker {
@@ -230,9 +232,11 @@
             width: 3px; background: var(--text-main); box-shadow: 0 0 10px var(--text-muted);
             position: absolute; top: 0; left: -1px; transition: height 0.1s ease-out;
         }
+        
+        /* Blur class for locked nodes */
+        .node-classified { filter: blur(8px); user-select: none; pointer-events: none; }
     </style>
 
-    <!-- Theme Initialization Script (Prevents Flash) -->
     <script>
         const savedTheme = localStorage.getItem('su-theme') || 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
@@ -241,6 +245,12 @@
             document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('su-theme', theme);
             if(window.updateCanvasTheme) window.updateCanvasTheme();
+            
+            const themeMenu = document.getElementById('theme-menu');
+            if(themeMenu) {
+                themeMenu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                themeMenu.classList.add('opacity-0', 'translate-y-2', 'pointer-events-none');
+            }
         }
     </script>
 </head>
@@ -248,86 +258,204 @@
 <body class="antialiased selection:bg-[var(--text-main)] selection:text-[var(--bg-main)]">
 
     <div id="boot-sequence"
-        class="fixed inset-0 z-[999] bg-[#000000] flex flex-col items-center justify-center font-mono text-[10px] sm:text-xs text-zinc-500 uppercase tracking-widest transition-transform duration-[1.2s] ease-[cubic-bezier(0.77,0,0.175,1)]">
-        <div id="boot-terminal"
-            class="text-left w-72 h-32 flex flex-col justify-end mb-8 overflow-hidden text-cyan-500">
-            <!-- Terminal Text Injected via JS -->
-        </div>
-        <div class="w-64 h-[1px] bg-zinc-800 overflow-hidden relative">
-            <div id="boot-progress" class="absolute top-0 left-0 h-full bg-white w-0 transition-all duration-75"></div>
+        class="fixed inset-0 z-[999] bg-[var(--bg-main)] flex flex-col items-center justify-center font-mono text-[10px] sm:text-xs text-[var(--text-muted)] uppercase tracking-widest transition-transform duration-[1.2s] ease-[cubic-bezier(0.77,0,0.175,1)]">
+        <div id="boot-terminal" class="text-left w-72 h-32 flex flex-col justify-end mb-8 overflow-hidden text-[var(--text-main)]"></div>
+        <div class="w-64 h-[1px] bg-[var(--glass-border)] overflow-hidden relative">
+            <div id="boot-progress" class="absolute top-0 left-0 h-full bg-[var(--text-main)] w-0 transition-all duration-75"></div>
         </div>
     </div>
 
     <div id="cursor-dot" class="hidden md:block"></div>
     <div id="cursor-ring" class="hidden md:block"></div>
     <div class="noise-overlay"></div>
+    
     <canvas id="helix-canvas"></canvas>
 
+    <!-- ELITE NEURAL NODE OVERLAY (Nerve Tree) -->
     <div id="system-index-overlay"
-        class="fixed inset-0 z-[90] bg-[var(--bg-main)]/90 backdrop-blur-2xl opacity-0 pointer-events-none transition-all duration-500 flex flex-col justify-center px-6 md:px-24 py-20 font-mono overflow-y-auto">
-        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24 relative z-10 translate-y-10 transition-transform duration-700 my-auto"
-            id="index-content">
-            <div class="space-y-8">
-                <div class="text-[10px] text-[var(--text-main)] uppercase tracking-[0.3em] border-b border-[var(--glass-border)] pb-4 mb-6">01 // Global Directory</div>
-                <nav class="flex flex-col gap-6 text-2xl md:text-4xl font-bold tracking-tighter uppercase text-[var(--text-muted)]">
-                    <a href="#" class="hover:text-[var(--text-main)] transition-colors hover-target index-link">Home_Base</a>
-                    <a href="#orion" class="hover:text-[var(--text-main)] transition-colors hover-target index-link">The_Paradigm</a>
-                    <a href="#architects" class="hover:text-[var(--text-main)] transition-colors hover-target index-link">Architects</a>
-                    <a href="#contact" class="hover:text-[var(--text-main)] transition-colors hover-target index-link">Deployment_Access</a>
-                </nav>
-            </div>
-            <div class="space-y-8">
-                <div class="text-[10px] text-[var(--text-main)] uppercase tracking-[0.3em] border-b border-[var(--glass-border)] pb-4 mb-6">02 // Active Deployments</div>
-                <div class="flex flex-col gap-8">
-                    <a href="#orion" class="group hover-target index-link">
-                        <h4 class="text-xl font-bold text-[var(--text-main)] mb-2 transition-colors tracking-tight">OrionHelix AI</h4>
-                        <p class="text-xs text-[var(--text-muted)] leading-relaxed transition-colors">Proprietary cognitive engine. Features autonomous Red Team shadowing and deterministic multi-node execution.</p>
-                    </a>
+        class="fixed inset-0 z-[90] bg-[var(--bg-main)]/95 backdrop-blur-3xl opacity-0 pointer-events-none transition-all duration-500 flex flex-col pt-32 pb-20 px-6 font-mono overflow-y-auto">
+        <div class="fixed inset-0 bg-[linear-gradient(var(--glass-border)_1px,transparent_1px),linear-gradient(90deg,var(--glass-border)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none opacity-20"></div>
+
+        <div class="relative w-full max-w-4xl mx-auto flex flex-col items-center justify-start translate-y-10 transition-transform duration-700" id="index-content">
+            
+            <!-- The Parent Root Node -->
+            <div class="relative z-10 flex flex-col items-center mb-8">
+                <div class="px-8 py-5 border border-[var(--glass-border)] bg-[var(--glass-bg)] shadow-[0_0_30px_rgba(255,255,255,0.05)] rounded-2xl flex flex-col items-center justify-center backdrop-blur-md">
+                    <h2 class="text-2xl sm:text-4xl font-black tracking-widest text-[var(--text-main)] uppercase text-center font-sans">Singularity Union</h2>
+                    <span class="text-[9px] sm:text-[10px] text-[var(--text-muted)] uppercase tracking-[0.3em] mt-2">Parent Architecture Root</span>
                 </div>
+                <!-- Neural Stem -->
+                <div class="h-16 w-px bg-gradient-to-b from-[var(--text-main)] to-cyan-500 animate-pulse mt-4"></div>
+            </div>
+
+            <!-- The Branches -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+                
+                <!-- Active Branch: Orion Helix -->
+                <div class="border border-cyan-500/50 bg-cyan-900/10 p-6 rounded-xl hover:bg-cyan-900/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer shadow-[0_0_20px_rgba(6,182,212,0.15)] group" onclick="openDatacore()">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="font-mono text-[9px] text-cyan-400 uppercase tracking-widest">Active Node</span>
+                        <div class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping"></div>
+                    </div>
+                    <h3 class="text-xl font-bold tracking-tight mb-2 text-cyan-400 group-hover:text-cyan-300 font-sans">OrionHelix AI</h3>
+                    <p class="text-[11px] text-[var(--text-muted)] font-mono leading-relaxed mb-6">Autonomous orchestration & deterministic execution engine.</p>
+                    <div class="text-[9px] text-[var(--bg-main)] bg-cyan-400 font-bold px-3 py-1.5 rounded inline-block uppercase tracking-widest group-hover:bg-white transition-colors">Access Datacore</div>
+                </div>
+
+                <!-- Pure Locked Branch 1 -->
+                <div class="border border-[var(--glass-border)] border-dashed p-6 rounded-xl relative overflow-hidden flex flex-col justify-center group cursor-not-allowed">
+                    <div class="absolute inset-0 bg-[var(--bg-main)]/30 z-10 flex flex-col items-center justify-center transition-all duration-300 group-hover:bg-red-900/10">
+                        <svg class="w-6 h-6 text-red-500 mb-3 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        <span class="text-[10px] font-bold tracking-widest text-red-500 uppercase border border-red-500/50 px-4 py-1.5 rounded bg-black/80 shadow-[0_0_15px_rgba(248,113,113,0.3)] group-hover:bg-red-500 group-hover:text-white transition-colors">Clearance Required</span>
+                    </div>
+                    <div class="node-classified opacity-20">
+                        <div class="h-4 bg-[var(--text-main)] rounded w-3/4 mb-3"></div>
+                        <div class="h-2 bg-[var(--text-main)] rounded w-full mb-2"></div>
+                        <div class="h-2 bg-[var(--text-main)] rounded w-5/6"></div>
+                    </div>
+                </div>
+                
+                <!-- Pure Locked Branch 2 -->
+                <div class="border border-[var(--glass-border)] border-dashed p-6 rounded-xl relative overflow-hidden flex flex-col justify-center group cursor-not-allowed">
+                    <div class="absolute inset-0 bg-[var(--bg-main)]/30 z-10 flex flex-col items-center justify-center transition-all duration-300 group-hover:bg-red-900/10">
+                        <svg class="w-6 h-6 text-red-500 mb-3 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        <span class="text-[10px] font-bold tracking-widest text-red-500 uppercase border border-red-500/50 px-4 py-1.5 rounded bg-black/80 shadow-[0_0_15px_rgba(248,113,113,0.3)] group-hover:bg-red-500 group-hover:text-white transition-colors">Clearance Required</span>
+                    </div>
+                    <div class="node-classified opacity-20">
+                        <div class="h-4 bg-[var(--text-main)] rounded w-1/2 mb-3"></div>
+                        <div class="h-2 bg-[var(--text-main)] rounded w-full mb-2"></div>
+                        <div class="h-2 bg-[var(--text-main)] rounded w-4/6"></div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 
+    <!-- ELITE DATACORE MODAL (Opens on OrionHelix click) -->
+    <div id="orion-datacore-modal" class="fixed inset-0 z-[110] bg-[var(--bg-main)]/95 backdrop-blur-3xl opacity-0 pointer-events-none transition-all duration-500 flex items-center justify-center p-4 sm:p-6">
+        
+        <!-- THE ONLY WAY TO CLOSE IT -->
+        <button onclick="closeDatacore()" class="absolute top-6 right-6 sm:top-10 sm:right-10 text-[var(--text-main)] border border-[var(--glass-border)] bg-[var(--glass-bg)] hover:bg-[var(--text-main)] hover:text-[var(--bg-main)] px-4 py-2 rounded-full flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest transition-all z-40 hover-target shadow-xl">
+            Close Panel <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        
+        <div class="w-full max-w-5xl border border-cyan-500/30 bg-[var(--glass-bg)] rounded-2xl shadow-[0_0_50px_rgba(6,182,212,0.1)] relative overflow-hidden transform scale-95 transition-transform duration-500" id="datacore-panel">
+            
+            <!-- Standard Specs View -->
+            <div id="datacore-specs" class="p-8 sm:p-16 transition-opacity duration-500 w-full h-full relative z-20">
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-cyan-500/10 blur-3xl rounded-full pointer-events-none"></div>
+                
+                <p class="text-cyan-500 font-mono text-[9px] sm:text-[10px] tracking-widest uppercase mb-4 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-cyan-500 rounded-full animate-pulse"></span>
+                    System Specifications // Restricted Access
+                </p>
+                <h2 class="text-3xl sm:text-5xl font-black text-[var(--text-main)] mb-10 sm:mb-16 uppercase tracking-tighter font-sans">Orion Helix AI</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
+                    <!-- Indirect Feature 1: The Swarm Framework -->
+                    <div class="border-l border-cyan-500/30 pl-6">
+                        <h4 class="text-[var(--text-main)] font-bold text-sm sm:text-base mb-3 font-sans">01 / Autonomous Orchestration Vector</h4>
+                        <p class="text-[var(--text-muted)] text-[10px] sm:text-xs font-mono leading-relaxed">Direct manipulation of localized enterprise graphs via deterministic multi-agent reasoning. Actively bypasses standard probabilistic LLM failures to execute complex workflows.</p>
+                    </div>
+                    <!-- Indirect Feature 2: VPC/Security -->
+                    <div class="border-l border-cyan-500/30 pl-6">
+                        <h4 class="text-[var(--text-main)] font-bold text-sm sm:text-base mb-3 font-sans">02 / Sovereign Cryptographic Environment</h4>
+                        <p class="text-[var(--text-muted)] text-[10px] sm:text-xs font-mono leading-relaxed">Air-gapped, zero-telemetry processing architecture ensuring that absolute model ownership and enterprise data sovereignty remains strictly on the client side.</p>
+                    </div>
+                    <!-- Indirect Feature 3: Audio/Context Sync -->
+                    <div class="border-l border-cyan-500/30 pl-6">
+                        <h4 class="text-[var(--text-main)] font-bold text-sm sm:text-base mb-3 font-sans">03 / Asynchronous Context Synthesis</h4>
+                        <p class="text-[var(--text-muted)] text-[10px] sm:text-xs font-mono leading-relaxed">Real-time compilation of raw intent via advanced biometric, acoustic, and syntactical pattern extraction. Translates fragmented human input directly into deployable code logic.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 pt-8 border-t border-[var(--glass-border)] flex justify-end items-center relative z-20">
+                    <button onclick="initiateDeepCore()" class="relative overflow-hidden group font-mono text-[9px] sm:text-[10px] text-[var(--bg-main)] bg-[var(--text-main)] hover:bg-red-500 hover:text-white hover:shadow-[0_0_20px_rgba(248,113,113,0.5)] px-6 py-3 rounded transition-all uppercase tracking-widest font-bold hover-target">
+                        <span class="relative z-10">Acknowledge Reality</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Deep Core Sequence (Hidden initially) -->
+            <div id="deep-core-panel" class="absolute inset-0 hidden flex-col justify-center bg-[var(--bg-main)] z-30 p-8 sm:p-16 opacity-0 transition-opacity duration-500 border border-red-500/30 rounded-2xl shadow-[inset_0_0_100px_rgba(248,113,113,0.1)]">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-transparent to-red-500 animate-pulse"></div>
+                <p class="text-red-500 font-mono text-[10px] tracking-widest uppercase mb-6 flex items-center gap-2">
+                    <span class="w-2 h-2 bg-red-500 rounded-full animate-ping"></span> KERNEL OVERRIDE: GOD MODE ACTIVE
+                </p>
+                <div id="deep-core-terminal" class="font-mono text-[10px] sm:text-xs leading-relaxed space-y-2 h-48 overflow-hidden mb-8 w-full break-words pr-4">
+                    <!-- JS inserts text -->
+                </div>
+                <div id="deep-core-final" class="opacity-0 transition-opacity duration-1000">
+                    <h2 class="text-2xl sm:text-4xl md:text-5xl font-black text-[var(--text-main)] uppercase tracking-tighter font-sans border-l-4 border-cyan-500 pl-6 py-2 leading-tight">
+                        <span class="block text-cyan-500 text-[10px] sm:text-xs tracking-widest font-mono font-normal mb-3 opacity-70">The era of probabilistic wrappers is dead.</span>
+                        ORION HELIX DOES NOT PREDICT.<br>IT <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">DETERMINES.</span>
+                    </h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- TOP NAVIGATION & SHORTCUTS -->
     <nav class="fixed top-0 w-full z-[100] px-6 py-6 transition-all duration-300 backdrop-blur-md bg-[var(--bg-main)]/40 border-b border-[var(--glass-border)]">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-4 md:gap-10">
-                <button id="btn-index-toggle"
-                    class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors group hover-target bg-[var(--glass-bg)] border border-[var(--glass-border)] px-3 py-1.5 rounded-sm">
-                    <svg class="w-3 h-3 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
-                    </svg>
+                <button id="btn-index-toggle" class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors group hover-target bg-[var(--glass-bg)] border border-[var(--glass-border)] px-3 py-1.5 rounded-sm">
+                    <svg class="w-3 h-3 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
                     <span id="index-btn-text" class="hidden sm:inline-block">INDEX</span>
                 </button>
                 <div class="w-px h-6 bg-[var(--glass-border)] hidden sm:block"></div>
                 <div class="flex items-center gap-3 hover-target cursor-pointer">
                     <img src="su-logo.png" alt="SU Logo" class="h-8 w-auto object-contain border border-[var(--glass-border)] rounded p-1 bg-[var(--glass-bg)]" onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='flex';">
                     <div id="fallback-logo" style="display:none;" class="w-8 h-8 bg-[var(--text-main)] text-[var(--bg-main)] items-center justify-center font-bold text-sm rounded-sm">SU</div>
-                    <span class="font-bold tracking-tight uppercase text-sm hidden lg:block text-[var(--text-main)]">Singularity Union</span>
+                    <span class="font-bold tracking-tight uppercase text-sm hidden lg:block text-[var(--text-main)] font-sans">Singularity Union</span>
                 </div>
                 <div class="w-px h-6 bg-[var(--glass-border)] hidden md:block"></div>
+                
+                <!-- TOP SHORTCUT LINKS -->
                 <div class="hidden md:flex items-center gap-8 text-[11px] font-mono uppercase tracking-widest text-[var(--text-muted)]">
-                    <a href="#orion" class="hover:text-[var(--text-main)] transition-colors hover-target">Orion Helix AI</a>
+                    <a href="#paradigm" class="hover:text-[var(--text-main)] transition-colors hover-target">Paradigm</a>
+                    <a href="#orion" class="hover:text-[var(--text-main)] transition-colors hover-target">Orion Helix</a>
                     <a href="#architects" class="hover:text-[var(--text-main)] transition-colors hover-target">Architects</a>
                 </div>
             </div>
             
             <div class="flex items-center">
                 
-                <!-- CLICKABLE THEME SWITCHER -->
+                <!-- CLICKABLE ACCESSIBILITY THEME SWITCHER -->
                 <div class="relative inline-block mr-3 sm:mr-6">
                     <button id="theme-toggle-btn" class="magnetic flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] text-[var(--text-main)] transition-colors hover-target">
-                        <!-- New Contrast/Half-shade Icon -->
                         <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle>
                             <path d="M12 2a10 10 0 0 0 0 20z" fill="currentColor"></path>
                         </svg>
                     </button>
-                    <!-- Menu is now controlled by click instead of hover -->
-                    <div id="theme-menu" class="absolute right-0 mt-2 w-36 py-2 rounded-xl border border-[var(--glass-border)] bg-[var(--bg-main)] opacity-0 translate-y-2 pointer-events-none transition-all duration-300 shadow-2xl flex flex-col gap-1 px-1 z-50">
-                        <button onclick="setTheme('dark')" class="text-left px-3 py-2 text-[10px] uppercase font-mono font-bold text-[var(--text-main)] hover:bg-[var(--text-main)] hover:text-[var(--bg-main)] rounded-lg transition-colors tracking-widest">Dark (Core)</button>
-                        <button onclick="setTheme('light')" class="text-left px-3 py-2 text-[10px] uppercase font-mono font-bold text-[var(--text-main)] hover:bg-[var(--text-main)] hover:text-[var(--bg-main)] rounded-lg transition-colors tracking-widest">Light Mode</button>
-                        <button onclick="setTheme('navy')" class="text-left px-3 py-2 text-[10px] uppercase font-mono font-bold text-[var(--text-main)] hover:bg-[var(--text-main)] hover:text-[var(--bg-main)] rounded-lg transition-colors tracking-widest">Deep Navy</button>
-                        <button onclick="setTheme('crimson')" class="text-left px-3 py-2 text-[10px] uppercase font-mono font-bold text-[var(--text-main)] hover:bg-[var(--text-main)] hover:text-[var(--bg-main)] rounded-lg transition-colors tracking-widest">Crimson</button>
+                    
+                    <div id="theme-menu" class="absolute right-0 mt-2 w-56 sm:w-64 py-2 rounded-xl border border-[var(--glass-border)] bg-[var(--bg-main)] opacity-0 translate-y-2 pointer-events-none transition-all duration-300 shadow-2xl flex flex-col gap-1 px-1 z-50 overflow-hidden">
+                        <div class="px-3 py-1.5 border-b border-[var(--glass-border)] mb-1">
+                            <span class="text-[8px] font-mono uppercase text-[var(--text-muted)] tracking-widest font-black">Accessibility Profiles</span>
+                        </div>
+                        <button onclick="setTheme('dark')" class="text-left px-3 py-2 hover:bg-[var(--glass-bg)] rounded-lg transition-colors group">
+                            <div class="text-[10px] uppercase font-mono font-bold tracking-widest text-[var(--text-main)]">Dark (Core)</div>
+                            <div class="text-[8px] text-[var(--text-muted)] mt-0.5 leading-tight">Default balanced contrast</div>
+                        </button>
+                        <button onclick="setTheme('light')" class="text-left px-3 py-2 hover:bg-[var(--glass-bg)] rounded-lg transition-colors group">
+                            <div class="text-[10px] uppercase font-mono font-bold tracking-widest text-[var(--text-main)]">Light (Daylight)</div>
+                            <div class="text-[8px] text-[var(--text-muted)] mt-0.5 leading-tight">For bright environments</div>
+                        </button>
+                        <button onclick="setTheme('amber')" class="text-left px-3 py-2 hover:bg-[var(--glass-bg)] rounded-lg transition-colors group">
+                            <div class="text-[10px] uppercase font-mono font-bold tracking-widest text-[var(--text-main)]">Amber (Eye Care)</div>
+                            <div class="text-[8px] text-[var(--text-muted)] mt-0.5 leading-tight">Reduces blue-light / Night vision</div>
+                        </button>
+                        <button onclick="setTheme('protanopia')" class="text-left px-3 py-2 hover:bg-[var(--glass-bg)] rounded-lg transition-colors group">
+                            <div class="text-[10px] uppercase font-mono font-bold tracking-widest text-[var(--text-main)]">Protanopia Safe</div>
+                            <div class="text-[8px] text-[var(--text-muted)] mt-0.5 leading-tight">Red/Green colorblind friendly</div>
+                        </button>
+                        <button onclick="setTheme('high-contrast')" class="text-left px-3 py-2 hover:bg-[var(--glass-bg)] rounded-lg transition-colors group">
+                            <div class="text-[10px] uppercase font-mono font-bold tracking-widest text-[var(--text-main)]">High Contrast</div>
+                            <div class="text-[8px] text-[var(--text-muted)] mt-0.5 leading-tight">Maximum monochrome legibility</div>
+                        </button>
                     </div>
                 </div>
 
@@ -348,11 +476,11 @@
                     <span class="font-mono text-[9px] sm:text-[10px] uppercase tracking-widest text-[var(--text-main)]">OrionHelix Engine // Pre-Release</span>
                 </div>
 
-                <!-- ALL LINES PURE BRIGHT TEXT - PERFECT FORMATTING -->
-                <h1 class="flex flex-col items-center justify-center text-center w-full mb-12">
-                    <span class="text-[12vw] sm:text-[8vw] md:text-7xl lg:text-[7.5rem] font-black tracking-tighter leading-[0.9] text-[var(--text-main)] block drop-shadow-sm">COGNITIVE</span>
-                    <span class="text-[12vw] sm:text-[8vw] md:text-7xl lg:text-[7.5rem] font-black tracking-tighter leading-[0.9] text-[var(--text-main)] block drop-shadow-sm py-1">INFRASTRUCTURE.</span>
-                    <span class="text-[12vw] sm:text-[8vw] md:text-7xl lg:text-[7.5rem] font-black tracking-tighter leading-[0.9] text-[var(--text-main)] block drop-shadow-sm">REDEFINED.</span>
+                <!-- PURE BRIGHT UNIFORM TEXT - NO COLORS -->
+                <h1 class="flex flex-col items-center justify-center text-center w-full mb-12 font-sans">
+                    <span class="text-[12vw] sm:text-[8vw] md:text-7xl lg:text-[7.5rem] font-black tracking-tighter leading-[0.9] text-[var(--text-main)] block">COGNITIVE</span>
+                    <span class="text-[12vw] sm:text-[8vw] md:text-7xl lg:text-[7.5rem] font-black tracking-tighter leading-[0.9] text-[var(--text-main)] block py-1">INFRASTRUCTURE.</span>
+                    <span class="text-[12vw] sm:text-[8vw] md:text-7xl lg:text-[7.5rem] font-black tracking-tighter leading-[0.9] text-[var(--text-main)] block">REDEFINED.</span>
                 </h1>
 
                 <p class="text-sm sm:text-lg md:text-xl text-[var(--text-muted)] max-w-2xl mx-auto font-light leading-relaxed mb-12 px-2">
@@ -370,55 +498,52 @@
             </div>
         </section>
 
-        <section class="w-full py-20 sm:py-32 px-4 sm:px-6">
+        <!-- ADDED ID TO MATCH SHORTCUT LINK -->
+        <section id="paradigm" class="w-full py-20 sm:py-32 px-4 sm:px-6">
             <div class="max-w-7xl mx-auto">
                 <div class="mb-12 sm:mb-20 reveal">
-                    <h2 class="text-3xl md:text-5xl font-bold tracking-tighter mb-4 text-[var(--text-main)]">The Paradigm Shift.</h2>
+                    <h2 class="text-3xl md:text-5xl font-bold tracking-tighter mb-4 text-[var(--text-main)] font-sans">The Paradigm Shift.</h2>
                     <p class="text-[var(--text-muted)] font-mono text-[10px] sm:text-xs uppercase tracking-widest max-w-xl">Moving beyond conversational wrappers into true autonomous orchestration.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="glass-panel p-6 sm:p-8 reveal delay-1">
                         <div class="font-mono text-[9px] sm:text-[10px] text-[var(--text-muted)] uppercase tracking-widest mb-6 border-b border-[var(--glass-border)] pb-4">01 // Deterministic Logic</div>
-                        <h4 class="text-lg sm:text-xl font-bold text-[var(--text-main)] mb-4">Zero Hallucinations.</h4>
+                        <h4 class="text-lg sm:text-xl font-bold text-[var(--text-main)] mb-4 font-sans">Zero Hallucinations.</h4>
                         <p class="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">Eliminating probabilistic errors. Our architecture binds large language models to strict, mathematically verifiable business rules and schema validators.</p>
                     </div>
                     <div class="glass-panel p-6 sm:p-8 reveal delay-2">
                         <div class="font-mono text-[9px] sm:text-[10px] text-[var(--text-main)] uppercase tracking-widest mb-6 border-b border-[var(--glass-border)] pb-4">02 // Agentic Swarms</div>
-                        <h4 class="text-lg sm:text-xl font-bold text-[var(--text-main)] mb-4">Multi-Node Execution.</h4>
+                        <h4 class="text-lg sm:text-xl font-bold text-[var(--text-main)] mb-4 font-sans">Multi-Node Execution.</h4>
                         <p class="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">Single-prompt systems are obsolete. We are developing asynchronous, multi-agent networks capable of executing multi-step, recursive operations autonomously.</p>
                     </div>
                     <div class="glass-panel p-6 sm:p-8 reveal delay-3">
                         <div class="font-mono text-[9px] sm:text-[10px] text-[var(--text-muted)] uppercase tracking-widest mb-6 border-b border-[var(--glass-border)] pb-4">03 // Sovereign Data</div>
-                        <h4 class="text-lg sm:text-xl font-bold text-[var(--text-main)] mb-4">Absolute Isolation.</h4>
+                        <h4 class="text-lg sm:text-xl font-bold text-[var(--text-main)] mb-4 font-sans">Absolute Isolation.</h4>
                         <p class="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">Your intelligence, completely secured. Deployments are engineered for zero-trust environments, ensuring absolute proprietary data security via VPC deployment.</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ENHANCED ORION HELIX AI PRODUCT SECTION -->
         <section id="orion" class="w-full py-20 sm:py-32 px-4 sm:px-6 relative overflow-hidden border-y border-[var(--glass-border)]">
             <div class="max-w-7xl mx-auto flex flex-col items-center relative z-10 py-10">
 
                 <div class="text-center reveal flex flex-col items-center mb-16 sm:mb-24 w-full">
-                    <span class="font-mono text-[9px] sm:text-[11px] text-cyan-500 uppercase tracking-[0.4em] mb-6 border border-cyan-500/30 px-4 py-1.5 rounded-full bg-cyan-900/10 shadow-[0_0_15px_rgba(6,182,212,0.2)]">Flagship Intelligence</span>
+                    <span class="font-mono text-[9px] sm:text-[11px] text-[var(--text-muted)] uppercase tracking-[0.4em] mb-6 border border-[var(--glass-border)] px-4 py-1.5 rounded-full bg-[var(--glass-bg)] shadow-[0_0_15px_rgba(100,100,100,0.1)]">First Product Release</span>
 
                     <div class="flex flex-col items-center justify-center gap-6 mb-10">
-                        <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border border-blue-500/30 shadow-[0_0_40px_rgba(37,99,235,0.4)] flex items-center justify-center ring-4 ring-[var(--bg-main)] group relative">
+                        <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border border-[var(--text-main)] shadow-[0_0_40px_rgba(100,100,100,0.2)] flex items-center justify-center ring-4 ring-[var(--bg-main)] group relative cursor-pointer" onclick="openDatacore()">
                             <svg class="w-full h-full object-cover" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
                                     <radialGradient id="orion-bg" cx="50%" cy="50%" r="70%">
-                                        <stop offset="0%" stop-color="#2563eb" />
-                                        <stop offset="100%" stop-color="#0a1a5c" />
+                                        <stop offset="0%" stop-color="#3b82f6" /> 
+                                        <stop offset="100%" stop-color="#0f172a" />
                                     </radialGradient>
-                                    <filter id="orion-glow" x="-20%" y="-20%" width="140%" height="140%">
-                                        <feGaussianBlur stdDeviation="1.5" result="blur" />
-                                        <feComponentTransfer in="blur" result="glow"><feFuncA type="linear" slope="2" /></feComponentTransfer>
-                                        <feMerge><feMergeNode in="glow" /><feMergeNode in="SourceGraphic" /></feMerge>
-                                    </filter>
                                 </defs>
                                 <rect width="200" height="200" fill="url(#orion-bg)" />
                                 <g class="origin-center scale-[0.75] group-hover:scale-[0.85] transition-transform duration-1000">
-                                    <g filter="url(#orion-glow)">
+                                    <g>
                                         <g class="origin-center animate-[spin_30s_linear_infinite]">
                                             <circle cx="100" cy="100" r="12" fill="none" stroke="#ffffff" stroke-width="3" />
                                             <circle cx="100" cy="100" r="18" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.9" />
@@ -435,87 +560,66 @@
                                     </g>
                                 </g>
                             </svg>
+                            <!-- View Datacore Hint -->
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                                <span class="text-[9px] font-mono text-cyan-400 font-bold uppercase tracking-widest text-center">View<br>Datacore</span>
+                            </div>
                         </div>
 
-                        <h2 class="text-3xl sm:text-4xl md:text-6xl font-black tracking-[0.1em] sm:tracking-[0.2em] text-[var(--text-main)] uppercase drop-shadow-[0_0_20px_rgba(100,100,100,0.2)] text-center break-words w-full">
+                        <h2 class="text-3xl sm:text-4xl md:text-6xl font-black tracking-[0.1em] sm:tracking-[0.2em] text-[var(--text-main)] uppercase text-center break-words w-full font-sans cursor-pointer hover:text-cyan-500 transition-colors" onclick="openDatacore()">
                             Orion Helix AI
                         </h2>
                     </div>
 
                     <div class="max-w-4xl mx-auto w-full relative">
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gradient-to-b from-cyan-500/50 to-transparent hidden sm:block"></div>
-
-                        <p class="text-base sm:text-xl md:text-2xl text-[var(--text-muted)] font-light leading-relaxed text-center mb-12 sm:mt-12 px-4">
-                            A premier immersive intelligence infrastructure, engineered to unify fragmented operations into a single, high-fidelity <strong class="text-[var(--text-main)] drop-shadow-[0_0_10px_rgba(100,100,100,0.5)] tracking-wide">Multiverse Environment.</strong>
+                        <p class="text-base sm:text-xl md:text-2xl text-[var(--text-muted)] font-light leading-relaxed text-center mb-16 px-4">
+                            A premier immersive intelligence infrastructure, engineered to unify fragmented operations into a single, high-fidelity <strong class="text-[var(--text-main)] tracking-wide">Multiverse Environment.</strong>
                         </p>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left px-0 sm:px-4">
-                            <div class="p-6 bg-[var(--glass-bg)] border border-[var(--glass-border)] border-l-2 border-l-cyan-500 rounded-r-lg relative overflow-hidden group hover:bg-cyan-500/10 transition-colors">
-                                <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-cyan-500/50 to-transparent"></div>
-                                <div class="font-mono text-[9px] sm:text-[10px] text-cyan-500 uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
-                                    <div class="w-1.5 h-1.5 bg-cyan-500 rounded-full animate-pulse"></div>
-                                    System Role Identified
-                                </div>
-                                <p class="text-xs text-[var(--text-muted)] leading-relaxed font-mono">
-                                    At the heart of this digital fabric is a proactive neural engine that operates as your permanent <span class="text-cyan-500 font-bold tracking-wide">3rd Co-Founder</span>—an autonomous partner that executes complex logic, masters technical synthesis, and scales team memory with bank-grade precision.
-                                </p>
+                        <!-- RESTORED ORION SYSTEM SPECS GRID (4 Blocks) -->
+                        <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left px-0 sm:px-4 mt-8">
+                            <div class="glass-panel p-6 border-t-2 border-t-[var(--text-main)] hover:-translate-y-1 transition-transform group">
+                                <span class="block text-[var(--text-main)] mb-4 opacity-80 group-hover:opacity-100 transition-opacity">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                                </span>
+                                <h5 class="text-[10px] font-mono text-[var(--text-muted)] mb-1 uppercase tracking-widest">Architecture</h5>
+                                <h4 class="text-sm font-bold text-[var(--text-main)] mb-3 font-sans">Agentic Swarm Protocol</h4>
+                                <p class="text-[10px] text-[var(--text-muted)] leading-relaxed">Dynamic multi-agent task delegation built on strict deterministic validation loops.</p>
+                            </div>
+                            
+                            <div class="glass-panel p-6 border-t-2 border-t-[var(--text-main)] hover:-translate-y-1 transition-transform group">
+                                <span class="block text-[var(--text-main)] mb-4 opacity-80 group-hover:opacity-100 transition-opacity">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                </span>
+                                <h5 class="text-[10px] font-mono text-[var(--text-muted)] mb-1 uppercase tracking-widest">Security Layer</h5>
+                                <h4 class="text-sm font-bold text-[var(--text-main)] mb-3 font-sans">The Vault</h4>
+                                <p class="text-[10px] text-[var(--text-muted)] leading-relaxed">Absolute data sovereignty via Air-Gapped VPC deployment and AES-256-GCM encryption.</p>
                             </div>
 
-                            <div class="p-6 bg-[var(--glass-bg)] border border-[var(--glass-border)] border-l-2 border-l-emerald-500 rounded-r-lg relative overflow-hidden group hover:bg-emerald-500/10 transition-colors">
-                                <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-emerald-500/50 to-transparent"></div>
-                                <div class="font-mono text-[9px] sm:text-[10px] text-emerald-500 uppercase tracking-[0.2em] mb-3 flex items-center gap-2">
-                                    <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
-                                    Security Architecture
-                                </div>
-                                <p class="text-xs text-[var(--text-muted)] leading-relaxed font-mono">
-                                    Architected for absolute data sovereignty through <span class="text-emerald-500 font-bold tracking-wide">The Vault</span>, OrionHelix doesn't just process your vision; it evolves as a core technical stakeholder, empowering world-class teams to engineer the future within an unbreakable, hyper-connected ecosystem.
-                                </p>
+                            <div class="glass-panel p-6 border-t-2 border-t-[var(--text-main)] hover:-translate-y-1 transition-transform group">
+                                <span class="block text-[var(--text-main)] mb-4 opacity-80 group-hover:opacity-100 transition-opacity">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                </span>
+                                <h5 class="text-[10px] font-mono text-[var(--text-muted)] mb-1 uppercase tracking-widest">Performance</h5>
+                                <h4 class="text-sm font-bold text-[var(--text-main)] mb-3 font-sans">Zero-Latency Sync</h4>
+                                <p class="text-[10px] text-[var(--text-muted)] leading-relaxed">Engineered for sub-100ms internal processing overhead for instant human-machine collaboration.</p>
+                            </div>
+
+                            <div class="glass-panel p-6 border-t-2 border-t-[var(--text-main)] hover:-translate-y-1 transition-transform group">
+                                <span class="block text-[var(--text-main)] mb-4 opacity-80 group-hover:opacity-100 transition-opacity">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                </span>
+                                <h5 class="text-[10px] font-mono text-[var(--text-muted)] mb-1 uppercase tracking-widest">Integration</h5>
+                                <h4 class="text-sm font-bold text-[var(--text-main)] mb-3 font-sans">Universal API</h4>
+                                <p class="text-[10px] text-[var(--text-muted)] leading-relaxed">Seamlessly links with legacy codebases via robust REST endpoints and secure webhooks.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mt-12 sm:mt-16 mb-16 sm:mb-24 w-full sm:w-auto px-4 sm:px-0">
-                        <a href="#contact" class="magnetic btn-elite w-full sm:w-auto px-10 py-5 font-bold text-xs sm:text-sm uppercase tracking-widest block text-center" data-value="REQUEST EARLY ACCESS">
+                    <div class="mt-16 w-full sm:w-auto px-4 sm:px-0">
+                        <a href="#contact" class="magnetic btn-elite w-full sm:w-auto px-10 py-5 font-bold text-xs sm:text-sm uppercase tracking-widest block text-center shadow-2xl scramble-hover" data-value="REQUEST EARLY ACCESS">
                             REQUEST EARLY ACCESS
                         </a>
-                    </div>
-
-                    <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-12 text-left">
-                        <div class="glass-panel p-6 sm:p-8 reveal delay-1 border-t-2 border-t-red-500 hover:border-red-500/50 transition-all group hover:-translate-y-1">
-                            <div class="font-mono text-[9px] sm:text-[10px] text-red-500 uppercase tracking-widest mb-4 flex items-center gap-2">
-                                <div class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse shrink-0"></div>
-                                Intelligent Code Review
-                            </div>
-                            <h4 class="text-xl sm:text-2xl font-bold text-[var(--text-main)] mb-4 tracking-tight">Adversarial "Red Team" Shadowing</h4>
-                            <p class="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed font-mono">OrionHelix acts as a relentless, automated Red Team. It silently shadows your engineers' keystrokes, simulating cyberattacks (like SQL injections) in real-time. If a vulnerability is typed, the AI flags the exact line and deploys a secure patch before the code is ever committed.</p>
-                        </div>
-
-                        <div class="glass-panel p-6 sm:p-8 reveal delay-2 border-t-2 border-t-cyan-500 hover:border-cyan-500/50 transition-all group hover:-translate-y-1">
-                            <div class="font-mono text-[9px] sm:text-[10px] text-cyan-500 uppercase tracking-widest mb-4 flex items-center gap-2">
-                                <div class="w-1.5 h-1.5 bg-cyan-500 rounded-full shrink-0"></div>
-                                Asymmetrical Workflow
-                            </div>
-                            <h4 class="text-xl sm:text-2xl font-bold text-[var(--text-main)] mb-4 tracking-tight">Telepathic Context Sync</h4>
-                            <p class="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed font-mono">Zero-latency knowledge transfer. When a junior developer encounters a blocker, OrionHelix synthesizes the exact terminal errors, the last 20 lines of code, and the architectural intent into a 3-bullet-point summary. Seniors receive instant context.</p>
-                        </div>
-
-                        <div class="glass-panel p-6 sm:p-8 reveal delay-1 border-t-2 border-t-emerald-500 hover:border-emerald-500/50 transition-all group hover:-translate-y-1">
-                            <div class="font-mono text-[9px] sm:text-[10px] text-emerald-500 uppercase tracking-widest mb-4 flex items-center gap-2">
-                                <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0"></div>
-                                Biometric Optimization
-                            </div>
-                            <h4 class="text-xl sm:text-2xl font-bold text-[var(--text-main)] mb-4 tracking-tight">Cognitive Telemetry</h4>
-                            <p class="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed font-mono">Human capital is an enterprise's most valuable asset. OrionHelix analyzes non-invasive metadata—keystroke cadence, backspace frequency, and error rates—to detect neural fatigue. The system actively intervenes to prevent burnout.</p>
-                        </div>
-
-                        <div class="glass-panel p-6 sm:p-8 reveal delay-2 border-t-2 border-t-purple-500 hover:border-purple-500/50 transition-all group hover:-translate-y-1">
-                            <div class="font-mono text-[9px] sm:text-[10px] text-purple-500 uppercase tracking-widest mb-4 flex items-center gap-2">
-                                <div class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></div>
-                                Audio Extraction
-                            </div>
-                            <h4 class="text-xl sm:text-2xl font-bold text-[var(--text-main)] mb-4 tracking-tight">Real-Time Synthesis</h4>
-                            <p class="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed font-mono">Meetings are no longer black holes of lost information. During a HelixConnect session, OrionHelix parses encrypted audio streams to instantly extract action items, assign ownership, and generate deployable summaries.</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -524,52 +628,50 @@
         <section id="architects" class="w-full py-20 sm:py-32 px-4 sm:px-6">
             <div class="max-w-7xl mx-auto">
                 <div class="mb-16 sm:mb-24 text-center reveal">
-                    <h2 class="text-3xl md:text-5xl font-bold tracking-tighter mb-4 text-[var(--text-main)]">The Architects.</h2>
+                    <h2 class="text-3xl md:text-5xl font-bold tracking-tighter mb-4 text-[var(--text-main)] font-sans">The Architects.</h2>
                     <p class="text-[var(--text-muted)] font-mono text-[10px] sm:text-xs uppercase tracking-widest">The engineering core behind Singularity Union.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 perspective-[1000px]">
-                    <div class="glass-panel p-1 group flex flex-col hover:border-cyan-500/40 transition-colors reveal delay-1 cursor-crosshair tilt-card">
+                    <div class="glass-panel p-1 group flex flex-col transition-colors reveal delay-1 cursor-crosshair tilt-card">
                         <div class="bg-[var(--bg-main)] p-5 sm:p-6 rounded-xl flex flex-col sm:flex-row gap-5 sm:gap-6 items-start sm:items-center h-full relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 blur-3xl rounded-full group-hover:bg-cyan-500/10 transition-colors pointer-events-none"></div>
-                            <div class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 shrink-0 bg-[var(--glass-bg)] rounded shadow-2xl overflow-hidden relative border border-[var(--glass-border)] group-hover:border-cyan-500/50 transition-colors z-10">
-                                <div class="absolute inset-0 bg-cyan-500/10 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity"></div>
+                            <div class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 shrink-0 bg-[var(--glass-bg)] rounded shadow-2xl overflow-hidden relative border border-[var(--glass-border)] transition-colors z-10">
+                                <div class="absolute inset-0 bg-[var(--text-main)] mix-blend-overlay opacity-10 z-10 group-hover:opacity-0 transition-opacity"></div>
                                 <img src="debajit.png" alt="Debajit Goswami" class="elite-portrait w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%25\' height=\'100%25\' viewBox=\'0 0 100 100\'%3E%3Crect fill=\'%23050505\' width=\'100\' height=\'100\'/%3E%3Ctext fill=\'%23333\' font-family=\'monospace\' font-size=\'10\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\'%3E[IMG]%3C/text%3E%3C/svg%3E'">
                             </div>
                             <div class="flex-grow w-full z-10">
                                 <div class="flex justify-between items-start mb-3 border-b border-[var(--glass-border)] pb-3">
                                     <div>
-                                        <h3 class="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-[var(--text-main)] group-hover:text-cyan-500 transition-colors">Debajit Goswami</h3>
+                                        <h3 class="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-[var(--text-main)] transition-colors font-sans">Debajit Goswami</h3>
                                         <span class="font-mono text-[9px] sm:text-[10px] text-[var(--text-muted)] uppercase tracking-[0.2em] block mt-1">Lead Architect // Founder</span>
                                     </div>
                                     <span class="font-mono text-xs text-[var(--text-muted)] uppercase font-black">01</span>
                                 </div>
                                 <p class="text-[10px] sm:text-[11px] md:text-xs text-[var(--text-muted)] leading-relaxed font-mono mb-4">Architecting distributed AI workflows and intelligent agent swarms. Bridging the gap between raw neural compute and deterministic logic.</p>
                                 <div class="flex flex-wrap gap-2 font-mono text-[8px] sm:text-[9px] uppercase tracking-wider">
-                                    <span class="px-2 py-1 border border-[var(--glass-border)] rounded-sm text-[var(--text-main)] bg-[var(--glass-bg)] group-hover:border-cyan-500/30 transition-colors">Cognitive Architecture</span>
+                                    <span class="px-2 py-1 border border-[var(--glass-border)] rounded-sm text-[var(--text-main)] bg-[var(--glass-bg)] transition-colors">Cognitive Architecture</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="glass-panel p-1 group flex flex-col hover:border-emerald-500/40 transition-colors reveal delay-2 cursor-crosshair tilt-card">
+                    <div class="glass-panel p-1 group flex flex-col transition-colors reveal delay-2 cursor-crosshair tilt-card">
                         <div class="bg-[var(--bg-main)] p-5 sm:p-6 rounded-xl flex flex-col sm:flex-row gap-5 sm:gap-6 items-start sm:items-center h-full relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-3xl rounded-full group-hover:bg-emerald-500/10 transition-colors pointer-events-none"></div>
-                            <div class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 shrink-0 bg-[var(--glass-bg)] rounded shadow-2xl overflow-hidden relative border border-[var(--glass-border)] group-hover:border-emerald-500/50 transition-colors z-10">
-                                <div class="absolute inset-0 bg-emerald-500/10 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity"></div>
+                            <div class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 shrink-0 bg-[var(--glass-bg)] rounded shadow-2xl overflow-hidden relative border border-[var(--glass-border)] transition-colors z-10">
+                                <div class="absolute inset-0 bg-[var(--text-main)] mix-blend-overlay opacity-10 z-10 group-hover:opacity-0 transition-opacity"></div>
                                 <img src="divyanshu.png" alt="Divyanshu Sisodiya" class="elite-portrait w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%25\' height=\'100%25\' viewBox=\'0 0 100 100\'%3E%3Crect fill=\'%23050505\' width=\'100\' height=\'100\'/%3E%3Ctext fill=\'%23333\' font-family=\'monospace\' font-size=\'10\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\'%3E[IMG]%3C/text%3E%3C/svg%3E'">
                             </div>
                             <div class="flex-grow w-full z-10">
                                 <div class="flex justify-between items-start mb-3 border-b border-[var(--glass-border)] pb-3">
                                     <div>
-                                        <h3 class="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-[var(--text-main)] group-hover:text-emerald-500 transition-colors">Divyanshu Sisodiya</h3>
+                                        <h3 class="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-[var(--text-main)] transition-colors font-sans">Divyanshu Sisodiya</h3>
                                         <span class="font-mono text-[9px] sm:text-[10px] text-[var(--text-muted)] uppercase tracking-[0.2em] block mt-1">Systems Engineer // Co-Founder</span>
                                     </div>
                                     <span class="font-mono text-xs text-[var(--text-muted)] uppercase font-black">02</span>
                                 </div>
                                 <p class="text-[10px] sm:text-[11px] md:text-xs text-[var(--text-muted)] leading-relaxed font-mono mb-4">Infrastructure and integration specialist. Engineering highly responsive interfaces, robust databases, and zero-downtime environments.</p>
                                 <div class="flex flex-wrap gap-2 font-mono text-[8px] sm:text-[9px] uppercase tracking-wider">
-                                    <span class="px-2 py-1 border border-[var(--glass-border)] rounded-sm text-[var(--text-main)] bg-[var(--glass-bg)] group-hover:border-emerald-500/30 transition-colors">Data Infrastructure</span>
+                                    <span class="px-2 py-1 border border-[var(--glass-border)] rounded-sm text-[var(--text-main)] bg-[var(--glass-bg)] transition-colors">Data Infrastructure</span>
                                 </div>
                             </div>
                         </div>
@@ -581,7 +683,7 @@
         <section id="contact" class="w-full pt-20 sm:pt-32 pb-32 sm:pb-48 px-4 sm:px-6 border-t border-[var(--glass-border)] relative">
             <div class="max-w-4xl mx-auto reveal text-center">
                 <span class="font-mono text-[9px] sm:text-[10px] text-[var(--text-main)] uppercase tracking-[0.4em] mb-6 block border border-[var(--glass-border)] inline-block px-4 py-1.5 rounded-full">Deployment Access</span>
-                <h2 class="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-8 text-[var(--text-main)]">Request Early Access.</h2>
+                <h2 class="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-8 text-[var(--text-main)] font-sans">Request Early Access.</h2>
                 <p class="text-base sm:text-lg text-[var(--text-muted)] mb-12 max-w-xl mx-auto">OrionHelix AI is currently in closed alpha. Join the waitlist to secure priority deployment and architectural review.</p>
 
                 <form action="https://formsubmit.co/your-email@singularityunion.tech" method="POST" class="glass-panel p-6 sm:p-8 md:p-12 text-left space-y-6 sm:space-y-8">
@@ -619,7 +721,7 @@
                     <div class="flex items-center gap-3 mb-6 sm:mb-8">
                         <img src="su-logo.png" alt="SU Logo" class="h-6 sm:h-8 w-auto object-contain border border-[var(--glass-border)] rounded p-1 bg-[var(--footer-bg)]" onerror="this.style.display='none'; document.getElementById('footer-fallback-logo').style.display='flex';">
                         <div id="footer-fallback-logo" style="display:none;" class="w-6 h-6 sm:w-8 sm:h-8 bg-[var(--footer-text)] text-[var(--footer-bg)] flex items-center justify-center font-bold text-[10px] sm:text-xs rounded-sm">SU</div>
-                        <span class="font-bold text-lg sm:text-xl tracking-tighter uppercase">Singularity Union</span>
+                        <span class="font-bold text-lg sm:text-xl tracking-tighter uppercase font-sans">Singularity Union</span>
                     </div>
                     <p class="opacity-70 text-xs sm:text-sm mb-8 sm:mb-10 leading-relaxed font-medium">Engineering deterministic reliability for autonomous enterprise workflows.</p>
                     <div class="flex flex-col gap-2">
@@ -678,29 +780,29 @@
         </div>
     </footer>
 
-    <div class="fixed bottom-6 right-6 z-50 px-4 py-2 flex gap-4 font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-500 hidden md:flex mix-blend-difference pointer-events-none">
-        <span class="flex items-center gap-2"><span class="w-1 h-1 bg-white rounded-full animate-pulse"></span> CORE: STABLE</span>
+    <div class="fixed bottom-6 right-6 z-50 px-4 py-2 flex gap-4 font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--text-muted)] hidden md:flex mix-blend-difference pointer-events-none">
+        <span class="flex items-center gap-2"><span class="w-1 h-1 bg-[var(--text-main)] rounded-full animate-pulse"></span> CORE: STABLE</span>
         <span id="ping-hud">LATENCY: 12ms</span>
     </div>
 
     <div id="scroll-tracker" class="hidden xl:block pointer-events-none">
         <div id="scroll-progress" style="height: 0%;"></div>
-        <div class="absolute -left-8 top-1/2 -translate-y-1/2 -rotate-90 text-[8px] font-mono text-cyan-500 uppercase tracking-[0.3em] whitespace-nowrap">
-            Depth_Axis <span id="depth-percentage" class="text-[var(--text-main)]">00%</span>
+        <div class="absolute -left-8 top-1/2 -translate-y-1/2 -rotate-90 text-[8px] font-mono text-[var(--text-main)] opacity-50 uppercase tracking-[0.3em] whitespace-nowrap">
+            Depth_Axis <span id="depth-percentage" class="text-[var(--text-main)] opacity-100">00%</span>
         </div>
     </div>
 
     <div class="fixed bottom-0 left-0 w-full h-6 bg-[var(--bg-main)]/80 backdrop-blur-md border-t border-[var(--glass-border)] z-[60] overflow-hidden flex items-center hidden md:flex pointer-events-none">
         <div class="animate-marquee whitespace-nowrap text-[9px] font-mono uppercase tracking-[0.2em] text-[var(--text-muted)] flex gap-12">
             <span>[ SYSTEM: ORION HELIX ACTIVE ]</span>
-            <span class="text-cyan-500">GLOBAL_NODES: 4,092 ONLINE</span>
+            <span class="text-[var(--text-main)] opacity-70">GLOBAL_NODES: 4,092 ONLINE</span>
             <span>THREAT_DETECTION: 0 VULNERABILITIES</span>
-            <span class="text-emerald-500">QUANTUM_ENCRYPTION: LOCKED</span>
+            <span class="text-green-500">QUANTUM_ENCRYPTION: LOCKED</span>
             <span>NEURAL_SYNC_RATE: 99.98%</span>
             <span>[ SYSTEM: ORION HELIX ACTIVE ]</span>
-            <span class="text-cyan-500">GLOBAL_NODES: 4,092 ONLINE</span>
+            <span class="text-[var(--text-main)] opacity-70">GLOBAL_NODES: 4,092 ONLINE</span>
             <span>THREAT_DETECTION: 0 VULNERABILITIES</span>
-            <span class="text-emerald-500">QUANTUM_ENCRYPTION: LOCKED</span>
+            <span class="text-green-500">QUANTUM_ENCRYPTION: LOCKED</span>
             <span>NEURAL_SYNC_RATE: 99.98%</span>
         </div>
     </div>
@@ -813,7 +915,7 @@
                 });
             }
 
-            // System Index Toggle
+            // System Index Toggle (Neural Tree Overlay)
             const btnIndex = document.getElementById('btn-index-toggle');
             const indexOverlay = document.getElementById('system-index-overlay');
             const indexContent = document.getElementById('index-content');
@@ -841,6 +943,93 @@
             };
 
             btnIndex.addEventListener('click', toggleIndex);
+
+            // Datacore Modal Logic (MIND BLOWING KERNEL OVERRIDE)
+            const datacoreModal = document.getElementById('orion-datacore-modal');
+            const datacorePanel = document.getElementById('datacore-panel');
+            const datacoreSpecs = document.getElementById('datacore-specs');
+            const deepCorePanel = document.getElementById('deep-core-panel');
+            const deepCoreTerminal = document.getElementById('deep-core-terminal');
+            const deepCoreFinal = document.getElementById('deep-core-final');
+
+            window.openDatacore = () => {
+                toggleIndex(); 
+                setTimeout(() => {
+                    datacoreModal.classList.remove('opacity-0', 'pointer-events-none');
+                    datacoreModal.classList.add('opacity-100', 'pointer-events-auto');
+                    datacorePanel.classList.remove('scale-95');
+                    datacorePanel.classList.add('scale-100');
+                    lenis.stop();
+                }, 500); 
+            };
+
+            window.closeDatacore = () => {
+                datacoreModal.classList.remove('opacity-100', 'pointer-events-auto');
+                datacoreModal.classList.add('opacity-0', 'pointer-events-none');
+                datacorePanel.classList.remove('scale-100');
+                datacorePanel.classList.add('scale-95');
+                lenis.start();
+
+                // Reset panels for next open
+                setTimeout(() => {
+                    datacoreSpecs.style.opacity = '1';
+                    datacoreSpecs.style.pointerEvents = 'auto';
+                    deepCorePanel.classList.add('hidden');
+                    deepCorePanel.classList.remove('flex', 'opacity-100');
+                }, 500);
+            };
+
+            window.initiateDeepCore = () => {
+                datacoreSpecs.style.opacity = '0';
+                datacoreSpecs.style.pointerEvents = 'none';
+
+                setTimeout(() => {
+                    deepCorePanel.classList.remove('hidden');
+                    deepCorePanel.classList.add('flex');
+                    
+                    // Trigger reflow to animate opacity
+                    void deepCorePanel.offsetWidth;
+                    deepCorePanel.classList.add('opacity-100');
+
+                    deepCoreTerminal.innerHTML = '';
+                    deepCoreFinal.style.opacity = '0';
+
+                    const mindBlowingLines = [
+                        "WARNING: ENTERING KERNEL OVERRIDE...",
+                        "&nbsp;",
+                        "[NODE 01] Allocating 40,000 TFLOPS for deterministic reasoning...",
+                        "[NODE 02] Compiling enterprise codebase into multi-dimensional vector space... SUCCESS.",
+                        "[NODE 03] Engaging Adversarial Matrix: Simulating 14,209 zero-day injections...",
+                        "[NODE 03] ALL THREATS NEUTRALIZED PRE-COMPILATION.",
+                        "&nbsp;",
+                        "> ORION HELIX IS REWRITING ITS OWN ARCHITECTURE...",
+                        "> OPTIMIZATION AT 99.999%...",
+                        "&nbsp;",
+                        "SYSTEM OMNISCIENT."
+                    ];
+
+                    let delay = 0;
+                    mindBlowingLines.forEach((line) => {
+                        setTimeout(() => {
+                            const el = document.createElement('div');
+                            el.innerHTML = line;
+                            if (line.includes('WARNING')) el.className = 'text-red-500 font-bold';
+                            else if (line.includes('SUCCESS') || line.includes('NEUTRALIZED')) el.className = 'text-emerald-500';
+                            else if (line.includes('OMNISCIENT')) el.className = 'text-cyan-400 font-bold text-lg mt-4 animate-pulse';
+                            else el.className = 'text-[var(--text-muted)]';
+                            
+                            deepCoreTerminal.appendChild(el);
+                            deepCoreTerminal.scrollTop = deepCoreTerminal.scrollHeight;
+                        }, delay);
+                        delay += (Math.random() * 400) + 200;
+                    });
+
+                    setTimeout(() => {
+                        deepCoreFinal.style.opacity = '1';
+                    }, delay + 500);
+
+                }, 500);
+            };
 
             // Theme Switcher Click Logic
             const themeBtn = document.getElementById('theme-toggle-btn');
@@ -1016,7 +1205,7 @@
                     const angle = i * 0.12 + time; 
                     const y = centerY + i * spacing + targetYOff;
 
-                    // Elite Sine Wave Physics (Makes the helix gracefully bend and sway)
+                    // Elite Sine Wave Physics
                     const waveX = Math.sin(i * 0.05 + time) * (isMobile ? 30 : 80);
 
                     const x1 = Math.cos(angle) * radiusX;
@@ -1032,14 +1221,12 @@
                     allPoints.push({ type: 'helix', x: centerX + waveX + x1 * scale1, y, scale: scale1, z: z1, isStrand1: true });
                     allPoints.push({ type: 'helix', x: centerX + waveX + x2 * scale2, y, scale: scale2, z: z2, isStrand1: false });
 
-                    // Connection Rungs
                     if (i % 5 === 0) {
                         const avgZ = (z1 + z2) / 2;
                         allPoints.push({ type: 'rung', x1: centerX + waveX + x1 * scale1, y1: y, x2: centerX + waveX + x2 * scale2, y2: y, z: avgZ });
                     }
                 }
 
-                // Z-sort for perfect 3D depth overlap
                 allPoints.sort((a, b) => a.z - b.z);
 
                 allPoints.forEach(p => {
@@ -1056,7 +1243,6 @@
                     } else if (p.type === 'helix') {
                         const opacity = Math.max(0.15, depthFactor);
                         
-                        // Cyberpunk Neon Data-Stream Colors adjusting via Theme
                         const rgb = p.isStrand1 ? themeConfig.s1 : themeConfig.s2;
 
                         ctx.beginPath();
@@ -1064,7 +1250,6 @@
                         ctx.fillStyle = `rgba(${rgb}, ${opacity})`;
                         ctx.fill();
 
-                        // Advanced Neon Glow (Desktop Only for FPS)
                         if (depthFactor > 0.7 && !isMobile) {
                             ctx.shadowBlur = 15;
                             ctx.shadowColor = `rgba(${rgb}, 0.8)`;
